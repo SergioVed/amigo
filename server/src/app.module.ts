@@ -4,6 +4,8 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import { ProfessorModel } from "./modules/professor/infrastructure/professorModel";
 import { ProfessorModule } from "./modules/professor/professorModule";
 import { PriceModule } from "./modules/price/priceModule";
+import { CeoController } from "./modules/ceo/interface/ceoController";
+import { CeoModule } from "./modules/ceo/ceoModule";
 
 
 @Module({
@@ -23,7 +25,8 @@ import { PriceModule } from "./modules/price/priceModule";
             autoLoadModels: true
         }),
         ProfessorModule,
-        PriceModule
+        PriceModule,
+        CeoModule
     ]
 })
 export class AppModule { }
