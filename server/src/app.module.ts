@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { ProfessorModel } from "./modules/professor/infrastructure/professorModel";
 import { ProfessorModule } from "./modules/professor/professorModule";
+import { PriceModule } from "./modules/price/priceModule";
 
 
 @Module({
@@ -21,7 +22,8 @@ import { ProfessorModule } from "./modules/professor/professorModule";
             models: [ProfessorModel],
             autoLoadModels: true
         }),
-        ProfessorModule
+        ProfessorModule,
+        PriceModule
     ]
 })
 export class AppModule { }

@@ -43,7 +43,6 @@ export class ProfessorRepositoryImpl implements IProfessorRepository {
         }
 
         existing.update(data)
-        await existing.save()
 
         return ProfessorMapper.toDomain(existing)
     }
