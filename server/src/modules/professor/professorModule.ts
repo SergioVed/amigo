@@ -4,9 +4,10 @@ import { ProfessorRepositoryImpl } from "./infrastructure/professorRepositoryImp
 import { SequelizeModule } from "@nestjs/sequelize";
 import { ProfessorModel } from "./infrastructure/professorModel";
 import { ProfessorController } from "./interface/professorController";
+import { JwtModule } from "@nestjs/jwt";
 
 @Module({
-    imports: [SequelizeModule.forFeature([ProfessorModel])],
+    imports: [SequelizeModule.forFeature([ProfessorModel]), JwtModule],
     providers: [ProfessorService, {
         provide: "IProfessorRepository",
         useClass: ProfessorRepositoryImpl

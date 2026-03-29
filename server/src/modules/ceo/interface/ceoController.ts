@@ -11,13 +11,12 @@ export class CeoController {
         private ceoService: CeoService
     ) {}
 
-
     @Get("/:id")
-    @UseGuards(AuthGuard)
     getOne(@Param("id", ParseIntPipe) id: number) {
         return this.ceoService.getOne(id)
     }
 
+    @UseGuards(AuthGuard)
     @Patch("/:id")
     update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateCeoDto) {
         return this.ceoService.update(id, dto)

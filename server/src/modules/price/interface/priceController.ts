@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
 import { PriceService } from "../core/priceService";
 import { CreatePriceDto, UpdatePriceDto } from "./dto";
+import { AuthGuard } from "src/guards/authGuard";
 
 
 @Controller("price")
@@ -15,6 +16,7 @@ export class PriceController {
         return this.priceService.getAll()
     }
 
+    @UseGuards(AuthGuard)
     @Post()
     create(@Body() dto: CreatePriceDto) {
         return this.priceService.create(dto)
@@ -25,12 +27,14 @@ export class PriceController {
         return this.priceService.getOne(id)
     }
 
+    @UseGuards(AuthGuard)
     @Delete("/:id")
     delete(@Param("id") id: number) {
         return this.priceService.delete(id)
     }
 
-    @Put("/:id")
+    @UseGuards(AuthGuard)
+    @Patch("/:id")
     update(@Param("id") id: number, @Body() dto: UpdatePriceDto) {
         return this.priceService.update(id, dto)
     }
