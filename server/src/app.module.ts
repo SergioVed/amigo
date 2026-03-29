@@ -4,9 +4,9 @@ import { SequelizeModule } from "@nestjs/sequelize";
 import { ProfessorModel } from "./modules/professor/infrastructure/professorModel";
 import { ProfessorModule } from "./modules/professor/professorModule";
 import { PriceModule } from "./modules/price/priceModule";
-import { CeoController } from "./modules/ceo/interface/ceoController";
 import { CeoModule } from "./modules/ceo/ceoModule";
 import { AuthModule } from "./modules/auth/authModule";
+import { FeedbackModule } from "./modules/feedback/feedbackModule";
 
 
 @Module({
@@ -28,7 +28,8 @@ import { AuthModule } from "./modules/auth/authModule";
         ProfessorModule,
         PriceModule,
         CeoModule,
-        AuthModule
+        AuthModule,
+        FeedbackModule
     ]
 })
 export class AppModule { }
