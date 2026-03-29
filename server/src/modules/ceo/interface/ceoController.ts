@@ -16,11 +16,6 @@ export class CeoController {
         return this.ceoService.getOne(id)
     }
 
-    @Post()
-    create(@Body() dto: CreateCeoDto) {
-        return this.ceoService.create(dto)
-    }
-
     @Patch("/:id")
     update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateCeoDto) {
         return this.ceoService.update(id, dto)

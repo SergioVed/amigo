@@ -20,6 +20,18 @@ export class CeoRepositoryImpl implements ICeoRepository {
         return CeoMapper.toDomain(ceo)
     }
 
+    async getByEmail(email: string): Promise<CeoEntity | null> {
+        const ceo = await this.ceoModel.findOne({where: {
+            email: email
+        }})
+        
+        if (!ceo) {
+            return null;
+        }
+
+        return CeoMapper.toDomain(ceo);
+    }
+
 
     async save(ceoEntity: CeoEntity): Promise<CeoEntity | null> {
         const id = ceoEntity.getId()

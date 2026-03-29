@@ -9,6 +9,8 @@ export class CeoMapper {
         return new CeoEntity (
             data.id,
             data.name,
+            data.email,
+            data.password,
             data.description,
             data.telegram,
             data.instagram,
@@ -19,6 +21,8 @@ export class CeoMapper {
     public static toPersistence (ceoEntity: CeoEntity): CeoCreationAttrs {
         return {
             name: ceoEntity.getName(),
+            email: ceoEntity.getEmail(),
+            password: ceoEntity.getPassword(),
             description: ceoEntity.getDescription(),
             telegram: ceoEntity.getTelegram(),
             instagram: ceoEntity.getInstagram(),

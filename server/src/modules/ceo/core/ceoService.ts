@@ -1,6 +1,7 @@
-import { Inject, Injectable, NotFoundException } from "@nestjs/common";
+import { ConflictException, Inject, Injectable, NotFoundException } from "@nestjs/common";
 import type { ICeoRepository } from "./ceoRepository";
 import { CeoCreationAttrs, CeoEntity, CeoUpdateAttrs } from "./ceoEntity";
+import bcrypt from "bcrypt"
 
 @Injectable()
 export class CeoService {
@@ -19,7 +20,13 @@ export class CeoService {
     }
 
     public async create (data: CeoCreationAttrs) {
-        const newCeo = CeoEntity.create(data)
+        const existing = await this.ceoRepo.getOne(1)
+        if (existing) {
+            throw new ConflictException("Ceo profile already exists")
+        }
+
+        const newPassword = await bcrypt.hash(data.password, 12)
+        const newCeo = CeoEntity.create({...data, password: newPassword})
         return await this.ceoRepo.save(newCeo)
     }
 

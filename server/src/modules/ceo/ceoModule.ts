@@ -12,6 +12,7 @@ import { CeoController } from "./interface/ceoController";
         provide: "ICeoRepository",
         useClass: CeoRepositoryImpl
     }],
-    controllers: [CeoController]
+    controllers: [CeoController],
+    exports: ["ICeoRepository"]
 })
 export class CeoModule {}

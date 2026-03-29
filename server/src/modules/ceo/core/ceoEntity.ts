@@ -1,5 +1,7 @@
 export interface CeoCreationAttrs {
     name: string,
+    email: string,
+    password: string,
     description: string,
     telegram: string,
     instagram: string,
@@ -13,6 +15,8 @@ export class CeoEntity {
     constructor(
         private _id: number | null,
         private _name: string,
+        private _email: string,
+        private _password: string,
         private _description: string,
         private _telegram: string,
         private _instagram: string,
@@ -25,6 +29,14 @@ export class CeoEntity {
 
     public getName(): string {
         return this._name;
+    }
+
+    public getEmail(): string {
+        return this._email
+    }
+
+    public getPassword(): string {
+        return this._password
     }
 
     public getDescription(): string {
@@ -48,6 +60,8 @@ export class CeoEntity {
         return new CeoEntity (
             null,
             data.name,
+            data.email,
+            data.password,
             data.description,
             data.telegram,
             data.instagram,

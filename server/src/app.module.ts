@@ -6,6 +6,7 @@ import { ProfessorModule } from "./modules/professor/professorModule";
 import { PriceModule } from "./modules/price/priceModule";
 import { CeoController } from "./modules/ceo/interface/ceoController";
 import { CeoModule } from "./modules/ceo/ceoModule";
+import { AuthModule } from "./modules/auth/authModule";
 
 
 @Module({
@@ -26,7 +27,8 @@ import { CeoModule } from "./modules/ceo/ceoModule";
         }),
         ProfessorModule,
         PriceModule,
-        CeoModule
+        CeoModule,
+        AuthModule
     ]
 })
 export class AppModule { }
