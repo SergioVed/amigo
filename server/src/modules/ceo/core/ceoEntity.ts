@@ -1,3 +1,5 @@
+import { BadRequestException } from "@nestjs/common";
+
 export interface CeoCreationAttrs {
     name: string,
     email: string,
@@ -5,7 +7,8 @@ export interface CeoCreationAttrs {
     description: string,
     telegram: string,
     instagram: string,
-    image: string
+    image: string,
+    refreshJti?: string | null
 }
 
 export interface CeoUpdateAttrs extends Partial<CeoCreationAttrs> {}
@@ -20,7 +23,8 @@ export class CeoEntity {
         private _description: string,
         private _telegram: string,
         private _instagram: string,
-        private _image: string
+        private _image: string,
+        private _refreshJti: string | null
     ){}
 
     public getId (): number | null {
@@ -55,6 +59,16 @@ export class CeoEntity {
         return this._image;
     }
 
+    public getRefreshJti (): string | null {
+        return this._refreshJti;
+    }
+
+    public setRefreshJti (refreshHash: string) {
+        if (refreshHash.length === 0) {
+            throw new BadRequestException("Not type of hash")
+        }
+        this._refreshJti = refreshHash
+    }
 
     public static create (data: CeoCreationAttrs) {
         return new CeoEntity (
@@ -65,7 +79,8 @@ export class CeoEntity {
             data.description,
             data.telegram,
             data.instagram,
-            data.image
+            data.image,
+            null
         )
     }
 

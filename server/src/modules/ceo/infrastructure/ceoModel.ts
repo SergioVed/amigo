@@ -1,5 +1,16 @@
-import { Column, DataType, Default, Model, Table } from "sequelize-typescript";
+import { AllowNull, Column, DataType, Default, Model, Table } from "sequelize-typescript";
 import type { CeoCreationAttrs } from "../core/ceoEntity";
+
+export interface CeoModelCreationAttrs {
+    name: string,
+    email: string,
+    password: string,
+    description: string,
+    telegram: string,
+    instagram: string,
+    image: string,
+    refreshJti?: string | null
+}
 
 @Table({
     tableName: "ceo",
@@ -10,7 +21,7 @@ import type { CeoCreationAttrs } from "../core/ceoEntity";
         }
     ]
 })
-export class CeoModel extends Model<CeoModel, CeoCreationAttrs> {
+export class CeoModel extends Model<CeoModel, CeoModelCreationAttrs> {
     
     @Default(1)
     @Column({
@@ -42,4 +53,7 @@ export class CeoModel extends Model<CeoModel, CeoCreationAttrs> {
 
     @Column({ type: DataType.STRING, allowNull: false })
     declare image: string;
+
+    @Column({type: DataType.STRING, allowNull: true})
+    declare refreshJti: string | null
 }

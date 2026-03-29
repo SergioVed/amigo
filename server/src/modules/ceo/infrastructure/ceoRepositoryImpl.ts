@@ -3,6 +3,7 @@ import { CeoEntity } from "../core/ceoEntity";
 import { ICeoRepository } from "../core/ceoRepository";
 import { CeoModel } from "./ceoModel";
 import { CeoMapper } from "./ceoMapper";
+import { Transaction } from "sequelize";
 
 
 export class CeoRepositoryImpl implements ICeoRepository {
@@ -21,9 +22,11 @@ export class CeoRepositoryImpl implements ICeoRepository {
     }
 
     async getByEmail(email: string): Promise<CeoEntity | null> {
-        const ceo = await this.ceoModel.findOne({where: {
-            email: email
-        }})
+        const ceo = await this.ceoModel.findOne({
+            where: {
+                email: email
+            }
+        })
         
         if (!ceo) {
             return null;

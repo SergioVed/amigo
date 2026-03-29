@@ -1,5 +1,5 @@
 import { CeoEntity } from "../core/ceoEntity";
-import { CeoModel } from "./ceoModel";
+import { CeoModel, CeoModelCreationAttrs } from "./ceoModel";
 import type { CeoCreationAttrs } from "../core/ceoEntity";
 
 
@@ -14,11 +14,12 @@ export class CeoMapper {
             data.description,
             data.telegram,
             data.instagram,
-            data.image
+            data.image,
+            data.refreshJti
         )
     }
 
-    public static toPersistence (ceoEntity: CeoEntity): CeoCreationAttrs {
+    public static toPersistence (ceoEntity: CeoEntity): CeoModelCreationAttrs {
         return {
             name: ceoEntity.getName(),
             email: ceoEntity.getEmail(),
@@ -26,7 +27,8 @@ export class CeoMapper {
             description: ceoEntity.getDescription(),
             telegram: ceoEntity.getTelegram(),
             instagram: ceoEntity.getInstagram(),
-            image: ceoEntity.getImage()
+            image: ceoEntity.getImage(),
+            refreshJti: ceoEntity.getRefreshJti()
         }
     }
 }

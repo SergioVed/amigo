@@ -16,6 +16,12 @@ export class CeoController {
         return this.ceoService.getOne(id)
     }
 
+
+    @Post()
+    create(@Body() dto: CreateCeoDto) {
+        return this.ceoService.create(dto)
+    }
+
     @UseGuards(AuthGuard)
     @Patch("/:id")
     update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateCeoDto) {

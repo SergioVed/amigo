@@ -1,21 +1,63 @@
-import { Inject, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
+import { BadRequestException, Inject, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { CeoEntity } from "src/modules/ceo/core/ceoEntity";
-import { LoginInput } from "./types";
+import { LoginInput, RefreshPayload } from "./types";
 import type { ICeoRepository } from "src/modules/ceo/core/ceoRepository";
 import bcrypt from "bcrypt"
-
+import { TokenHelper } from "../helpers/tokenHelper";
 
 @Injectable()
 export class AuthService {
 
-    constructor (
+    constructor(
         private jwt: JwtService,
+        private tokenHelper: TokenHelper,
         @Inject("ICeoRepository") private ceoRepo: ICeoRepository
-    ) {}
+    ) { }
 
-    async login (data: LoginInput) {
-        const {email, password} = data
+    public async refresh(refreshToken: string) {
+        const payload: RefreshPayload = await this.jwt.verifyAsync(refreshToken, {
+            secret: process.env.REFRESH_SECRET
+        })
+
+
+        const ceo = await this.ceoRepo.getByEmail(payload._email)
+        if (!ceo) {
+            throw new NotFoundException("Ceo not found")
+        }
+
+        const currentHash = ceo.getRefreshJti()
+        if (!currentHash) {
+            throw new BadRequestException("Refresh token not found")
+        }
+
+        const matches = ceo.getRefreshJti() === payload._jti
+        if (!matches) {
+            throw new UnauthorizedException("Invalid refresh token")
+        }
+
+        const tokens = this.generateAndSaveTokens(ceo)
+        return tokens
+    }
+
+    public async login(data: LoginInput) {
+        const ceo = await this.validateCredentials(data)
+
+        const tokens = await this.generateAndSaveTokens(ceo)
+        return tokens
+    }
+
+
+    private async generateAndSaveTokens (ceo: CeoEntity) {
+        const tokens = await this.tokenHelper.generateTokens(ceo)
+        ceo.setRefreshJti(tokens.jti)
+        await this.ceoRepo.save(ceo)
+
+        return tokens
+    }
+
+    private async validateCredentials (data: LoginInput) {
+        const { email, password } = data
 
         const ceo = await this.ceoRepo.getByEmail(email)
         if (!ceo) {
@@ -27,28 +69,7 @@ export class AuthService {
             throw new UnauthorizedException("Password is incorrect")
         }
 
-        return this.generateTokens(ceo)
+        return ceo
     }
 
-    private async generateTokens (ceo: CeoEntity) {
-        const payload = {
-            email: ceo.getEmail()
-        }
-
-        const accessToken = await this.jwt.signAsync(payload, {
-            secret: process.env.ACCESS_SECRET,
-            expiresIn: "30m"
-        })
-
-        const refreshToken = await this.jwt.signAsync(payload, {
-            secret: process.env.REFRESH_SECRET,
-            expiresIn: "15d"
-        })
-
-        return {
-            accessToken,
-            refreshToken
-        }
-
-    }
 }

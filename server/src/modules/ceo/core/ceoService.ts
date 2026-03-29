@@ -27,6 +27,7 @@ export class CeoService {
 
         const newPassword = await bcrypt.hash(data.password, 12)
         const newCeo = CeoEntity.create({...data, password: newPassword})
+        
         return await this.ceoRepo.save(newCeo)
     }
 

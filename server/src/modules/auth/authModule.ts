@@ -3,11 +3,12 @@ import { AuthController } from "./interface/authController";
 import { AuthService } from "./core/authService";
 import { JwtModule } from "@nestjs/jwt";
 import { CeoModule } from "../ceo/ceoModule";
+import { TokenHelper } from "./helpers/tokenHelper";
 
 
 @Module({
     imports: [JwtModule, CeoModule],
     controllers: [AuthController],
-    providers: [AuthService]
+    providers: [AuthService, TokenHelper]
 })
 export class AuthModule {}
