@@ -7,6 +7,7 @@ import { PriceModule } from "./modules/price/priceModule";
 import { CeoModule } from "./modules/ceo/ceoModule";
 import { AuthModule } from "./modules/auth/authModule";
 import { FeedbackModule } from "./modules/feedback/feedbackModule";
+import { JwtModule } from "@nestjs/jwt";
 
 
 @Module({
@@ -29,7 +30,7 @@ import { FeedbackModule } from "./modules/feedback/feedbackModule";
         PriceModule,
         CeoModule,
         AuthModule,
-        FeedbackModule
+        FeedbackModule,
     ]
 })
 export class AppModule { }
