@@ -1,10 +1,14 @@
 import { BadRequestException, Inject, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { CeoEntity } from "src/modules/ceo/core/ceoEntity";
-import { LoginInput, RefreshPayload } from "./types";
+import { LoginInput, RefreshPayload, VerifyInput } from "./types";
 import type { ICeoRepository } from "src/modules/ceo/core/ceoRepository";
 import bcrypt from "bcrypt"
 import { TokenHelper } from "../helpers/tokenHelper";
+import { randomInt } from "crypto";
+import { CodeService } from "src/modules/code/core/codeService";
+import type { ICodeRepository } from "src/modules/code/core/codeReposiotry";
+
 
 @Injectable()
 export class AuthService {
@@ -12,7 +16,9 @@ export class AuthService {
     constructor(
         private jwt: JwtService,
         private tokenHelper: TokenHelper,
-        @Inject("ICeoRepository") private ceoRepo: ICeoRepository
+        private codeService: CodeService,
+        @Inject("ICeoRepository") private ceoRepo: ICeoRepository,
+        @Inject("ICodeRepository") private codeRepo: ICodeRepository
     ) { }
 
     public async refresh(refreshToken: string) {
@@ -41,10 +47,28 @@ export class AuthService {
     }
 
     public async login(data: LoginInput) {
-        const ceo = await this.validateCredentials(data)
+        await this.validateCredentials(data)
+        
+        const code = randomInt(100000, 1000000).toString()
+        await this.codeService.sendActivationLink(data.email, code)
+    }
+
+    public async verify(data: VerifyInput) {
+        const ceo = await this.ceoRepo.getByEmail(data.email)
+        if (!ceo) {
+            throw new BadRequestException("No ceo was found with email " + data.email)
+        }
+
+        const code = await this.codeService.validateCode(data)
+
+        code.update({usedAt: new Date()})
+        await this.codeRepo.save(code)
 
         const tokens = await this.generateAndSaveTokens(ceo)
-        return tokens
+        return {
+            accessToken: tokens.accessToken,
+            refreshToken: tokens.refreshToken
+        }
     }
 
 
@@ -71,5 +95,6 @@ export class AuthService {
 
         return ceo
     }
+
 
 }

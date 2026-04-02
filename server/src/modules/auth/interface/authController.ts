@@ -1,5 +1,5 @@
 import { Body, Controller, Post } from "@nestjs/common";
-import { LoginDto, RefreshDto } from "./dto";
+import { LoginDto, RefreshDto, VerifyDto } from "./dto";
 import { AuthService } from "../core/authService";
 
 
@@ -18,5 +18,10 @@ export class AuthController {
     @Post("/refresh")
     refresh(@Body() dto: RefreshDto) {
         return this.authService.refresh(dto.refreshToken)
+    }
+
+    @Post("/login-verify")
+    verify(@Body() dto: VerifyDto){
+        return this.authService.verify(dto)
     }
 }

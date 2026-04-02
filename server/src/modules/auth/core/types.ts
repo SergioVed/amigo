@@ -12,3 +12,8 @@ export interface RefreshPayload {
     _email: string,
     _jti: string
 }
+
+export interface VerifyInput {
+    email: string,
+    code: string
+}

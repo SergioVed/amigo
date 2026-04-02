@@ -15,3 +15,13 @@ export class RefreshDto {
   @IsNotEmpty()
   refreshToken: string;
 }
+
+export class VerifyDto {
+    @IsEmail()
+    @IsNotEmpty()
+    email: string;
+
+    @IsString()
+    @IsNotEmpty()
+    code: string
+}
