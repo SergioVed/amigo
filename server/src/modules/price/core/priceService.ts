@@ -38,7 +38,7 @@ export class PriceService {
     public async update (id: number, data: UpdatePriceAttrs) {
         const price = await this.priceRepo.getOne(id)
         if (!price) {
-            throw new BadRequestException("Price was not found")
+            throw new NotFoundException("Price was not found")
         }
         price.update(data)
         return await this.priceRepo.save(price)

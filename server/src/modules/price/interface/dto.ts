@@ -1,4 +1,4 @@
-import { IsNumber, IsString, IsIn } from "class-validator"
+import { IsNumber, IsString, IsIn, IsNotEmpty } from "class-validator"
 import type { PriceType } from "../core/priceEntity"
 import { PartialType } from "@nestjs/swagger"
 import { Type } from "class-transformer"
@@ -10,9 +10,11 @@ export class CreatePriceDto {
     amount: number
 
     @IsString()
+    @IsNotEmpty()
     title: string
 
     @IsString()
+    @IsNotEmpty()
     description: string
 
     @IsIn(["individual", "pair", "special"])

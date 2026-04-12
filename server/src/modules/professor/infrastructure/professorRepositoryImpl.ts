@@ -42,7 +42,7 @@ export class ProfessorRepositoryImpl implements IProfessorRepository {
             return null
         }
 
-        existing.update(data)
+        await existing.update(data)
 
         return ProfessorMapper.toDomain(existing)
     }

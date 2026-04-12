@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from "@nestjs/common";
 import { PriceService } from "../core/priceService";
 import { CreatePriceDto, UpdatePriceDto } from "./dto";
 import { AuthGuard } from "src/guards/authGuard";
@@ -23,19 +23,19 @@ export class PriceController {
     }
 
     @Get("/:id")
-    getOne(@Param("id") id: number) {
+    getOne(@Param("id", ParseIntPipe) id: number) {
         return this.priceService.getOne(id)
     }
 
     @UseGuards(AuthGuard)
     @Delete("/:id")
-    delete(@Param("id") id: number) {
+    delete(@Param("id", ParseIntPipe) id: number) {
         return this.priceService.delete(id)
     }
 
     @UseGuards(AuthGuard)
     @Patch("/:id")
-    update(@Param("id") id: number, @Body() dto: UpdatePriceDto) {
+    update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdatePriceDto) {
         return this.priceService.update(id, dto)
     }
 }

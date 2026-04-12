@@ -1,20 +1,25 @@
 import { PartialType } from "@nestjs/swagger";
-import { ArrayNotEmpty, IsArray, IsString } from "class-validator";
+import { ArrayNotEmpty, IsArray, IsNotEmpty, IsString, IsUrl } from "class-validator";
 import { CreateProfessorAttrs } from "../core/professorEntity";
 
 export class CreateProfessorDto implements CreateProfessorAttrs {
-    @IsString()
+
+    @IsUrl()
+    @IsNotEmpty()
     avatarUrl: string;
 
     @IsString()
+    @IsNotEmpty()
     name: string;
 
     @IsString()
+    @IsNotEmpty()
     description: string;
 
     @IsString()
     subDescription: string;
 
+    @IsUrl()
     @IsString()
     videoUrl: string;
 
@@ -24,9 +29,11 @@ export class CreateProfessorDto implements CreateProfessorAttrs {
     superPower: string[];
 
     @IsString()
+    @IsNotEmpty()
     favouriteWord: string;
 
     @IsString()
+    @IsNotEmpty()
     forStudent: string;
 }
 

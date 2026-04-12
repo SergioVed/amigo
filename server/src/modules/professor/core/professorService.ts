@@ -24,11 +24,11 @@ export class ProfessorService {
         return professor
     }
 
-    public getOne (id: number) {
-        const professor = this.professorRepository.getOne(id)
+    public async getOne (id: number) {
+        const professor = await this.professorRepository.getOne(id)
 
         if (!professor) {
-            throw new BadRequestException("No professor was found")
+            throw new NotFoundException("No professor was found")
         }
 
         return professor
@@ -38,7 +38,7 @@ export class ProfessorService {
         const professor = await this.professorRepository.getOne(id)
 
         if (!professor) {
-            throw new BadRequestException("No professor was found")
+            throw new NotFoundException("No professor was found")
         }
 
         professor.update(data)

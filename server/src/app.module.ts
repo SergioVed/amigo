@@ -7,11 +7,16 @@ import { PriceModule } from "./modules/price/priceModule";
 import { CeoModule } from "./modules/ceo/ceoModule";
 import { AuthModule } from "./modules/auth/authModule";
 import { FeedbackModule } from "./modules/feedback/feedbackModule";
-import { JwtModule } from "@nestjs/jwt";
-
+import {ThrottlerModule} from "@nestjs/throttler"
 
 @Module({
     imports: [
+        ThrottlerModule.forRoot([
+            {
+                ttl: 60_000,
+                limit: 10
+            }
+        ]),
         ConfigModule.forRoot({
             envFilePath: `.env.${process.env.NODE_ENV}.local`
         }),

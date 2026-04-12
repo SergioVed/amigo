@@ -47,7 +47,7 @@ export class CodeService {
         return code
     }
 
-    async sendActivationLink(to: string, code: string) {
+    async sendCode(to: string, code: string) {
         const codeHash = await bcrypt.hash(code, 10)
         const expiresAt = new Date(Date.now() + 10 * 60 * 1000)
 

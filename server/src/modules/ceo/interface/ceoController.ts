@@ -16,7 +16,7 @@ export class CeoController {
         return this.ceoService.getOne(id)
     }
 
-
+    // Add auth guard on production
     @Post()
     create(@Body() dto: CreateCeoDto) {
         return this.ceoService.create(dto)

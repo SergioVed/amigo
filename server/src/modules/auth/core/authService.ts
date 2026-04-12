@@ -22,10 +22,17 @@ export class AuthService {
     ) { }
 
     public async refresh(refreshToken: string) {
-        const payload: RefreshPayload = await this.jwt.verifyAsync(refreshToken, {
+
+        let payload: RefreshPayload;
+        try {
+        
+            payload = await this.jwt.verifyAsync(refreshToken, {
             secret: process.env.REFRESH_SECRET
         })
-
+        } catch {
+            throw new UnauthorizedException("Invalid refresh token")
+        }
+        
 
         const ceo = await this.ceoRepo.getByEmail(payload._email)
         if (!ceo) {
@@ -50,13 +57,13 @@ export class AuthService {
         await this.validateCredentials(data)
         
         const code = randomInt(100000, 1000000).toString()
-        await this.codeService.sendActivationLink(data.email, code)
+        await this.codeService.sendCode(data.email, code)
     }
 
     public async verify(data: VerifyInput) {
         const ceo = await this.ceoRepo.getByEmail(data.email)
         if (!ceo) {
-            throw new BadRequestException("No ceo was found with email " + data.email)
+            throw new NotFoundException("No ceo was found with email " + data.email)
         }
 
         const code = await this.codeService.validateCode(data)
