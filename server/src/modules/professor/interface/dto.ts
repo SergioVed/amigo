@@ -6,35 +6,35 @@ export class CreateProfessorDto implements CreateProfessorAttrs {
 
     @IsUrl()
     @IsNotEmpty()
-    avatarUrl: string;
+    avatarUrl!: string;
 
     @IsString()
     @IsNotEmpty()
-    name: string;
+    name!: string;
 
     @IsString()
     @IsNotEmpty()
-    description: string;
+    description!: string;
 
     @IsString()
-    subDescription: string;
+    subDescription!: string;
 
     @IsUrl()
     @IsString()
-    videoUrl: string;
+    videoUrl!: string;
 
     @IsArray()
     @ArrayNotEmpty()
     @IsString({ each: true })
-    superPower: string[];
+    superPower!: string[];
 
     @IsString()
     @IsNotEmpty()
-    favouriteWord: string;
+    favouriteWord!: string;
 
     @IsString()
     @IsNotEmpty()
-    forStudent: string;
+    forStudent!: string;
 }
 
 export class UpdateProfessorDto extends PartialType(CreateProfessorDto) {}

@@ -6,18 +6,18 @@ import { CreateFeedbackAttrs } from "../core/feedbackEntity";
 export class CreateFeedbackDto implements CreateFeedbackAttrs {
     @IsString()
     @IsNotEmpty()
-    name: string;
+    name!: string;
 
     @IsString()
     @IsNotEmpty()
-    title: string;
+    title!: string;
 
     @IsString()
     @IsNotEmpty()
-    description: string;
+    description!: string;
 
     @IsUrl()
-    avatarUrl: string;
+    avatarUrl!: string;
 }
 
 export class UpdateFeedbackDto extends PartialType(CreateFeedbackDto) {}

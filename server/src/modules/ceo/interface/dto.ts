@@ -5,32 +5,32 @@ export class CreateCeoDto {
     @IsString()
     @IsNotEmpty()
     @Length(2, 100)
-    name: string;
+    name!: string;
 
     @IsEmail()
     @IsNotEmpty()
-    email: string;
+    email!: string;
 
     @IsString()
     @IsNotEmpty()
     @Length(7, 15)
-    password: string;
+    password!: string;
 
     @IsString()
     @IsNotEmpty()
-    description: string;
+    description!: string;
 
     @IsString()
     @IsNotEmpty()
-    telegram: string;
+    telegram!: string;
 
     @IsString()
     @IsNotEmpty()
-    instagram: string;
+    instagram!: string;
 
     @IsUrl()
     @IsNotEmpty()
-    image: string;
+    image!: string;
 
 }
 

@@ -7,18 +7,18 @@ import { Type } from "class-transformer"
 export class CreatePriceDto {
     @Type(() => Number)
     @IsNumber()
-    amount: number
+    amount!: number
 
     @IsString()
     @IsNotEmpty()
-    title: string
+    title!: string
 
     @IsString()
     @IsNotEmpty()
-    description: string
+    description!: string
 
     @IsIn(["individual", "pair", "special"])
-    type: PriceType
+    type!: PriceType
 }
 
 export class UpdatePriceDto extends PartialType(CreatePriceDto) {}
