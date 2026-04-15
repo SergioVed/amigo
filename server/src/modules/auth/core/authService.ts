@@ -58,6 +58,8 @@ export class AuthService {
         
         const code = randomInt(100000, 1000000).toString()
         await this.codeService.sendCode(data.email, code)
+
+        return code
     }
 
     public async verify(data: VerifyInput) {
