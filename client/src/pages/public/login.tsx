@@ -1,10 +1,10 @@
 import styles from "./login.module.css"
-import { LoginForm } from "../../modules/loginForm"
+import { AuthModule } from "../../modules/auth"
 
 export const Login = () => {
     return (
         <div className={styles.container}>
-            <LoginForm/>
+            <AuthModule/>
         </div>
     )
 }

@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(18px, 3vw, 30px);
+    width: min(35%, 560px);
+    padding: clamp(20px, 4vw, 56px) clamp(16px, 4.5vw, 64px);
+    font-family: "Montserrat", sans-serif;
+    background-color: #ffffff;
+    border-radius: clamp(14px, 2vw, 28px);
+    box-shadow: 0 clamp(10px, 1.5vw, 18px) clamp(24px, 3.5vw, 40px) rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+}
+
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: clamp(64px, 8vw, 100px);
+    width: clamp(64px, 8vw, 100px);
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: #f6bf00;
+}
+
+.icon {
+    height: clamp(38%, 4.5vw, 50%);
+}
+
+.title {
+    margin: 0;
+    color: #2d2a2d;
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        width: min(100%, 460px);
+        margin: 24px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 24px 16px;
+        border-radius: 16px;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 390px) {
+    .container {
+        padding: 20px 14px;
+        border-radius: 14px;
+    }
+}

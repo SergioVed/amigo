@@ -1,0 +1,19 @@
+
+.submitButton {
+    width: 100%;
+    min-height: clamp(50px, 5vw, 70px);
+    margin-top: clamp(2px, 0.8vw, 8px);
+    border: none;
+    border-radius: clamp(14px, 2vw, 22px);
+    background-color: #f6bf00;
+    color: #2d2a2d;
+    font-size: clamp(15px, 1.4vw, 20px);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submitButton:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(246, 191, 0, 0.28);
+}
