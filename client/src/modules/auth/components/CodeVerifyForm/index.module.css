@@ -80,7 +80,7 @@
 }
 
 .codeInput:focus {
-    border-color: #f6bf00;
+    border-color: #EDBA00;
     box-shadow: 0 0 0 4px rgba(246, 191, 0, 0.18);
 }
 

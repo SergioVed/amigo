@@ -1,0 +1,48 @@
+.link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    min-height: 46px;
+    padding: 0 18px;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 12px;
+    background-color: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.link:hover {
+    background-color: #4e4226;
+}
+
+.active {
+    background-color: #edba00;
+    color: #2d2a2d;
+}
+
+.active:hover {
+    background-color: #e1b000;
+}
+
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.iconImage {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.label {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}

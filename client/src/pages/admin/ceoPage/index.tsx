@@ -1,8 +1,8 @@
 
-export const Admin = () => {
+export const CeoPage = () => {
     return (
         <div>
-            Admin
+            ceo
         </div>
     )
 }

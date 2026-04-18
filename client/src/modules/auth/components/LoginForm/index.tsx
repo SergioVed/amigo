@@ -22,7 +22,7 @@ export const LoginForm = () => {
     return (
         <div className={styles.container}>
             <div className={styles.iconWrapper}>
-                <img src={require("../../../../public/icons/log-in.png")} className={styles.icon}/>
+                <img src={require("../../../../public/icons/login/log-in.png")} className={styles.icon}/>
             </div>
 
             <h1 className={styles.title}>Admin Login</h1>
@@ -43,7 +43,7 @@ export const LoginForm = () => {
                 id="password"
             />
 
-            {error ? <p style={{margin: 0, color: "#ff0000"}}>{error}</p> : <></>}
+            {error ? <p style={{margin: 0, color: "#ff0000", whiteSpace: "pre-line"}}>{error}</p> : <></>}
 
             <CustomButton text="Sign in" onClick={() => submit(email, password)}/>
         </div>

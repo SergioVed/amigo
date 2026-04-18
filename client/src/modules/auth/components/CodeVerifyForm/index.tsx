@@ -9,12 +9,9 @@ import { CustomInput } from "../../../../ui/CustomInput"
 export const CodeVerifyForm = () => {
 
     const dispatch = useAppDispatch()
-    const {email} = useTypedSelector(state => state.login)
+    const {email, error, isAuth} = useTypedSelector(state => state.login)
 
     const [code, setCode] = useState("");
-
-    console.log(email)
-    console.log(code)
 
     function submit(email: string, code: string) {
         dispatch(verifyCode(email, code))
@@ -24,7 +21,7 @@ export const CodeVerifyForm = () => {
         <div className={style.container}>
             <div className={style.iconWrapper}>
                 <img
-                    src={require("../../../../public/icons/lock.png")}
+                    src={require("../../../../public/icons/login/lock.png")}
                     className={style.icon}
                 />
             </div>
@@ -42,6 +39,9 @@ export const CodeVerifyForm = () => {
                 label="Enter verification code"
                 id="code"    
             />
+
+            {error ? <p style={{margin: 0, color: "#ff0000"}}>{error}</p> : <></>}
+
 
             <CustomButton text="Verify Code" onClick={() => submit(email!, code)}/>
         </div>
