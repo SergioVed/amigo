@@ -3,7 +3,7 @@ import { CeoPage } from "./pages/admin/ceoPage"
 import { FeedbackPage } from "./pages/admin/feedbackPage"
 import { PricePage } from "./pages/admin/pricePage"
 import { TeacherPage } from "./pages/admin/teacherPage"
-import { Login } from "./pages/public/login"
+import { LoginPage } from "./pages/public/loginPage/login"
 import { ADMIN_PATHS, PATHS } from "./utils/paths"
 
 interface Route {
@@ -25,5 +25,5 @@ export const authRoutes = [
 ]
 
 export const publicRoutes: Route[] = [
-    { path: PATHS.login, Component: Login }
+    { path: PATHS.login, Component: LoginPage }
 ]

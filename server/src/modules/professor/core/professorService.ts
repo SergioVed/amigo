@@ -43,7 +43,13 @@ export class ProfessorService {
 
         professor.update(data)
 
-        return this.professorRepository.save(professor)
+        const updatedProfessor = await this.professorRepository.save(professor)
+
+        if (!updatedProfessor) {
+            throw new BadRequestException("Professor was not updated")
+        }
+
+        return updatedProfessor
     }
 
 }

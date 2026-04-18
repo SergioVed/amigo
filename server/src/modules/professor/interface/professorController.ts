@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, UseGuard
 import { ProfessorService } from "../core/professorService";
 import { CreateProfessorDto, UpdateProfessorDto } from "./dto";
 import { AuthGuard } from "src/guards/authGuard";
+import { ProfessorResponseMapper } from "./professorResponseMapper";
 
 
 @Controller("professor")
@@ -14,21 +15,23 @@ export class ProfessorController {
     @Get()
     async getAll () {
         const professors = await this.professorService.getAll()
-        return professors
+        return professors.map(professor => {
+            return ProfessorResponseMapper.toResponse(professor)
+        })
     }
 
-    @UseGuards(AuthGuard)
+    // @UseGuards(AuthGuard)
     @Post()
     async create (@Body() dto: CreateProfessorDto) {
         const professor = await this.professorService.create(dto)
         return professor
     }
 
-    @UseGuards(AuthGuard)
+    // @UseGuards(AuthGuard)
     @Put("/:id")
     async update (@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateProfessorDto) {
         const professor = await this.professorService.update(id, dto)
-        return professor
+        return ProfessorResponseMapper.toResponse(professor)
     }
 
     @UseGuards(AuthGuard)

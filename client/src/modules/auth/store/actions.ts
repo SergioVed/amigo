@@ -47,7 +47,7 @@ export const verifyCode = (email: string, code: string) => {
                 message = e.response?.data?.message || message
             }
 
-            dispatch({ type: LoginActionTypes.CODE_VERIFY_ERROR, payload: "Error while verifying code " })
+            dispatch({ type: LoginActionTypes.CODE_VERIFY_ERROR, payload: message })
         }
     }
 }

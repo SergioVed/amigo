@@ -1,10 +1,10 @@
 import { useState } from "react"
 import { useAppDispatch } from "../../../../hooks/useAppDispatch"
 import { useTypedSelector } from "../../../../hooks/useTypedSelector"
-import { CustomButton } from "../../../../ui/CustomButton"
+import { CustomButton } from "../../ui/CustomButton"
 import style from "./index.module.css"
 import { verifyCode } from "../../store/actions"
-import { CustomInput } from "../../../../ui/CustomInput"
+import { CustomInput } from "../../ui/CustomInput"
 
 export const CodeVerifyForm = () => {
 
@@ -34,7 +34,7 @@ export const CodeVerifyForm = () => {
 
             <CustomInput 
                 value={code} 
-                setVelue={setCode} 
+                onChange={(e) => setCode(e.target.value)} 
                 placeholder="your code" 
                 label="Enter verification code"
                 id="code"    

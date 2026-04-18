@@ -3,8 +3,8 @@ import { useState } from "react"
 import { useAppDispatch } from "../../../../hooks/useAppDispatch"
 import { useTypedSelector } from "../../../../hooks/useTypedSelector"
 import { login } from "../../store/actions"
-import { CustomInput } from "../../../../ui/CustomInput"
-import { CustomButton } from "../../../../ui/CustomButton"
+import { CustomInput } from "../../ui/CustomInput"
+import { CustomButton } from "../../ui/CustomButton"
 
 export const LoginForm = () => {
 
@@ -31,7 +31,7 @@ export const LoginForm = () => {
                 label="Email" 
                 placeholder="amigo@gmail.com" 
                 value={email} 
-                setVelue={setEmail}
+                onChange={(e) => setEmail(e.target.value)}
                 id="email"
             />
             <CustomInput 
@@ -39,7 +39,7 @@ export const LoginForm = () => {
                 placeholder="*******" 
                 isHidden 
                 value={password} 
-                setVelue={setPassword}
+                onChange={(e) => setPassword(e.target.value)}
                 id="password"
             />
 

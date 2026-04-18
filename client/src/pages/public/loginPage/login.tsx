@@ -1,7 +1,7 @@
 import styles from "./login.module.css"
-import { AuthModule } from "../../modules/auth"
+import { AuthModule } from "../../../modules/auth"
 
-export const Login = () => {
+export const LoginPage = () => {
     return (
         <div className={styles.container}>
             <AuthModule/>

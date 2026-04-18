@@ -7,10 +7,10 @@ interface CustomInputProps {
     value: string,
     id: string,
     isHidden?: boolean,
-    setVelue: (value: string) => void
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-export const CustomInput = ({value, setVelue, placeholder, label, isHidden, id}: CustomInputProps) => {
+export const CustomInput = ({value, onChange, placeholder, label, isHidden, id}: CustomInputProps) => {
 
     return (
         <div className={styles.fieldGroup}>
@@ -23,7 +23,7 @@ export const CustomInput = ({value, setVelue, placeholder, label, isHidden, id}:
                 type={isHidden ? "password" : "email"}
                 placeholder={placeholder}
                 value={value}
-                onChange={(e) => setVelue(e.target.value)}
+                onChange={onChange}
             />
         </div>
     )
