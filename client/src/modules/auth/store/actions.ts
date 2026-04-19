@@ -37,6 +37,7 @@ export const verifyCode = (email: string, code: string) => {
             const response = await AuthApi.verify(email, code)
 
             localStorage.setItem('token', response.data.accessToken)
+            
 
             console.log(response)
             dispatch({ type: LoginActionTypes.CODE_VERIFY_SUCCESS, payload: response.data })

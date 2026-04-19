@@ -27,7 +27,7 @@ export class ProfessorController {
         return professor
     }
 
-    // @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Put("/:id")
     async update (@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateProfessorDto) {
         const professor = await this.professorService.update(id, dto)

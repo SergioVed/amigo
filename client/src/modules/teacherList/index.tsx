@@ -7,15 +7,13 @@ import style from "./index.module.css"
 
 export const TeacherList = () => {
     const dispatch = useAppDispatch()
-    const { teachers, loading, isFetched } = useTypedSelector(state => state.teachers)
+    const { teachers, loading, isFetched, error } = useTypedSelector(state => state.teachers)
 
     useEffect(() => {
         if (!isFetched && !loading) {
             dispatch(fetchTeachers())
         }
     }, [dispatch, teachers, loading, isFetched])
-
-    console.log(teachers)
 
 
     return (
