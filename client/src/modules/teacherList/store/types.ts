@@ -1,3 +1,5 @@
+import { TeacherCreateForm } from ".."
+
 export interface Teacher {
     id: number,
     avatarUrl: string,
@@ -23,9 +25,18 @@ export interface TeachersState {
 export type TeachersAction = FetchTeachersActionType
     | FetchTeachersErrorActionType
     | FetchTeachersSuccessActionType
+
     | UpdateTeacherActionType
     | UpdateTeacherErrorActionType
     | UpdateTeacherSuccessActionType
+
+    | DeleteTeacherActionType
+    | DeleteTeacherErrorActionType
+    | DeleteTeacherSuccessActionType
+
+    | AddTeacherActionType
+    | AddTeacherSuccessActionType
+    | AddTeacherErrorActionType
 
 export enum TeachersActionTypes {
     FETCH_TEACHERS = "FETCH_TEACHERS",
@@ -34,7 +45,45 @@ export enum TeachersActionTypes {
 
     UPDATE_TEACHER = "UPDATE_TEACHER",
     UPDATE_TEACHER_ERROR = "UPDATE_TEACHER_ERROR",
-    UPDATE_TEACHER_SUCCESS = "UPDATE_TEACHER_SUCCESS"
+    UPDATE_TEACHER_SUCCESS = "UPDATE_TEACHER_SUCCESS",
+
+    DELETE_TEACHER = "DELETE_TEACHER",
+    DELETE_TEACHER_SUCCESS = "DELETE_TEACHER_SUCCESS",
+    DELETE_TEACHER_ERROR = "DELETE_TEACHER_ERROR",
+
+    ADD_TEACHER = "ADD_TEACHER",
+    ADD_TEACHER_SUCCESS = "ADD_TEACHER_SUCCESS",
+    ADD_TEACHER_ERROR = "ADD_TEACHER_ERROR"
+}
+
+// Add Teacher action types
+interface AddTeacherActionType {
+    type: TeachersActionTypes.ADD_TEACHER
+}
+
+interface AddTeacherSuccessActionType {
+    type: TeachersActionTypes.ADD_TEACHER_SUCCESS
+    payload: Teacher
+}
+
+interface AddTeacherErrorActionType {
+    type: TeachersActionTypes.ADD_TEACHER_ERROR
+    payload: string
+}
+
+// Delete Teacher action types
+interface DeleteTeacherActionType {
+    type: TeachersActionTypes.DELETE_TEACHER
+}
+
+interface DeleteTeacherSuccessActionType {
+    type: TeachersActionTypes.DELETE_TEACHER_SUCCESS,
+    payload: Teacher
+}
+
+interface DeleteTeacherErrorActionType {
+    type: TeachersActionTypes.DELETE_TEACHER_ERROR,
+    payload: string
 }
 
 // One Teacher action types

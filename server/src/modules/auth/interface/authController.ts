@@ -21,15 +21,7 @@ export class AuthController {
     async refresh(@Req() req: Request, @Res({passthrough: true}) res: Response) {
         
         const tokens = await this.authService.refresh(req.cookies.refreshToken)
-
-        res.cookie('refreshToken', tokens.refreshToken, {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax",
-            maxAge: 15 * 24 * 60 * 60 * 1000,
-        })
-
-        console.log(tokens)
+        TokenHelper.sendTokens(res, tokens)
 
         return {
             accessToken: tokens.accessToken
@@ -38,8 +30,8 @@ export class AuthController {
 
     @Post("/login-verify")
     async verify(@Body() dto: VerifyDto, @Res({ passthrough: true }) res: Response) {
+        
         const tokens = await this.authService.verify(dto)
-
         TokenHelper.sendTokens(res, tokens)
 
         return {

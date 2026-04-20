@@ -1,5 +1,22 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.actionsContainer {
+    display: flex;
+    gap: 25px;
+}
+
+@media (max-width: 640px) {
+    .wrapper {
+        gap: 20px;
+    }
 }

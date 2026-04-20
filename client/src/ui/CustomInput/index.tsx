@@ -1,6 +1,6 @@
 import styles from "./index.module.css"
 
-interface CustomCardInputProps {
+export interface CustomInputProps {
     placeholder: string,
     value: string,
     label: string,
@@ -8,7 +8,7 @@ interface CustomCardInputProps {
     isYellow?: boolean
 }
 
-export const CardInput = ({ placeholder, onChange, value, label, isYellow }: CustomCardInputProps) => {
+export const CustomInput = ({ placeholder, onChange, value, label, isYellow }: CustomInputProps) => {
 
     return (
         <div className={styles.container}>

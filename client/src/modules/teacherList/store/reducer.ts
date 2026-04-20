@@ -28,7 +28,6 @@ export const teacherReducer = (state = initialState, action: TeachersAction): Te
             return { ...state, loading: false, error: action.payload }
 
         case TeachersActionTypes.UPDATE_TEACHER_SUCCESS:
-            console.log(action.payload)
             return {
                 ...state,
                 loading: false,
@@ -37,6 +36,34 @@ export const teacherReducer = (state = initialState, action: TeachersAction): Te
                 )
             }
 
+        case TeachersActionTypes.DELETE_TEACHER:
+            return {...state, loading: true, error: null}
+
+        case TeachersActionTypes.DELETE_TEACHER_ERROR:
+            return {...state, loading: false, error: action.payload}
+
+        case TeachersActionTypes.DELETE_TEACHER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                teachers: state.teachers.filter(teacher => {
+                    return teacher.id != action.payload.id
+                })
+            }
+
+
+        case TeachersActionTypes.ADD_TEACHER:
+            return {...state, loading: true, error: null}
+
+        case TeachersActionTypes.ADD_TEACHER_ERROR:
+            return {...state, loading: false, error: action.payload}   
+
+        case TeachersActionTypes.ADD_TEACHER_SUCCESS:
+            return { 
+                ...state, 
+                loading: false, 
+                teachers: [...state.teachers, action.payload]
+            }    
         default:
             return state;
     }

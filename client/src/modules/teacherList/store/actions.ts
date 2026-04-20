@@ -1,8 +1,9 @@
 import { Dispatch } from "redux"
 import { AppDispatch } from "../../../store"
-import { TeachersAction, TeachersActionTypes } from "./types"
+import { Teacher, TeachersAction, TeachersActionTypes } from "./types"
 import { TeachersApi, UpdateTeacherData } from "../api"
 import axios from "axios"
+import { TeacherCreateForm } from ".."
 
 export const fetchTeachers = () => {
     return async (dispatch: Dispatch<TeachersAction>) => {
@@ -10,7 +11,6 @@ export const fetchTeachers = () => {
         try {
             dispatch({type: TeachersActionTypes.FETCH_TEACHERS})
             const response = await TeachersApi.getTeachers()
-            console.log("api")
             dispatch({type: TeachersActionTypes.FETCH_TEACHERS_SUCCESS, payload: response.data})
         } catch (e) {
             let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
@@ -30,7 +30,6 @@ export const updateTeacher = (id: number, data: UpdateTeacherData) => {
         try {
             dispatch({type: TeachersActionTypes.UPDATE_TEACHER})
             const response = await TeachersApi.updateTeacher(id, data)
-            console.log(response)
             dispatch({type: TeachersActionTypes.UPDATE_TEACHER_SUCCESS, payload: response.data })
         } catch (e) {
             let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
@@ -40,6 +39,43 @@ export const updateTeacher = (id: number, data: UpdateTeacherData) => {
             }
 
             dispatch({ type: TeachersActionTypes.UPDATE_TEACHER_ERROR, payload: message })
+        }
+    }
+}
+
+export const deleteTeacher = (teacher: Teacher) => {
+    return async (dispatch: Dispatch<TeachersAction>) => {
+        try {
+            dispatch({type: TeachersActionTypes.DELETE_TEACHER})
+            const response = await TeachersApi.deleteTeaher(teacher.id)
+            dispatch({type: TeachersActionTypes.DELETE_TEACHER_SUCCESS, payload: teacher})
+        } catch (e) {
+            let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
+
+            if (axios.isAxiosError(e)) {
+                message = e.response?.data?.message || message
+            }
+
+            dispatch({ type: TeachersActionTypes.DELETE_TEACHER_ERROR, payload: message })
+        }
+    }
+}
+
+export const addTeacherAction = (data: TeacherCreateForm) => {
+    return async (dispatch: Dispatch<TeachersAction>) => {
+        try {
+            dispatch({type: TeachersActionTypes.ADD_TEACHER})
+            const response = await TeachersApi.addTeacher(data)
+            console.log(response, "response")
+            dispatch({type: TeachersActionTypes.ADD_TEACHER_SUCCESS, payload: response})
+        } catch (e) {
+            let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
+
+            if (axios.isAxiosError(e)) {
+                message = e.response?.data?.message || message
+            }
+
+            dispatch({ type: TeachersActionTypes.ADD_TEACHER_ERROR, payload: message })
         }
     }
 }

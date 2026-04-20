@@ -2,10 +2,11 @@ import { useState } from "react"
 import { Teacher } from "../../store/types"
 import styles from "./index.module.css"
 import { useAppDispatch } from "../../../../hooks/useAppDispatch"
-import { updateTeacher } from "../../store/actions"
+import { updateTeacher, deleteTeacher } from "../../store/actions"
 import { TeacherCardActions } from "./TeacherCardActions"
 import { TeacherCardForm } from "./TeacherCardForm"
 import { TeacherCardView } from "./TeacherCardView"
+import { DeletePopup } from "../../../../ui/DeletePopup"
 
 interface TeacherCardProps {
     teacher: Teacher
@@ -16,6 +17,8 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
     const dispatch = useAppDispatch()
 
     const [isEditing, setIsEditing] = useState<boolean>(false)
+    const [visible, setVisible] = useState<boolean>(false)
+
     const [form, setForm] = useState({
         avatarUrl: teacher.avatarUrl,
         name: teacher.name,
@@ -37,14 +40,21 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
         setForm({...teacher})
     }
 
+    function deleteT() {
+        dispatch(deleteTeacher(teacher))
+    }
+
     return (
         <div className={styles.card}>
             <TeacherCardActions 
                 isEditing={isEditing} 
                 setIsEditing={setIsEditing}
                 onSave={submit}
-                onCancel={cancel}    
+                onCancel={cancel} 
+                setPopupVisible={setVisible}   
             />
+
+            <DeletePopup onDelete={deleteT} setVisible={setVisible} visible={visible}/>
 
             {isEditing
                 ? <TeacherCardForm form={form} setForm={setForm}/>

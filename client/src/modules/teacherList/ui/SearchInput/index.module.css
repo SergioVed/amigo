@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    min-height: 58px;
+    padding: 0 18px;
+    border-radius: 18px;
+    background: #ffffff;
+    box-sizing: border-box;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+    color: #a8a1a4;
+    flex-shrink: 0;
+}
+
+.input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #2d292b;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.input::placeholder {
+    color: #9c9699;
+}
+
+.input::-webkit-search-cancel-button {
+    cursor: pointer;
+}
+
+@media (max-width: 640px) {
+    .container {
+        min-height: 54px;
+        padding: 0 16px;
+        border-radius: 16px;
+    }
+
+    .input {
+        font-size: 15px;
+    }
+}
