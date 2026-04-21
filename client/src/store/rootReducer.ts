@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 import { loginReducer } from "../modules/auth/store/reducer";
-import { teacherReducer } from "../modules/teacherList/store/reducer";
+import { teacherReducer } from "../modules/teacherModule/store/reducer";
+import { PriceReducer } from "../modules/priceModule/store/reducer";
 
 
 export const rootReducer = combineReducers({
     login: loginReducer,
-    teachers: teacherReducer
+    teachers: teacherReducer,
+    prices: PriceReducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>;

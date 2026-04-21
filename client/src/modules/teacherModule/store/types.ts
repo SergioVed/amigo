@@ -1,4 +1,4 @@
-import { TeacherCreateForm } from ".."
+import { TeacherCreateForm } from "../types"
 
 export interface Teacher {
     id: number,

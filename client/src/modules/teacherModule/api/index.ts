@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Teacher } from "../store/types";
 import $api from "../../../http";
-import { TeacherCreateForm } from "..";
+import { TeacherCreateForm } from "../types";
 
 export type UpdateTeacherData = Omit<Teacher, "id">
 

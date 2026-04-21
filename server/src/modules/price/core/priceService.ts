@@ -10,9 +10,15 @@ export class PriceService {
         @Inject("IPriceRepository") private priceRepo: IPriceRepository
     ) {}
 
-    public create (data: CreatePriceAttrs) {
+    public async create (data: CreatePriceAttrs) {
         const price = Price.create(data)
-        return this.priceRepo.save(price)
+        const savedPrice = await this.priceRepo.save(price)
+
+        if (!savedPrice) {
+            throw new BadRequestException("Price was not created")
+        }
+        
+        return savedPrice
     }
 
     public getAll () {

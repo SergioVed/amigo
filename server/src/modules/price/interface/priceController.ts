@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGua
 import { PriceService } from "../core/priceService";
 import { CreatePriceDto, UpdatePriceDto } from "./dto";
 import { AuthGuard } from "src/guards/authGuard";
+import { PriceResponseMapper } from "./priceResponseMapper";
 
 
 @Controller("price")
@@ -12,14 +13,18 @@ export class PriceController {
     ) {}
 
     @Get()
-    getAll() {
-        return this.priceService.getAll()
+    async getAll() {
+        const prices = await this.priceService.getAll()
+        return prices.map(price => {
+            return PriceResponseMapper.toResponse(price)
+        })
     }
 
     @UseGuards(AuthGuard)
     @Post()
-    create(@Body() dto: CreatePriceDto) {
-        return this.priceService.create(dto)
+    async create(@Body() dto: CreatePriceDto) {
+        const price = await this.priceService.create(dto)
+        return PriceResponseMapper.toResponse(price)
     }
 
     @Get("/:id")

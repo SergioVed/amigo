@@ -1,8 +1,11 @@
+import { PriceModule } from "../../../modules/priceModule"
+import { PriceList } from "../../../modules/priceModule/components/PriceList"
+import styles from "./index.module.css"
 
 export const PricePage = () => {
     return (
-        <div>
-            Price
+        <div className={styles.page}>
+            <PriceModule/>
         </div>
     )
 }

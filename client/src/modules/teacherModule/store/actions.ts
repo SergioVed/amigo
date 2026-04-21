@@ -1,9 +1,8 @@
 import { Dispatch } from "redux"
-import { AppDispatch } from "../../../store"
 import { Teacher, TeachersAction, TeachersActionTypes } from "./types"
 import { TeachersApi, UpdateTeacherData } from "../api"
 import axios from "axios"
-import { TeacherCreateForm } from ".."
+import { TeacherCreateForm } from "../types"
 
 export const fetchTeachers = () => {
     return async (dispatch: Dispatch<TeachersAction>) => {
