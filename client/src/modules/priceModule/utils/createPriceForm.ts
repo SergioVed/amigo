@@ -1,7 +1,7 @@
-import { CreatePriceForm } from "../types";
+import { PriceForm } from "../types";
 
 
-export const createPriceForm: CreatePriceForm = {
+export const createPriceForm: PriceForm = {
     title: "",
     amount: 0,
     description: "",

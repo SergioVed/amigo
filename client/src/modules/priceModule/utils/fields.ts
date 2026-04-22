@@ -1,7 +1,7 @@
 import { FieldConfig } from "../../../ui/AddFormPopup";
-import { CreatePriceForm, PriceType } from "../types";
+import { PriceForm, PriceType } from "../types";
 
-export const fields: FieldConfig<CreatePriceForm>[] = [
+export const fields: FieldConfig<PriceForm>[] = [
     {
         name: "title",
         label: "Title",

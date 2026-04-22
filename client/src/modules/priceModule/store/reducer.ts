@@ -31,7 +31,39 @@ export const PriceReducer = (state = initialState, action: PriceAction): PriceSt
             return {...state, loading: false, error: action.payload} 
             
             
+        case PriceActionTypes.UPDATE_PRICE:
+            return {...state, loading: true, error: null}
+
+        case PriceActionTypes.UPDATE_PRICE_SUCCESS:
+            return {
+                ...state, 
+                loading: false,
+                prices: state.prices.map(price => {
+                    return price.id === action.payload.id ? action.payload : price
+                })
+            }  
             
+        case PriceActionTypes.UPDATE_PRICE_ERROR:
+            return {...state, loading: false, error: action.payload}  
+            
+            
+        case PriceActionTypes.DELETE_PRICE:
+            return {...state, loading: true, error: null}
+            
+        case PriceActionTypes.DELETE_PRICE_SUCCESS:
+            return {
+                ...state, 
+                loading: false, 
+                prices: state.prices.filter((price) => price.id !== action.payload.id)
+            }    
+
+        case PriceActionTypes.DELETE_PRICE_ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload
+            }    
+
         default:
             return state;
     }

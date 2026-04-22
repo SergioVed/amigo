@@ -2,7 +2,7 @@
 type PriceType = "individual" | "pair"
 
 export interface Price {
-    id: number | null,
+    id: number,
     amount: number,
     title: string,
     description: string,
@@ -26,6 +26,14 @@ export type PriceAction = FetchPriceActionType
     | AddPriceErrorActionType
     | AddPriceSuccessActionType
 
+    | UpdatePriceActionType
+    | UpdatePriceErrorActionType
+    | UpdatePriceSuccessActionType
+
+    | DeletePriceActionType
+    | DeletePriceErrorActionType
+    | DeletePriceSuccessActionType
+
 export enum PriceActionTypes {
     FETCH_PRICES = "FETCH_PRICES",
     FETCH_PRICES_SUCCESS = "FETCH_PRICES_SUCCESS",
@@ -33,7 +41,45 @@ export enum PriceActionTypes {
 
     ADD_PRICE = "ADD_PRICE",
     ADD_PRICE_SUCCESS = "ADD_PRICE_SUCCESS",
-    ADD_PRICE_ERROR = "ADD_PRICE_ERROR"
+    ADD_PRICE_ERROR = "ADD_PRICE_ERROR",
+
+    UPDATE_PRICE = "UPDATE_PRICE",
+    UPDATE_PRICE_SUCCESS = "UPDATE_PRICE_SUCCESS",
+    UPDATE_PRICE_ERROR = "UPDATE_PRICE_ERROR",
+
+    DELETE_PRICE = "DELETE_PRICE",
+    DELETE_PRICE_SUCCESS = "DELETE_PRICE_SUCCESS",
+    DELETE_PRICE_ERROR = "DELETE_PRICE_ERROR",
+}
+
+//Delete price action types
+interface DeletePriceActionType {
+    type: PriceActionTypes.DELETE_PRICE
+}
+
+interface DeletePriceSuccessActionType {
+    type: PriceActionTypes.DELETE_PRICE_SUCCESS,
+    payload: Price
+}
+
+interface DeletePriceErrorActionType {
+    type: PriceActionTypes.DELETE_PRICE_ERROR,
+    payload: string
+}
+
+// Update price action types
+interface UpdatePriceActionType {
+    type: PriceActionTypes.UPDATE_PRICE
+}
+
+interface UpdatePriceSuccessActionType {
+    type: PriceActionTypes.UPDATE_PRICE_SUCCESS,
+    payload: Price
+}
+
+interface UpdatePriceErrorActionType {
+    type: PriceActionTypes.UPDATE_PRICE_ERROR,
+    payload: string
 }
 
 // Add price action types

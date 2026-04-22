@@ -5,11 +5,11 @@ import { useTypedSelector } from "../../hooks/useTypedSelector"
 import { useAppDispatch } from "../../hooks/useAppDispatch"
 import { addPrice, fetchPrices } from "./store/actions"
 import { PriceToolBar } from "./components/PriceToolBar"
-import { CreatePriceForm, PriceType } from "./types"
+import { PriceForm, PriceType } from "./types"
 import { filterPrices } from "./utils/filterPrices"
 import { AddFormPopup } from "../../ui/AddFormPopup"
 import { createPriceForm } from "./utils/createPriceForm"
-import { fields, selectOptions } from "./utils/fields"
+import { fields } from "./utils/fields"
 import { PriceTypeSelect } from "./ui/PriceTypeSelect"
 
 export const PriceModule = () => {
@@ -18,7 +18,7 @@ export const PriceModule = () => {
 
     const [value, setValue] = useState<PriceType>("pair")
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const [form, setForm] = useState<CreatePriceForm>(createPriceForm)
+    const [form, setForm] = useState<PriceForm>(createPriceForm)
 
     console.log(form)
 
@@ -28,7 +28,7 @@ export const PriceModule = () => {
         }
     }, [prices, isFetched])
 
-    function handleAddPrice(form: CreatePriceForm) {
+    function handleAddPrice(form: PriceForm) {
         dispatch(addPrice(form))
     }
 

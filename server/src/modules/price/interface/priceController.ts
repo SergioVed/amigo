@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put, UseGuards } from "@nestjs/common";
 import { PriceService } from "../core/priceService";
 import { CreatePriceDto, UpdatePriceDto } from "./dto";
 import { AuthGuard } from "src/guards/authGuard";
 import { PriceResponseMapper } from "./priceResponseMapper";
+import { Price } from "../core/priceEntity";
 
 
 @Controller("price")
@@ -34,13 +35,15 @@ export class PriceController {
 
     @UseGuards(AuthGuard)
     @Delete("/:id")
-    delete(@Param("id", ParseIntPipe) id: number) {
-        return this.priceService.delete(id)
+    async delete(@Param("id", ParseIntPipe) id: number) {
+        const price = await this.priceService.delete(id)
+        return PriceResponseMapper.toResponse(price)
     }
 
     @UseGuards(AuthGuard)
-    @Patch("/:id")
-    update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdatePriceDto) {
-        return this.priceService.update(id, dto)
+    @Put("/:id")
+    async update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdatePriceDto) {
+        const updatedPrice = await this.priceService.update(id, dto)
+        return PriceResponseMapper.toResponse(updatedPrice)
     }
 }

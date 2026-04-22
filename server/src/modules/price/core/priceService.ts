@@ -46,7 +46,13 @@ export class PriceService {
         if (!price) {
             throw new NotFoundException("Price was not found")
         }
+
         price.update(data)
-        return await this.priceRepo.save(price)
+        const updatedPrice = await this.priceRepo.save(price)
+        if (!updatedPrice) {
+            throw new BadRequestException("Price was not updated")
+        }
+
+        return updatedPrice
     }
 }
