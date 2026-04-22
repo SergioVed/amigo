@@ -19,10 +19,11 @@ interface AddFormPopupProps<T extends object> {
     setOpen: (value: boolean) => void,
     title: string,
     fields: FieldConfig<T>[]
-    onSubmit: () => void
+    onSubmit: () => void,
+    children?: any
 }
 
-export const AddFormPopup = <T extends object>({open, setOpen, title, form, setForm, fields, onSubmit}: AddFormPopupProps<T>) => {
+export const AddFormPopup = <T extends object>({open, setOpen, title, form, setForm, fields, onSubmit, children}: AddFormPopupProps<T>) => {
 
     return (
         <div 
@@ -68,6 +69,7 @@ export const AddFormPopup = <T extends object>({open, setOpen, title, form, setF
                             />
                         )
                     })}
+                    {children}
                 </div>
 
                 <div className={styles.actions}>

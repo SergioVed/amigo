@@ -179,6 +179,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    padding-top: 20px;
 }
 
 .submitContainer {
@@ -186,16 +187,6 @@
     gap: 10px;
     display: flex;
     justify-content: right;
-}
-
-.saveBtn {
-    background-color: green;
-    color: #fff
-}
-
-.cancelBtn {
-    background-color: red;
-    color: #fff
 }
 
 @media (max-width: 640px) {

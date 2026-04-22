@@ -1,30 +1,53 @@
 import styles from "./index.module.css"
 import { Price } from "../../store/types"
+import { CardActions } from "../../../../ui/CardActionButtons"
+import { useState } from "react"
+import { DeletePopup } from "../../../../ui/DeletePopup"
+import { PriceCardForm, PriceCardFormData } from "./priceCardForm"
+import { PriceCardView } from "./priceCardVeiw"
 
 interface PriceCardProps {
-    price: Price & {
-        features?: string[]
-    }
+    price: Price
 }
 
-export const PriceCard = ({ price }: PriceCardProps) => {
+export const PriceCard = ({price}: PriceCardProps) => {
+    const [isEditing, setIsEditing] = useState<boolean>(false)
+    const [visible, setVisible] = useState<boolean>(false)
+    const [form, setForm] = useState<PriceCardFormData>({
+        title: price.title,
+        amount: price.amount,
+        description: price.description,
+        type: price.type,
+    })
+
+    function cancel() {
+        setIsEditing(false)
+        setForm({
+            title: price.title,
+            amount: price.amount,
+            description: price.description,
+            type: price.type,
+        })
+    }
+
     return (
         <div className={styles.card}>
-            <h2 className={styles.title}>{price.title}</h2>
-            <p className={styles.description}>{price.description}</p>
+            <CardActions
+                isEditing={isEditing}
+                setIsEditing={setIsEditing}
+                setPopupVisible={setVisible}
+                onSave={() => setIsEditing(false)}
+                onCancel={cancel}
+                className={styles.actions}
+            />
 
-            <ul className={styles.featureList}>
-                {price.features?.map((feature) => (
-                    <li className={styles.featureItem} key={feature}>
-                        <span className={styles.checkIcon}/>
-                        <span>{feature}</span>
-                    </li>
-                ))}
-            </ul>
+            <DeletePopup onDelete={() => null} setVisible={setVisible} visible={visible}/>
+            
+            {isEditing 
+                ? <PriceCardForm form={form} setForm={setForm}/>
+                : <PriceCardView price={price}/>
+            }
 
-            <div className={styles.divider}/>
-
-            <span className={styles.amount}>${price.amount}</span>
         </div>
     )
 }

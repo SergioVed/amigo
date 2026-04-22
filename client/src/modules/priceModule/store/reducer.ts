@@ -20,6 +20,18 @@ export const PriceReducer = (state = initialState, action: PriceAction): PriceSt
         case PriceActionTypes.FETCH_PRICES_ERROR:
             return {...state, loading: false, error: action.payload}    
 
+           
+        case PriceActionTypes.ADD_PRICE:
+            return {...state, loading: true, error: null}    
+
+        case PriceActionTypes.ADD_PRICE_SUCCESS:
+            return {...state, loading: false, prices: [...state.prices, action.payload]}    
+
+        case PriceActionTypes.ADD_PRICE_ERROR:
+            return {...state, loading: false, error: action.payload} 
+            
+            
+            
         default:
             return state;
     }

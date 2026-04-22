@@ -1,17 +1,3 @@
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-}
-
-.error {
-    margin: 16px 0 0;
-    color: #d93025;
-    font-size: 16px;
-    font-weight: 600;
-    white-space: pre-line;
-}
-
 .selectField {
     display: flex;
     flex-direction: column;
@@ -54,10 +40,4 @@
 .select:focus {
     border-color: #edba00;
     box-shadow: 0 0 0 4px rgba(246, 191, 0, 0.18);
-}
-
-@media (max-width: 640px) {
-    .wrapper {
-        gap: 20px;
-    }
 }

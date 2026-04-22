@@ -1,5 +1,3 @@
-
-
 export type PriceType = "individual" | "pair"
 
 export interface CreatePriceForm {

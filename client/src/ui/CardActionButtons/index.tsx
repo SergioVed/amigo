@@ -1,15 +1,16 @@
 import { setConstantValue } from "typescript"
 import styles from "./index.module.css"
 
-interface TeacherCardActionsProps {
+interface CardActionsProps {
     isEditing: boolean,
     setIsEditing: (value: boolean) => void
     setPopupVisible: (value: boolean) => void
     onSave: () => void
     onCancel: () => void
+    className?: string
 }
 
-export const TeacherCardActions = ({isEditing, setIsEditing, setPopupVisible, onSave, onCancel}: TeacherCardActionsProps) => {
+export const CardActions = ({isEditing, setIsEditing, setPopupVisible, onSave, onCancel, className}: CardActionsProps) => {
     return (
         <>
             {isEditing 
@@ -27,7 +28,7 @@ export const TeacherCardActions = ({isEditing, setIsEditing, setPopupVisible, on
                     Cancel
                 </button>
             </div>
-            : <div className={styles.actions}>
+            : <div className={`${styles.actions} ${className || ""}`}>
                     <button
                         onClick={() => setIsEditing(true)}
                         className={`${styles.actionButton} ${styles.editButton}`}

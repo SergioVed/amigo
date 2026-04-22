@@ -3,10 +3,10 @@ import { Teacher } from "../../store/types"
 import styles from "./index.module.css"
 import { useAppDispatch } from "../../../../hooks/useAppDispatch"
 import { updateTeacher, deleteTeacher } from "../../store/actions"
-import { TeacherCardActions } from "./TeacherCardActions"
 import { TeacherCardForm } from "./TeacherCardForm"
 import { TeacherCardView } from "./TeacherCardView"
 import { DeletePopup } from "../../../../ui/DeletePopup"
+import { CardActions } from "../../../../ui/CardActionButtons"
 
 interface TeacherCardProps {
     teacher: Teacher
@@ -46,12 +46,13 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
 
     return (
         <div className={styles.card}>
-            <TeacherCardActions 
+            <CardActions 
                 isEditing={isEditing} 
                 setIsEditing={setIsEditing}
                 onSave={submit}
                 onCancel={cancel} 
                 setPopupVisible={setVisible}   
+                className={styles.actions}
             />
 
             <DeletePopup onDelete={deleteT} setVisible={setVisible} visible={visible}/>

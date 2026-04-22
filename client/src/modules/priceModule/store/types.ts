@@ -22,12 +22,37 @@ export type PriceAction = FetchPriceActionType
     | FetchPriceErrorActionType
     | FetchPriceSuccessActionType
 
+    | AddPriceActionType
+    | AddPriceErrorActionType
+    | AddPriceSuccessActionType
+
 export enum PriceActionTypes {
     FETCH_PRICES = "FETCH_PRICES",
     FETCH_PRICES_SUCCESS = "FETCH_PRICES_SUCCESS",
-    FETCH_PRICES_ERROR = "FETCH_PRICES_ERROR"
+    FETCH_PRICES_ERROR = "FETCH_PRICES_ERROR",
+
+    ADD_PRICE = "ADD_PRICE",
+    ADD_PRICE_SUCCESS = "ADD_PRICE_SUCCESS",
+    ADD_PRICE_ERROR = "ADD_PRICE_ERROR"
 }
 
+// Add price action types
+interface AddPriceActionType {
+    type: PriceActionTypes.ADD_PRICE
+}
+
+interface AddPriceSuccessActionType {
+    type: PriceActionTypes.ADD_PRICE_SUCCESS
+    payload: Price
+}
+
+interface AddPriceErrorActionType {
+    type: PriceActionTypes.ADD_PRICE_ERROR,
+    payload: string
+}
+
+
+// Fetch all prices action types
 interface FetchPriceActionType {
     type: PriceActionTypes.FETCH_PRICES
 }
