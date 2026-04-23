@@ -24,7 +24,7 @@ export class ProfessorController {
     @Post()
     async create (@Body() dto: CreateProfessorDto) {
         const professor = await this.professorService.create(dto)
-        return professor
+        return ProfessorResponseMapper.toResponse(professor)
     }
 
     @UseGuards(AuthGuard)

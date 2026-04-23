@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom"
 import styles from "./index.module.css"
-import { Header } from "../../components/header"
-import { Sidebar } from "../../components/sideBar"
 import { sideBarLinks } from "../../utils/navigation"
+import { Sidebar } from "../../components/SideBar"
+import { Header } from "../../components/Header"
 
 export const AdminLayout = () => {
 

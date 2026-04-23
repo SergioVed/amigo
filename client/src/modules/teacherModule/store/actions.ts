@@ -2,9 +2,9 @@ import { Dispatch } from "redux"
 import { Teacher, TeachersAction, TeachersActionTypes } from "./types"
 import { TeachersApi, UpdateTeacherData } from "../api"
 import axios from "axios"
-import { TeacherCreateForm } from "../types"
+import { TeacherCreateForm, TeacherCreatePayload } from "../types"
 
-export const fetchTeachers = () => {
+export const fetchTeachersAction = () => {
     return async (dispatch: Dispatch<TeachersAction>) => {
 
         try {
@@ -23,7 +23,7 @@ export const fetchTeachers = () => {
     }
 }
 
-export const updateTeacher = (id: number, data: UpdateTeacherData) => {
+export const updateTeacherAction = (id: number, data: UpdateTeacherData) => {
     return async (dispatch: Dispatch<TeachersAction>) => {
 
         try {
@@ -42,7 +42,7 @@ export const updateTeacher = (id: number, data: UpdateTeacherData) => {
     }
 }
 
-export const deleteTeacher = (teacher: Teacher) => {
+export const deleteTeacherAction = (teacher: Teacher) => {
     return async (dispatch: Dispatch<TeachersAction>) => {
         try {
             dispatch({type: TeachersActionTypes.DELETE_TEACHER})
@@ -60,13 +60,13 @@ export const deleteTeacher = (teacher: Teacher) => {
     }
 }
 
-export const addTeacherAction = (data: TeacherCreateForm) => {
+export const addTeacherAction = (data: TeacherCreatePayload) => {
     return async (dispatch: Dispatch<TeachersAction>) => {
         try {
             dispatch({type: TeachersActionTypes.ADD_TEACHER})
             const response = await TeachersApi.addTeacher(data)
             console.log(response, "response")
-            dispatch({type: TeachersActionTypes.ADD_TEACHER_SUCCESS, payload: response})
+            dispatch({type: TeachersActionTypes.ADD_TEACHER_SUCCESS, payload: response.data})
         } catch (e) {
             let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
 

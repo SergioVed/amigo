@@ -4,7 +4,6 @@ import styles from "./index.module.css"
 
 interface TeacherListProps {
     filteredTeachers: Teacher[]
-
 }
 
 export const TeacherList = ({filteredTeachers}: TeacherListProps) => {

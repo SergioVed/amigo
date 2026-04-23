@@ -10,9 +10,15 @@ export class ProfessorService {
         @Inject("IProfessorRepository") private professorRepository: IProfessorRepository
     ) {}
 
-    public create (data: CreateProfessorAttrs) {
+    public async create (data: CreateProfessorAttrs) {
         const professor = Professor.create(data)
-        return this.professorRepository.save(professor)
+        const savedProfessor = await this.professorRepository.save(professor)
+
+        if (!savedProfessor) {
+            throw new BadRequestException("Teacher was not saved")
+        }
+
+        return savedProfessor
     }
 
     public getAll () {

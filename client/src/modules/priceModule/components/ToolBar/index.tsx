@@ -1,14 +1,14 @@
-import styles from "./index.module.css"
 import { AddButton } from "../../../../ui/AddButton"
-import { SearchInput } from "../../ui/SearchInput"
+import { SearchInput } from "../../../../ui/SearchInput"
+import styles from "./index.module.css"
 
-interface TeachersToolBarProps {
+interface ToolBarProps {
     value: string,
     setValue: (value: string) => void
     setOpen: (value: boolean) => void
 }
 
-export const TeachersToolBar = ({ value, setValue, setOpen }: TeachersToolBarProps) => {
+export const ToolBar = ({ value, setValue, setOpen }: ToolBarProps) => {
 
     return (
         <div className={styles.actionsContainer}>

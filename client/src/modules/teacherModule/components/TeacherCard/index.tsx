@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Teacher } from "../../store/types"
 import styles from "./index.module.css"
 import { useAppDispatch } from "../../../../hooks/useAppDispatch"
-import { updateTeacher, deleteTeacher } from "../../store/actions"
+import { updateTeacherAction, deleteTeacherAction } from "../../store/actions"
 import { TeacherCardForm } from "./TeacherCardForm"
 import { TeacherCardView } from "./TeacherCardView"
 import { DeletePopup } from "../../../../ui/DeletePopup"
@@ -30,8 +30,8 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
         forStudent: teacher.forStudent,
     })
 
-    function submit() {
-        dispatch(updateTeacher(teacher.id, form))
+    function handleUpdateTeacher() {
+        dispatch(updateTeacherAction(teacher.id, form))
         setIsEditing(false)
     }
 
@@ -40,8 +40,8 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
         setForm({...teacher})
     }
 
-    function deleteT() {
-        dispatch(deleteTeacher(teacher))
+    function handleDeleteTeacher() {
+        dispatch(deleteTeacherAction(teacher))
     }
 
     return (
@@ -49,13 +49,13 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
             <CardActions 
                 isEditing={isEditing} 
                 setIsEditing={setIsEditing}
-                onSave={submit}
+                onSave={handleUpdateTeacher}
                 onCancel={cancel} 
                 setPopupVisible={setVisible}   
                 className={styles.actions}
             />
 
-            <DeletePopup onDelete={deleteT} setVisible={setVisible} visible={visible}/>
+            <DeletePopup onDelete={handleDeleteTeacher} setVisible={setVisible} visible={visible}/>
 
             {isEditing
                 ? <TeacherCardForm form={form} setForm={setForm}/>

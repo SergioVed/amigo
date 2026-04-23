@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Teacher } from "../store/types";
 import $api from "../../../http";
-import { TeacherCreateForm } from "../types";
+import { TeacherCreateForm, TeacherCreatePayload } from "../types";
 
 export type UpdateTeacherData = Omit<Teacher, "id">
 
@@ -19,7 +19,7 @@ export class TeachersApi {
         return $api.delete(`professor/${id}`)
     }
 
-    static addTeacher (data: TeacherCreateForm): Promise<Teacher> {
+    static addTeacher (data: TeacherCreatePayload) {
         return $api.post('/professor', data)
     }
 }

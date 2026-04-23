@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react"
-import { Teacher } from "../../store/types"
-import { CustomInput } from "../../../../ui/CustomInput"
 import styles from "./index.module.css"
+import { CustomInput } from "../../../../ui/CustomInput"
+import { Teacher } from "../../../teacherModule/store/types"
 
 type TeacherFormData = Omit<Teacher, "id">
 
