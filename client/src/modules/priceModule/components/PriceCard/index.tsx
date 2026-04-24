@@ -1,12 +1,12 @@
 import styles from "./index.module.css"
 import { Price, PriceActionTypes } from "../../store/types"
-import { CardActions } from "../../../../ui/CardActionButtons"
+import { CardActions } from "../../../../components/CardActionButtons"
 import { useState } from "react"
-import { DeletePopup } from "../../../../ui/DeletePopup"
+import { DeletePopup } from "../../../../components/DeletePopup"
 import { PriceCardForm, PriceCardFormData } from "./priceCardForm"
 import { PriceCardView } from "./priceCardVeiw"
 import { useAppDispatch } from "../../../../hooks/useAppDispatch"
-import { deletePrice, updatePrice } from "../../store/actions"
+import { deletePriceAction, updatePriceAction } from "../../store/actions"
 import { PriceForm } from "../../types"
 
 interface PriceCardProps {
@@ -36,12 +36,12 @@ export const PriceCard = ({price}: PriceCardProps) => {
     }
 
     function saveUpdatedPrice(form: PriceForm, id: number) {
-        dispatch(updatePrice(form, id))
+        dispatch(updatePriceAction(form, id))
         setIsEditing(false)
     }
 
     function handleDeletePrice(id: number) {
-        dispatch(deletePrice(id))
+        dispatch(deletePriceAction(id))
         setVisible(false)
     }
 

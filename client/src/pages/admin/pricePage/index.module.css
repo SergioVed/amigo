@@ -1,9 +1,5 @@
 .page {
-    padding: 32px;
-}
-
-@media (max-width: 640px) {
-    .page {
-        padding: 20px;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

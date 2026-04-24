@@ -2,7 +2,6 @@
 import { Dispatch, SetStateAction } from "react"
 import { CustomInput } from "../../../../ui/CustomInput"
 import { PriceType } from "../../types"
-import { selectOptions } from "../../utils/fields"
 import styles from "./index.module.css"
 import { PriceTypeSelect } from "../../ui/PriceTypeSelect"
 

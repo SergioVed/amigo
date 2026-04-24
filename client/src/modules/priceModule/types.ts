@@ -1,4 +1,8 @@
+
+
 export type PriceType = "individual" | "pair"
+
+
 
 export interface PriceForm {
     title: string,

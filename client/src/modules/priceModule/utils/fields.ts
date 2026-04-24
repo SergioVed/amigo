@@ -1,4 +1,4 @@
-import { FieldConfig } from "../../../ui/AddFormPopup";
+import { FieldConfig } from "../../../components/AddFormPopup";
 import { PriceForm, PriceType } from "../types";
 
 export const fields: FieldConfig<PriceForm>[] = [

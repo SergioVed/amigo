@@ -6,10 +6,10 @@ import styles from "./index.module.css"
 interface PriceToolBarProps {
     value: PriceType,
     setValue: (value: PriceType) => void
-    setisOpen: (value: boolean) => void
+    setIsOpen: (value: boolean) => void
 }
 
-export const PriceToolBar = ({value, setValue, setisOpen}: PriceToolBarProps) => {
+export const PriceToolBar = ({value, setValue, setIsOpen}: PriceToolBarProps) => {
 
     return (
         <div className={styles.container}>
@@ -21,7 +21,7 @@ export const PriceToolBar = ({value, setValue, setisOpen}: PriceToolBarProps) =>
 
             <AddButton 
                 text="Add price" 
-                onClick={() => setisOpen(true)}            
+                onClick={() => setIsOpen(true)}            
             />
         </div>
     )

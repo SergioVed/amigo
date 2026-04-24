@@ -6,7 +6,7 @@ import { privateEncrypt } from "crypto"
 import { PriceForm } from "../types"
 
 
-export const fetchPrices = () => {
+export const fetchPricesAction = () => {
     return async (dispatch: Dispatch<PriceAction>) => {
         try {
             dispatch({ type: PriceActionTypes.FETCH_PRICES })
@@ -26,7 +26,7 @@ export const fetchPrices = () => {
     }
 }
 
-export const addPrice = (data: PriceForm) => {
+export const addPriceAction = (data: PriceForm) => {
     return async (dispatch: Dispatch<PriceAction>) => {
         try {
             dispatch({ type: PriceActionTypes.ADD_PRICE })
@@ -44,7 +44,7 @@ export const addPrice = (data: PriceForm) => {
     }
 }
 
-export const updatePrice = (data: PriceForm, id: number) => {
+export const updatePriceAction = (data: PriceForm, id: number) => {
     return async (dispatch: Dispatch<PriceAction>) => {
         try {
             dispatch({type: PriceActionTypes.UPDATE_PRICE})
@@ -62,7 +62,7 @@ export const updatePrice = (data: PriceForm, id: number) => {
     }
 }
 
-export const deletePrice = (id: number) => {
+export const deletePriceAction = (id: number) => {
     return async (dispatch: Dispatch<PriceAction>) => {
         try {
             dispatch({type: PriceActionTypes.DELETE_PRICE})

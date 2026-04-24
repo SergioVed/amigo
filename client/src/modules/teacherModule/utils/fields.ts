@@ -1,5 +1,5 @@
 import { TeacherCreateForm } from "../types";
-import { FieldConfig } from "../../../ui/AddFormPopup";
+import { FieldConfig } from "../../../components/AddFormPopup";
 
 export const fields: FieldConfig<TeacherCreateForm>[] = [
         {

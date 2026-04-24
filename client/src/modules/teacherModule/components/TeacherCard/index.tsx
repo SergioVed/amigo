@@ -5,8 +5,8 @@ import { useAppDispatch } from "../../../../hooks/useAppDispatch"
 import { updateTeacherAction, deleteTeacherAction } from "../../store/actions"
 import { TeacherCardForm } from "./TeacherCardForm"
 import { TeacherCardView } from "./TeacherCardView"
-import { DeletePopup } from "../../../../ui/DeletePopup"
-import { CardActions } from "../../../../ui/CardActionButtons"
+import { DeletePopup } from "../../../../components/DeletePopup"
+import { CardActions } from "../../../../components/CardActionButtons"
 
 interface TeacherCardProps {
     teacher: Teacher
