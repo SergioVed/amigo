@@ -3,6 +3,7 @@ import { Teacher, TeachersAction, TeachersActionTypes } from "./types"
 import { TeachersApi, UpdateTeacherData } from "../api"
 import axios from "axios"
 import { TeacherCreateForm, TeacherCreatePayload } from "../types"
+import { errorHandler } from "../../../store/errorHandler"
 
 export const fetchTeachersAction = () => {
     return async (dispatch: Dispatch<TeachersAction>) => {
@@ -12,13 +13,7 @@ export const fetchTeachersAction = () => {
             const response = await TeachersApi.getTeachers()
             dispatch({type: TeachersActionTypes.FETCH_TEACHERS_SUCCESS, payload: response.data})
         } catch (e) {
-            let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
-
-            if (axios.isAxiosError(e)) {
-                message = e.response?.data?.message || message
-            }
-
-            dispatch({ type: TeachersActionTypes.FETCH_TEACHERS_ERROR, payload: message })
+            errorHandler(e, TeachersActionTypes.FETCH_TEACHERS_ERROR, dispatch)
         }
     }
 }
@@ -31,13 +26,7 @@ export const updateTeacherAction = (id: number, data: UpdateTeacherData) => {
             const response = await TeachersApi.updateTeacher(id, data)
             dispatch({type: TeachersActionTypes.UPDATE_TEACHER_SUCCESS, payload: response.data })
         } catch (e) {
-            let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
-
-            if (axios.isAxiosError(e)) {
-                message = e.response?.data?.message || message
-            }
-
-            dispatch({ type: TeachersActionTypes.UPDATE_TEACHER_ERROR, payload: message })
+            errorHandler(e, TeachersActionTypes.UPDATE_TEACHER_ERROR, dispatch)
         }
     }
 }
@@ -49,13 +38,7 @@ export const deleteTeacherAction = (teacher: Teacher) => {
             const response = await TeachersApi.deleteTeaher(teacher.id)
             dispatch({type: TeachersActionTypes.DELETE_TEACHER_SUCCESS, payload: teacher})
         } catch (e) {
-            let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
-
-            if (axios.isAxiosError(e)) {
-                message = e.response?.data?.message || message
-            }
-
-            dispatch({ type: TeachersActionTypes.DELETE_TEACHER_ERROR, payload: message })
+            errorHandler(e, TeachersActionTypes.DELETE_TEACHER_ERROR, dispatch)
         }
     }
 }
@@ -68,13 +51,7 @@ export const addTeacherAction = (data: TeacherCreatePayload) => {
             console.log(response, "response")
             dispatch({type: TeachersActionTypes.ADD_TEACHER_SUCCESS, payload: response.data})
         } catch (e) {
-            let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
-
-            if (axios.isAxiosError(e)) {
-                message = e.response?.data?.message || message
-            }
-
-            dispatch({ type: TeachersActionTypes.ADD_TEACHER_ERROR, payload: message })
+            errorHandler(e, TeachersActionTypes.ADD_TEACHER_ERROR, dispatch)
         }
     }
 }
