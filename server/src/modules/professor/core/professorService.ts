@@ -1,6 +1,6 @@
 import { BadRequestException, Inject, Injectable, NotFoundException } from "@nestjs/common";
 import type { IProfessorRepository } from "./professorRepository";
-import { CreateProfessorAttrs, Professor } from "./professorEntity";
+import { CreateProfessorAttrs, Professor } from "./professorEntity.js";
 
 
 @Injectable()

@@ -1,4 +1,4 @@
-import { Professor } from "../core/professorEntity";
+import { Professor } from "../core/professorEntity.js";
 import { ProfessorModel, ProfessorModelCreationAttrs } from "./professorModel";
 
 

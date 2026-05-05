@@ -21,6 +21,6 @@ export class FeedbackModel extends Model<FeedbackModel, FeedbackModelCreationAtt
     @Column({ type: DataType.TEXT, allowNull: false })
     declare description: string;
 
-    @Column({ type: DataType.STRING(50), allowNull: false })
+    @Column({ type: DataType.STRING, allowNull: false })
     declare avatar_url: string;
 }

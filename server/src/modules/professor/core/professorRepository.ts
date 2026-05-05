@@ -1,4 +1,4 @@
-import { CreateProfessorAttrs, Professor } from "./professorEntity";
+import { CreateProfessorAttrs, Professor } from "./professorEntity.js";
 
 
 export interface IProfessorRepository {

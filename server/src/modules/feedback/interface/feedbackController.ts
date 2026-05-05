@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGua
 import { FeedbackService } from "../core/feedbackService";
 import { CreateFeedbackDto, UpdateFeedbackDto } from "./dto";
 import { AuthGuard } from "src/guards/authGuard";
+import { FeedbackResponseMapper } from "./feedbackResponseMapper";
 
 @Controller("feedback")
 export class FeedbackController {
@@ -10,15 +11,18 @@ export class FeedbackController {
         private feedbackService: FeedbackService
     ) {}
 
-    @UseGuards(AuthGuard)
+    // @UseGuards(AuthGuard)
     @Post()
     create(@Body() dto: CreateFeedbackDto) {
         return this.feedbackService.create(dto)
     }
 
     @Get()
-    getAll() {
-        return this.feedbackService.getAll()
+    async getAll() {
+        const result = await this.feedbackService.getAll()
+        return result.map((item) => (
+            FeedbackResponseMapper.toResponse(item)
+        ))
     }
 
     @Get("/:id")

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/sequelize";
-import { Professor, CreateProfessorAttrs } from "../core/professorEntity";
+import { Professor, CreateProfessorAttrs } from "../core/professorEntity.js";
 import { IProfessorRepository } from "../core/professorRepository";
 import { ProfessorModel } from "./professorModel";
 import { ProfessorMapper } from "./professorMapper";

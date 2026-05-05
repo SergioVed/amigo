@@ -1,6 +1,6 @@
 import { PartialType } from "@nestjs/swagger";
 import { ArrayNotEmpty, IsArray, IsNotEmpty, IsString, IsUrl } from "class-validator";
-import { CreateProfessorAttrs } from "../core/professorEntity";
+import { CreateProfessorAttrs } from "../core/professorEntity.js";
 
 export class CreateProfessorDto implements CreateProfessorAttrs {
 
