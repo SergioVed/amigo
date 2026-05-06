@@ -40,11 +40,11 @@ export const deleteFeedbackAction = (feedback: Feedback) => {
     }
 }
 
-export const updateFeedbackAction = (data: FeedbackForm, id: number) => {
+export const updateFeedbackAction = (data: FeedbackForm, file: File | null, id: number) => {
     return async (dispatch: Dispatch<FeedbackAction>) => {
         try {
             dispatch({type: FeedbackActionTypes.UPDATE_FEEDBACK})
-            const response = await FeedbackApi.updateFeedback(data, id)
+            const response = await FeedbackApi.updateFeedback(data, file, id)
             dispatch({type: FeedbackActionTypes.UPDATE_FEEDBACK_SUCCESS, payload: response.data})
         } catch (e) {
             errorHandler(e, FeedbackActionTypes.UPDATE_FEEDBACK_ERROR, dispatch)

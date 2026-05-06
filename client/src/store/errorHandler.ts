@@ -6,7 +6,13 @@ const getErrorMessage = (error: unknown): string => {
     let message = "Server is down, contact 'SeregaGrozaSuchek2008' so he can fix it"
 
     if (axios.isAxiosError(error)) {
-        message = error.response?.data?.message.join(", \n") || message
+        let errorMessage = error.response?.data?.message
+
+        if (Array.isArray(errorMessage)) {
+            message = errorMessage.join(", \n")
+        } else {
+            message = errorMessage ?? message
+        }
     }
 
     return message

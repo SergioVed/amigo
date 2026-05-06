@@ -6,6 +6,7 @@ import { FeedbackResponseMapper } from "./feedbackResponseMapper";
 import { FileInterceptor } from "@nestjs/platform-express";
 import type { Express } from "express";
 import { ImageService } from "src/modules/image/imageService";
+import { Throttle, ThrottlerGuard } from "@nestjs/throttler";
 
 @Controller("feedback")
 export class FeedbackController {
@@ -15,9 +16,10 @@ export class FeedbackController {
         private imageService: ImageService
     ) {}
 
-    @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard, ThrottlerGuard)
     @Post()
     @UseInterceptors(FileInterceptor("file"))
+    @Throttle({default: {limit: 5, ttl: 60_000}})
     async create(
         @Body() dto: CreateFeedbackDto, 
         @UploadedFile() file: Express.Multer.File
@@ -43,8 +45,15 @@ export class FeedbackController {
 
     @UseGuards(AuthGuard)
     @Patch("/:id")
-    async update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateFeedbackDto) {
-        const result = await this.feedbackService.update(id, dto)
+    @UseInterceptors(FileInterceptor("file"))
+    async update(
+        @Param("id", ParseIntPipe) id: number,
+        @Body() dto: UpdateFeedbackDto,
+        @UploadedFile() file: Express.Multer.File
+    ) {
+        const avatarUrl = await this.imageService.saveImage(file)
+
+        const result = await this.feedbackService.update(id, {...dto, avatarUrl: avatarUrl})
         return FeedbackResponseMapper.toResponse(result)
     }
 

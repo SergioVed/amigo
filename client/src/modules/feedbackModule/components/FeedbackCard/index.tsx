@@ -20,14 +20,17 @@ export const FeedbackCard = ({ feedback }: FeedbackCardProps) => {
     const [isEditing, setIsEdititng] = useState<boolean>(false)
     const [popupVisible, setPopupVisible] = useState<boolean>(false)
 
+
     const [form, setForm] = useState<FeedbackForm>({
         name: feedback.name,
         title: feedback.title,
         description: feedback.description,
     })
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
+
 
     function handleSave() {
-        dispatch(updateFeedbackAction(form, feedback.id))
+        dispatch(updateFeedbackAction(form, selectedFile, feedback.id))
         setIsEdititng(false)
     }
 
@@ -39,6 +42,8 @@ export const FeedbackCard = ({ feedback }: FeedbackCardProps) => {
     function handleDelete(feedback: Feedback) {
         dispatch(deleteFeedbackAction(feedback))
     }
+
+
 
     return (
         <article className={styles.card}>
@@ -62,6 +67,7 @@ export const FeedbackCard = ({ feedback }: FeedbackCardProps) => {
                 ? <FeedbackEditCard
                     form={form}
                     setForm={setForm}
+                    setSelectedFile={setSelectedFile}
                 />
                 : <FeedbackViewCard feedback={feedback}/>
             }

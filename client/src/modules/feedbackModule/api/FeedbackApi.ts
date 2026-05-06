@@ -25,7 +25,17 @@ export class FeedbackApi {
         return $api.delete(`${API_URL}/feedback/${id}`)
     }
 
-    public static updateFeedback (data: FeedbackForm, id: number) {
-        return $api.patch(`${API_URL}/feedback/${id}`, data)
+    public static updateFeedback (data: FeedbackForm, file: File | null, id: number) {
+        const formData = new FormData()
+
+        formData.append("name", data.name)
+        formData.append("title", data.title)
+        formData.append("description", data.description)
+
+        if (file) {
+            formData.append("file", file)
+        }
+
+        return $api.patch(`${API_URL}/feedback/${id}`, formData)
     }
 }
