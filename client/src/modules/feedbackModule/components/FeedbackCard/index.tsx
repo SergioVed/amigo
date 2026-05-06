@@ -5,12 +5,9 @@ import { FeedbackViewCard } from "./viewCard"
 import { FeedbackEditCard } from "./editCard"
 import { CardActions } from "../../../../components/CardActionButtons"
 import { FeedbackForm } from "../../types"
-import { createFeedbackForm } from "../../utils/createFeedbackForm"
 import { DeletePopup } from "../../../../components/DeletePopup"
-import { useDispatch } from "react-redux"
-import { useActionData } from "react-router-dom"
 import { useAppDispatch } from "../../../../hooks/useAppDispatch"
-import { deleteFeedbackAction } from "../../store/actions"
+import { deleteFeedbackAction, updateFeedbackAction } from "../../store/actions"
 
 interface FeedbackCardProps {
     feedback: Feedback
@@ -27,14 +24,14 @@ export const FeedbackCard = ({ feedback }: FeedbackCardProps) => {
         name: feedback.name,
         title: feedback.title,
         description: feedback.description,
-        avatarUrl: feedback.avatarUrl
     })
 
-    function save() {
-        
+    function handleSave() {
+        dispatch(updateFeedbackAction(form, feedback.id))
+        setIsEdititng(false)
     }
 
-    function cancel() {
+    function handleCancel() {
         setForm({...feedback})
         setIsEdititng(false)
     }
@@ -50,8 +47,8 @@ export const FeedbackCard = ({ feedback }: FeedbackCardProps) => {
                 isEditing={isEditing} 
                 setIsEditing={setIsEdititng}
                 setPopupVisible={setPopupVisible}
-                onSave={save}
-                onCancel={cancel}
+                onSave={handleSave}
+                onCancel={handleCancel}
                 className={styles.actions}
             />
 

@@ -1,8 +1,8 @@
 import { Dispatch } from "redux"
 import { Feedback, FeedbackAction, FeedbackActionTypes } from "./types"
 import { FeedbackApi } from "../api/FeedbackApi"
-import axios, { Axios, AxiosError } from "axios"
 import { FeedbackForm } from "../types"
+import { errorHandler } from "../../../store/errorHandler"
 
 export const fetchFeedbacksAction = () => {
     return async (dispatch: Dispatch<FeedbackAction>) => {
@@ -11,31 +11,19 @@ export const fetchFeedbacksAction = () => {
             const response = await FeedbackApi.fetchFeedbacks()
             dispatch({ type: FeedbackActionTypes.FETCH_FEEDBACKS_SUCCESS, payload: response.data })
         } catch (e) {
-            let message = "Esi sho to zvoni Serege"
-
-            if (axios.isAxiosError(e)) {
-                message = e.response?.data ?? message
-            }
-
-            dispatch({ type: FeedbackActionTypes.FETCH_FEEDBACKS_ERROR, payload: message })
+            errorHandler(e, FeedbackActionTypes.FETCH_FEEDBACKS_ERROR, dispatch)
         }
     }
 }
 
-export const addFeedbackAction = (data: FeedbackForm) => {
+export const addFeedbackAction = (data: FeedbackForm, file: File) => {
     return async (dispatch: Dispatch<FeedbackAction>) => {
         try {
             dispatch({ type: FeedbackActionTypes.ADD_FEEDBACK })
-            const response = await FeedbackApi.addFeedback(data)
+            const response = await FeedbackApi.addFeedback(data, file)
             dispatch({ type: FeedbackActionTypes.ADD_FEEDBACK_SUCCESS, payload: response.data })
         } catch (e) {
-            let message = "Esi sho to zvoni Serege"
-
-            if (axios.isAxiosError(e)) {
-                message = e.response?.data ?? message
-            }
-
-            dispatch({ type: FeedbackActionTypes.ADD_FEEDBACK_ERROR, payload: message })
+            errorHandler(e, FeedbackActionTypes.ADD_FEEDBACK_ERROR, dispatch)
         }
     }
 }
@@ -47,13 +35,19 @@ export const deleteFeedbackAction = (feedback: Feedback) => {
             const response = await FeedbackApi.deleteFeedback(feedback.id)
             dispatch({type: FeedbackActionTypes.DELETE_FEEDBACK_SUCCESS, payload: feedback})
         } catch (e) {
-            let message = "Esi sho to zvoni Serege"
+            errorHandler(e, FeedbackActionTypes.DELETE_FEEDBACK_ERROR, dispatch)
+        }
+    }
+}
 
-            if (axios.isAxiosError(e)) {
-                message = e.response?.data ?? message
-            }
-
-            dispatch({ type: FeedbackActionTypes.DELETE_FEEDBACK_ERROR, payload: message })
+export const updateFeedbackAction = (data: FeedbackForm, id: number) => {
+    return async (dispatch: Dispatch<FeedbackAction>) => {
+        try {
+            dispatch({type: FeedbackActionTypes.UPDATE_FEEDBACK})
+            const response = await FeedbackApi.updateFeedback(data, id)
+            dispatch({type: FeedbackActionTypes.UPDATE_FEEDBACK_SUCCESS, payload: response.data})
+        } catch (e) {
+            errorHandler(e, FeedbackActionTypes.UPDATE_FEEDBACK_ERROR, dispatch)
         }
     }
 }

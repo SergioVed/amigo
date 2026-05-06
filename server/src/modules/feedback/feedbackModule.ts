@@ -5,11 +5,12 @@ import { FeedbackService } from "./core/feedbackService";
 import { FeedbackController } from "./interface/feedbackController";
 import { feedbackRepositoryImpl } from "./infrastructure/feedbackRepositoryImpl";
 import { JwtModule } from "@nestjs/jwt";
+import { ImageService } from "../image/imageService";
 
 
 @Module({
     imports: [SequelizeModule.forFeature([FeedbackModel]), JwtModule],
-    providers: [FeedbackService, {
+    providers: [FeedbackService, ImageService, {
         provide: "IFeedbackRepository",
         useClass: feedbackRepositoryImpl
     }],

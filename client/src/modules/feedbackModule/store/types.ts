@@ -19,12 +19,18 @@ export enum FeedbackActionTypes {
     FETCH_FEEDBACKS = "FETCH_FEEDBACKS",
     FETCH_FEEDBACKS_ERROR = "FETCH_FEEDBACKS_ERROR",
     FETCH_FEEDBACKS_SUCCESS = "FETCH_FEEDBACKS_SUCCESS",
+    
     ADD_FEEDBACK = "ADD_FEEDBACK",
     ADD_FEEDBACK_SUCCESS = "ADD_FEEDBACK_SUCCESS",
     ADD_FEEDBACK_ERROR = "ADD_FEEDBACK_ERROR",
+
     DELETE_FEEDBACK = "DELETE_FEEDBACK",
     DELETE_FEEDBACK_SUCCESS = "DELETE_FEEDBACK_SUCCESS",
     DELETE_FEEDBACK_ERROR = "DELETE_FEEDBACK_ERROR",
+
+    UPDATE_FEEDBACK = "UPDATE_FEEDBACK",
+    UPDATE_FEEDBACK_SUCCESS = "UPDATE_FEEDBACK_SUCCESS",
+    UPDATE_FEEDBACK_ERROR = "UPDATE_FEEDBACK_ERROR"
 }
 
 export type FeedbackAction = FetchFeedbackAction
@@ -39,6 +45,9 @@ export type FeedbackAction = FetchFeedbackAction
     | DeleteFeedbackSuccessAction
     | DeleteFeedbackErrorAction
 
+    | UpdateFeedbackAction
+    | UpdateFeedbackSuccessAction
+    | UpdateFeedbackErrorAction
 
 
 
@@ -85,5 +94,20 @@ interface DeleteFeedbackSuccessAction {
 
 interface DeleteFeedbackErrorAction {
     type: FeedbackActionTypes.DELETE_FEEDBACK_ERROR,
+    payload: string
+}
+
+
+interface UpdateFeedbackAction {
+    type: FeedbackActionTypes.UPDATE_FEEDBACK
+}
+
+interface UpdateFeedbackSuccessAction {
+    type: FeedbackActionTypes.UPDATE_FEEDBACK_SUCCESS,
+    payload: Feedback
+}
+
+interface UpdateFeedbackErrorAction {
+    type: FeedbackActionTypes.UPDATE_FEEDBACK_ERROR,
     payload: string
 }

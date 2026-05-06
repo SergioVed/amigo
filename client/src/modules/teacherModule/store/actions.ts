@@ -2,7 +2,7 @@ import { Dispatch } from "redux"
 import { Teacher, TeachersAction, TeachersActionTypes } from "./types"
 import { TeachersApi, UpdateTeacherData } from "../api"
 import axios from "axios"
-import { TeacherCreateForm, TeacherCreatePayload } from "../types"
+import { TeacherCreatePayload } from "../types"
 import { errorHandler } from "../../../store/errorHandler"
 
 export const fetchTeachersAction = () => {

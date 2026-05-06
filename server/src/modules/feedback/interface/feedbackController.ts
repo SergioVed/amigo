@@ -1,20 +1,31 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
 import { FeedbackService } from "../core/feedbackService";
 import { CreateFeedbackDto, UpdateFeedbackDto } from "./dto";
 import { AuthGuard } from "src/guards/authGuard";
 import { FeedbackResponseMapper } from "./feedbackResponseMapper";
+import { FileInterceptor } from "@nestjs/platform-express";
+import type { Express } from "express";
+import { ImageService } from "src/modules/image/imageService";
 
 @Controller("feedback")
 export class FeedbackController {
 
     constructor(
-        private feedbackService: FeedbackService
+        private feedbackService: FeedbackService,
+        private imageService: ImageService
     ) {}
 
-    // @UseGuards(AuthGuard)
+    @UseGuards(AuthGuard)
     @Post()
-    create(@Body() dto: CreateFeedbackDto) {
-        return this.feedbackService.create(dto)
+    @UseInterceptors(FileInterceptor("file"))
+    async create(
+        @Body() dto: CreateFeedbackDto, 
+        @UploadedFile() file: Express.Multer.File
+    ) {
+        const secure_url = await this.imageService.saveImage(file)
+
+        const result = await this.feedbackService.create({...dto, avatarUrl: secure_url})
+        return FeedbackResponseMapper.toResponse(result)
     }
 
     @Get()
@@ -32,8 +43,9 @@ export class FeedbackController {
 
     @UseGuards(AuthGuard)
     @Patch("/:id")
-    update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateFeedbackDto) {
-        return this.feedbackService.update(id, dto)
+    async update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateFeedbackDto) {
+        const result = await this.feedbackService.update(id, dto)
+        return FeedbackResponseMapper.toResponse(result)
     }
 
     @UseGuards(AuthGuard)

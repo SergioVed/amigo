@@ -5,5 +5,4 @@ export const createFeedbackForm: FeedbackForm = {
     name: "",
     title: "",
     description: "",
-    avatarUrl: ""
 }

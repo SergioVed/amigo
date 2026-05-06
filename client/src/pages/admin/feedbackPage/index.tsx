@@ -15,6 +15,7 @@ export const FeedbackPage = () => {
     const {loading, isFetched, error, feedbacks} = useTypedSelector(state => state.feedbacks)
 
     const [searchValue, setSearchValue] = useState("");
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
     const [open, setOpen] = useState<boolean>(false)
 
     const [form, setForm] = useState<FeedbackForm>(createFeedbackForm)
@@ -26,7 +27,21 @@ export const FeedbackPage = () => {
     }, [feedbacks])
 
     function submit (data: FeedbackForm) {
-        dispatch(addFeedbackAction(data))
+        if (!selectedFile) {
+            return null
+        }
+
+        dispatch(addFeedbackAction(data, selectedFile))
+    }
+
+    const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]
+
+        if (file == null) {
+            return
+        }
+
+        setSelectedFile(file)
     }
 
     return (
@@ -46,14 +61,13 @@ export const FeedbackPage = () => {
                 title="Add Feedback"
                 fields={fields}
                 onSubmit={() => submit(form)}
-            />
-
+            >
+                <input type="file" onChange={handleFileChange}/>
+            </AddFormPopup>
 
             <FeedbackList
                 feedbacks={feedbacks}
             />
-
-            
         </div>
     )
 }

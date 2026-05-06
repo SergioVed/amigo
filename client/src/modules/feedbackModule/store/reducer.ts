@@ -45,6 +45,22 @@ export const FeedbackReducer = (state = initialState, action: FeedbackAction): F
             }
 
         case FeedbackActionTypes.DELETE_FEEDBACK_ERROR:
+            return {...state, loading: false, error: action.payload}
+            
+            
+        case FeedbackActionTypes.UPDATE_FEEDBACK:
+            return {...state, loading: true, error: null}
+            
+        case FeedbackActionTypes.UPDATE_FEEDBACK_SUCCESS:
+            return {
+                ...state, 
+                loading: false,
+                feedbacks: state.feedbacks.map(item => {
+                    return action.payload.id === item.id ? action.payload : item
+                })
+            }   
+            
+        case FeedbackActionTypes.UPDATE_FEEDBACK_ERROR:
             return {...state, loading: false, error: action.payload}    
 
         default:

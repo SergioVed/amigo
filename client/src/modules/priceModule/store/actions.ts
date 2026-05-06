@@ -37,7 +37,6 @@ export const updatePriceAction = (data: PriceForm, id: number) => {
             dispatch({ type: PriceActionTypes.UPDATE_PRICE_SUCCESS, payload: response.data })
         } catch (e) {
             errorHandler(e, PriceActionTypes.UPDATE_PRICE_ERROR, dispatch)
-
         }
     }
 }
@@ -50,7 +49,6 @@ export const deletePriceAction = (id: number) => {
             dispatch({ type: PriceActionTypes.DELETE_PRICE_SUCCESS, payload: response.data })
         } catch (e) {
             errorHandler(e, PriceActionTypes.DELETE_PRICE_ERROR, dispatch)
-
         }
     }
 } 
