@@ -4,6 +4,7 @@ import $api from "../../../http";
 import { TeacherCreateForm, TeacherCreatePayload } from "../types";
 
 export type UpdateTeacherData = Omit<Teacher, "id">
+export type UpdateTeacherPayload = Partial<UpdateTeacherData>
 
 export class TeachersApi {
 
@@ -11,7 +12,7 @@ export class TeachersApi {
         return $api.get("/professor")
     }
 
-    static updateTeacher (id: number, data: UpdateTeacherData) {
+    static updateTeacher (id: number, data: UpdateTeacherPayload) {
         return $api.put(`/professor/${id}`, data)
     }
 

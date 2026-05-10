@@ -8,6 +8,7 @@ import { FeedbackForm } from "../../types"
 import { DeletePopup } from "../../../../components/DeletePopup"
 import { useAppDispatch } from "../../../../hooks/useAppDispatch"
 import { deleteFeedbackAction, updateFeedbackAction } from "../../store/actions"
+import { UpdateFeedbackPayload } from "../../api/FeedbackApi"
 
 interface FeedbackCardProps {
     feedback: Feedback
@@ -30,7 +31,21 @@ export const FeedbackCard = ({ feedback }: FeedbackCardProps) => {
 
 
     function handleSave() {
-        dispatch(updateFeedbackAction(form, selectedFile, feedback.id))
+        const formToUpdate: UpdateFeedbackPayload = {}
+
+        if (form.name !== feedback.name) {
+            formToUpdate.name = form.name
+        }
+
+        if (form.title !== feedback.title) {
+            formToUpdate.title = form.title
+        }
+
+        if (form.description !== feedback.description) {
+            formToUpdate.description = form.description
+        }
+
+        dispatch(updateFeedbackAction(formToUpdate, selectedFile, feedback.id))
         setIsEdititng(false)
     }
 

@@ -1,7 +1,7 @@
-import { data } from "react-router-dom";
 import $api, { API_URL } from "../../../http";
 import { FeedbackForm } from "../types";
-import { Feedback } from "../store/types";
+
+export type UpdateFeedbackPayload = Partial<FeedbackForm>
 
 
 export class FeedbackApi {
@@ -25,17 +25,27 @@ export class FeedbackApi {
         return $api.delete(`${API_URL}/feedback/${id}`)
     }
 
-    public static updateFeedback (data: FeedbackForm, file: File | null, id: number) {
+    public static updateFeedback (data: UpdateFeedbackPayload, file: File | null, id: number) {
         const formData = new FormData()
 
-        formData.append("name", data.name)
-        formData.append("title", data.title)
-        formData.append("description", data.description)
+        if (data.name !== undefined) {
+            formData.append("name", data.name)
+        }
+
+        if (data.title !== undefined) {
+            formData.append("title", data.title)
+        }
+
+        if (data.description !== undefined) {
+            formData.append("description", data.description)
+        }
 
         if (file) {
             formData.append("file", file)
         }
 
-        return $api.patch(`${API_URL}/feedback/${id}`, formData)
+        console.log(formData)
+
+        return $api.put(`${API_URL}/feedback/${id}`, formData)
     }
 }

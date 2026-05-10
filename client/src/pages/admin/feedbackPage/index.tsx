@@ -1,14 +1,10 @@
 import styles from "./index.module.css"
 import { useEffect, useState } from "react"
-import { FeedbackForm } from "../../../modules/feedbackModule/types";
-import { createFeedbackForm } from "../../../modules/feedbackModule/utils/createFeedbackForm";
 import { ToolBar } from "../../../components/ToolBar";
 import { AddFormPopup } from "../../../components/AddFormPopup";
-import { fields } from "../../../modules/feedbackModule/utils/fields";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { FeedbackList } from "../../../modules/feedbackModule/components/FeedbackList";
-import { addFeedbackAction, fetchFeedbacksAction } from "../../../modules/feedbackModule/store/actions";
+import { addFeedbackAction, createFeedbackForm, FeedbackForm, FeedbackList, fetchFeedbacksAction, fields } from "../../../modules/feedbackModule";
 
 export const FeedbackPage = () => {
     const dispatch = useAppDispatch()

@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 import { Feedback, FeedbackAction, FeedbackActionTypes } from "./types"
-import { FeedbackApi } from "../api/FeedbackApi"
+import { FeedbackApi, UpdateFeedbackPayload } from "../api/FeedbackApi"
 import { FeedbackForm } from "../types"
 import { errorHandler } from "../../../store/errorHandler"
 
@@ -40,7 +40,7 @@ export const deleteFeedbackAction = (feedback: Feedback) => {
     }
 }
 
-export const updateFeedbackAction = (data: FeedbackForm, file: File | null, id: number) => {
+export const updateFeedbackAction = (data: UpdateFeedbackPayload, file: File | null, id: number) => {
     return async (dispatch: Dispatch<FeedbackAction>) => {
         try {
             dispatch({type: FeedbackActionTypes.UPDATE_FEEDBACK})

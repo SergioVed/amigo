@@ -36,7 +36,26 @@ export const PriceCard = ({price}: PriceCardProps) => {
     }
 
     function saveUpdatedPrice(form: PriceForm, id: number) {
-        dispatch(updatePriceAction(form, id))
+
+        let formToUpdate: Partial<PriceForm> = {};
+
+        if (form.amount !== price.amount) {
+            formToUpdate.amount = form.amount;
+        }
+
+        if (form.description !== price.description) {
+            formToUpdate.description = form.description
+        }
+
+        if (form.title !== price.title) {
+            formToUpdate.title = form.title
+        }
+
+        if (form.type !== price.type) {
+            formToUpdate.type = form.type
+        }
+
+        dispatch(updatePriceAction(formToUpdate, id))
         setIsEditing(false)
     }
 

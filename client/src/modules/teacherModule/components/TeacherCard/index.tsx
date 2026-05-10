@@ -7,6 +7,7 @@ import { TeacherCardForm } from "./TeacherCardForm"
 import { TeacherCardView } from "./TeacherCardView"
 import { DeletePopup } from "../../../../components/DeletePopup"
 import { CardActions } from "../../../../components/CardActionButtons"
+import { UpdateTeacherPayload } from "../../api"
 
 interface TeacherCardProps {
     teacher: Teacher
@@ -31,7 +32,43 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
     })
 
     function handleUpdateTeacher() {
-        dispatch(updateTeacherAction(teacher.id, form))
+        const formToUpdate: UpdateTeacherPayload = {}
+        const isSuperPowerChanged = form.superPower.length !== teacher.superPower.length
+            || form.superPower.some((power, index) => power !== teacher.superPower[index])
+
+        if (form.avatarUrl !== teacher.avatarUrl) {
+            formToUpdate.avatarUrl = form.avatarUrl
+        }
+
+        if (form.name !== teacher.name) {
+            formToUpdate.name = form.name
+        }
+
+        if (form.description !== teacher.description) {
+            formToUpdate.description = form.description
+        }
+
+        if (form.subDescription !== teacher.subDescription) {
+            formToUpdate.subDescription = form.subDescription
+        }
+
+        if (form.videoUrl !== teacher.videoUrl) {
+            formToUpdate.videoUrl = form.videoUrl
+        }
+
+        if (isSuperPowerChanged) {
+            formToUpdate.superPower = form.superPower
+        }
+
+        if (form.favouriteWord !== teacher.favouriteWord) {
+            formToUpdate.favouriteWord = form.favouriteWord
+        }
+
+        if (form.forStudent !== teacher.forStudent) {
+            formToUpdate.forStudent = form.forStudent
+        }
+
+        dispatch(updateTeacherAction(teacher.id, formToUpdate))
         setIsEditing(false)
     }
 

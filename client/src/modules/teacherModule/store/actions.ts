@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 import { Teacher, TeachersAction, TeachersActionTypes } from "./types"
-import { TeachersApi, UpdateTeacherData } from "../api"
+import { TeachersApi, UpdateTeacherPayload } from "../api"
 import axios from "axios"
 import { TeacherCreatePayload } from "../types"
 import { errorHandler } from "../../../store/errorHandler"
@@ -18,7 +18,7 @@ export const fetchTeachersAction = () => {
     }
 }
 
-export const updateTeacherAction = (id: number, data: UpdateTeacherData) => {
+export const updateTeacherAction = (id: number, data: UpdateTeacherPayload) => {
     return async (dispatch: Dispatch<TeachersAction>) => {
 
         try {

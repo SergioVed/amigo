@@ -29,7 +29,7 @@ export const addPriceAction = (data: PriceForm) => {
     }
 }
 
-export const updatePriceAction = (data: PriceForm, id: number) => {
+export const updatePriceAction = (data: Partial<PriceForm>, id: number) => {
     return async (dispatch: Dispatch<PriceAction>) => {
         try {
             dispatch({ type: PriceActionTypes.UPDATE_PRICE })

@@ -12,7 +12,7 @@ export class PriceApi {
         return $api.post(`${API_URL}/price`, data)
     }
 
-    public static updatePrice = (data: PriceForm, id: number) => {
+    public static updatePrice = (data: Partial<PriceForm>, id: number) => {
         return $api.put(`${API_URL}/price/${id}`, data)
     }
 

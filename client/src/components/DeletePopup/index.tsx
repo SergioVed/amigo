@@ -16,11 +16,11 @@ export const DeletePopup = ({onDelete, setVisible, visible}: DeletePopupProps) =
                 </p>
 
                 <div className={styles.actions}>
-                    <button className={styles.deleteButton} type="button" onClick={onDelete}>
+                    <button className={styles.cancelButton} type="button" onClick={onDelete}>
                         Delete
                     </button>
 
-                    <button className={styles.cancelButton} type="button" onClick={() => setVisible(false)}>
+                    <button className={styles.deleteButton} type="button" onClick={() => setVisible(false)}>
                         Cancel
                     </button>
                 </div>
