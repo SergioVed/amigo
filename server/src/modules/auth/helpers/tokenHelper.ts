@@ -26,12 +26,12 @@ export class TokenHelper {
 
         const accessToken = await this.jwt.signAsync(accessPayload, {
             secret: process.env.ACCESS_SECRET,
-            expiresIn: "15s"
+            expiresIn: "30m"
         })
 
         const refreshToken = await this.jwt.signAsync(refreshPayload, {
             secret: process.env.REFRESH_SECRET,
-            expiresIn: "15s"
+            expiresIn: "30d"
         })
 
         return {
