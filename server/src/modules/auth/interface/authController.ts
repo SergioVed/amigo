@@ -38,4 +38,14 @@ export class AuthController {
             accessToken: tokens.accessToken
         }
     }
+
+    @Post("logout")
+    async logout (@Req() req: Request, @Res({passthrough: true}) res: Response) {
+        await this.authService.logout(req.cookies.refreshToken)
+        TokenHelper.clearTokens(res)
+
+        return {
+            success: true
+        }
+    }
 }

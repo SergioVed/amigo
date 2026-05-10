@@ -26,12 +26,12 @@ export class TokenHelper {
 
         const accessToken = await this.jwt.signAsync(accessPayload, {
             secret: process.env.ACCESS_SECRET,
-            expiresIn: "30m"
+            expiresIn: "15s"
         })
 
         const refreshToken = await this.jwt.signAsync(refreshPayload, {
             secret: process.env.REFRESH_SECRET,
-            expiresIn: "15d"
+            expiresIn: "15s"
         })
 
         return {
@@ -48,6 +48,14 @@ export class TokenHelper {
             secure: false,
             sameSite: "lax",
             maxAge: 15 * 24 * 60 * 60 * 1000,
+        })
+    }
+
+    public static clearTokens = (res: Response) => {
+        res.clearCookie("refreshToken", {
+            httpOnly: true,
+            secure: false,
+            sameSite: "lax"
         })
     }
 }

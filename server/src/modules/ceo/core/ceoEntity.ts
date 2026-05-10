@@ -70,6 +70,10 @@ export class CeoEntity {
         this._refreshJti = refreshHash
     }
 
+    public clearRefreshJti () {
+        this._refreshJti = null
+    }
+
     public static create (data: CeoCreationAttrs) {
         return new CeoEntity (
             null,

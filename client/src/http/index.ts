@@ -1,5 +1,6 @@
 import axios from "axios"
-
+import { LoginActionTypes } from "../modules/auth/store/types"
+import { store } from "../store"
 
 export const API_URL = 'http://localhost:3000'
 
@@ -19,6 +20,7 @@ $api.interceptors.response.use((config) => {
 }, async (error) => {
     const originalRequest = error.config
 
+
     if (error.response.status === 401 && error.config && !error.config._isRetry) {
         originalRequest._isRetry = true
         try {
@@ -27,7 +29,12 @@ $api.interceptors.response.use((config) => {
 
             return $api.request(originalRequest)
         } catch {
-            console.log("error")
+            try {
+                await axios.post(`${API_URL}/auth/logout`, {}, {withCredentials: true})
+            } finally {
+                localStorage.removeItem("token")
+                store.dispatch({type: LoginActionTypes.LOGOUT})
+            }
         }
 
     }

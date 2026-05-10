@@ -3,12 +3,18 @@ import { authRoutes } from "../routes";
 import { publicRoutes } from "../routes";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { ADMIN_FULL_PATHS, PATHS } from "../utils/paths";
+import { useEffect } from "react";
+import { useAppDispatch } from "../hooks/useAppDispatch";
+import { checkAuthAction } from "../modules/auth/store/actions";
 
 export const AppRouter = () => {
 
     const {isAuth} = useTypedSelector(state => state.login);
+    const dispatch = useAppDispatch()
 
-    console.log(isAuth)
+    useEffect(() => {
+        dispatch(checkAuthAction())
+    }, [])
 
     return (
         <Routes>

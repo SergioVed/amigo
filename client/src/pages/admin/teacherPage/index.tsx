@@ -13,6 +13,7 @@ import {
     createTeacherForm,
     filterTeachers
 } from "../../../modules/teacherModule"
+import { checkAuthAction } from "../../../modules/auth/store/actions"
 
 export const TeacherPage = () => {
 

@@ -8,6 +8,7 @@ import { TokenHelper } from "../helpers/tokenHelper";
 import { randomInt } from "crypto";
 import { CodeService } from "src/modules/code/core/codeService";
 import type { ICodeRepository } from "src/modules/code/core/codeReposiotry";
+import { Response } from "express";
 
 
 @Injectable()
@@ -25,14 +26,14 @@ export class AuthService {
 
         let payload: RefreshPayload;
         try {
-        
+
             payload = await this.jwt.verifyAsync(refreshToken, {
-            secret: process.env.REFRESH_SECRET
-        })
+                secret: process.env.REFRESH_SECRET
+            })
         } catch {
             throw new UnauthorizedException("Invalid refresh token")
         }
-        
+
 
         const ceo = await this.ceoRepo.getByEmail(payload._email)
         if (!ceo) {
@@ -55,13 +56,15 @@ export class AuthService {
 
     public async login(data: LoginInput) {
         await this.validateCredentials(data)
-        
+
         const code = randomInt(100000, 1000000).toString()
         await this.codeService.sendCode(data.email, code)
 
         return {
             email: data.email
         }
+
+
     }
 
     public async verify(data: VerifyInput) {
@@ -72,7 +75,7 @@ export class AuthService {
 
         const code = await this.codeService.validateCode(data)
 
-        code.update({usedAt: new Date()})
+        code.update({ usedAt: new Date() })
         await this.codeRepo.save(code)
 
         const tokens = await this.generateAndSaveTokens(ceo)
@@ -83,7 +86,7 @@ export class AuthService {
     }
 
 
-    private async generateAndSaveTokens (ceo: CeoEntity) {
+    private async generateAndSaveTokens(ceo: CeoEntity) {
         const tokens = await this.tokenHelper.generateTokens(ceo)
         ceo.setRefreshJti(tokens.jti)
         await this.ceoRepo.save(ceo)
@@ -91,7 +94,7 @@ export class AuthService {
         return tokens
     }
 
-    private async validateCredentials (data: LoginInput) {
+    private async validateCredentials(data: LoginInput) {
         const { email, password } = data
 
         const ceo = await this.ceoRepo.getByEmail(email)
@@ -107,5 +110,29 @@ export class AuthService {
         return ceo
     }
 
+    public async logout(refreshToken: string) {
+        if (!refreshToken) {
+            return
+        }
+
+        let payload: RefreshPayload
+
+        try {
+            payload = await this.jwt.verifyAsync(refreshToken, {
+                secret: process.env.REFRESH_SECRET
+            })
+        } catch {
+            return;
+        }
+
+        const ceo = await this.ceoRepo.getByEmail(payload._email)
+
+        if (!ceo || ceo.getRefreshJti() !== payload._jti || !ceo.getRefreshJti()) {
+            return
+        }
+
+        ceo.clearRefreshJti()
+        await this.ceoRepo.save(ceo)
+    }
 
 }

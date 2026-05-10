@@ -17,9 +17,13 @@ interface VerifySuccessPayload {
 export type LoginAction = LoginActionType
   | LoginErrorActionType
   | LoginSuccessActionType
+
   | CodeVerifyActionType
   | CodeVerifySuccessActionType
   | CodeVerifyErrorActionType
+
+  | LogoutActionType
+  | AuthSuccessActionType
 
 export enum LoginActionTypes {
     LOGIN = "LOGIN",
@@ -28,7 +32,10 @@ export enum LoginActionTypes {
 
     CODE_VERIFY = "CODE_VERIFY",
     CODE_VERIFY_SUCCESS = "CODE_VERIFY_SUCCESS",
-    CODE_VERIFY_ERROR = "CODE_VERIFY_ERROR"
+    CODE_VERIFY_ERROR = "CODE_VERIFY_ERROR",
+
+    AUTH_SUCCESS = "AUTH_SUCCESS",
+    LOGOUT = "LOGOUT"
 }
 
 interface CodeVerifyActionType {
@@ -58,5 +65,14 @@ interface LoginSuccessActionType {
 
 interface LoginErrorActionType {
     type: LoginActionTypes.LOGIN_ERROR,
+    payload: string
+}
+
+interface LogoutActionType {
+    type: LoginActionTypes.LOGOUT
+}
+
+interface AuthSuccessActionType {
+    type: LoginActionTypes.AUTH_SUCCESS,
     payload: string
 }

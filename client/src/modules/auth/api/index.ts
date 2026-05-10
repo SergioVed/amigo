@@ -15,4 +15,12 @@ export class AuthApi {
             email, code
         })
     }
+
+    static refresh() {
+        return axios.post("/auth/refresh", {}, {withCredentials: true})
+    }
+
+    static logout () {
+        return $api.post("auth/logout", {}, {withCredentials: true})
+    }
 }

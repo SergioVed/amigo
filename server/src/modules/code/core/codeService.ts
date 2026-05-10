@@ -68,6 +68,8 @@ export class CodeService {
             await this.codeRepo.save(newCode)
         }
 
+        console.log(code)
+
 
         const info = await this.transporter.sendMail({
             from: process.env.SMTP_USER,
