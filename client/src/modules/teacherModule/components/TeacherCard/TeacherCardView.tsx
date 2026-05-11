@@ -9,7 +9,11 @@ export const TeacherCardView = ({ teacher }: TeacherCardViewProps) => {
     return (
         <>
             <h2 className={styles.title}>{teacher.name}</h2>
-
+            <img
+                className={styles.avatar}
+                src={teacher.avatarUrl}
+                alt={teacher.name}
+            />
             <p className={styles.description}>{teacher.description}</p>
 
             <p className={styles.subDescription}>{teacher.subDescription}</p>

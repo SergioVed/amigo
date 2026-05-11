@@ -20,6 +20,17 @@
     transform: scale(1.02);
 }
 
+.avatar {
+    flex: 0 0 auto;
+    width: 88px;
+    height: 88px;
+    border: 5px solid #f6bf00;
+    border-radius: 50%;
+    object-fit: cover;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
 .actions {
     position: absolute;
     top: 20px;

@@ -1,5 +1,4 @@
 export interface TeacherCreateForm {
-    avatarUrl: string
     name: string
     description: string
     subDescription: string
@@ -10,7 +9,6 @@ export interface TeacherCreateForm {
 }
 
 export interface TeacherCreatePayload {
-    avatarUrl: string
     name: string
     description: string
     subDescription: string

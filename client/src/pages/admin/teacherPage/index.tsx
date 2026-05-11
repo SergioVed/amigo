@@ -13,24 +13,36 @@ import {
     createTeacherForm,
     filterTeachers
 } from "../../../modules/teacherModule"
-import { checkAuthAction } from "../../../modules/auth/store/actions"
 
 export const TeacherPage = () => {
 
     const [searchValue, setSearchValue] = useState<string>("")
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [form, setForm] = useState<TeacherCreateForm>(createTeacherForm)
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
     const dispatch = useAppDispatch()
     const { teachers, loading, isFetched } = useTypedSelector(state => state.teachers)
 
     function handleSubmit(form: TeacherCreateForm) {
+        if (!selectedFile) {
+            return
+        }
+
         dispatch(addTeacherAction({
             ...form,
             superPower: form.superPower.split(",")
-        }))
+        }, selectedFile))
 
         setIsOpen(false)
+    }
+
+    function handleSelectFile (e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0]
+        if (!file) {
+            return
+        }
+        setSelectedFile(file)
     }
 
     useEffect(() => {
@@ -61,7 +73,10 @@ export const TeacherPage = () => {
                 setForm={setForm}
                 fields={fields}
                 onSubmit={() => handleSubmit(form)}
-            />
+            >
+                <input type="file" onChange={(e) => handleSelectFile(e)}/>
+
+            </AddFormPopup>
         </div>
     )
 }

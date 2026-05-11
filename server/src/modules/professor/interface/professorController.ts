@@ -1,15 +1,18 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common";
 import { ProfessorService } from "../core/professorService";
 import { CreateProfessorDto, UpdateProfessorDto } from "./dto";
 import { AuthGuard } from "src/guards/authGuard";
 import { ProfessorResponseMapper } from "./professorResponseMapper";
+import { FileInterceptor } from "@nestjs/platform-express";
+import { ImageService } from "src/modules/image/imageService";
 
 
 @Controller("professor")
 export class ProfessorController {
 
     constructor (
-        private professorService: ProfessorService
+        private professorService: ProfessorService,
+        private imageService: ImageService
     ) {}
 
     @Get()
@@ -22,8 +25,14 @@ export class ProfessorController {
 
     // @UseGuards(AuthGuard)
     @Post()
-    async create (@Body() dto: CreateProfessorDto) {
-        const professor = await this.professorService.create(dto)
+    @UseInterceptors(FileInterceptor("file"))
+    async create (
+        @Body() dto: CreateProfessorDto,
+        @UploadedFile() file: Express.Multer.File
+    ) {
+        const secure_url = await this.imageService.saveImage(file)
+
+        const professor = await this.professorService.create({...dto, avatarUrl: secure_url})
         return ProfessorResponseMapper.toResponse(professor)
     }
 

@@ -1,5 +1,4 @@
 export const createTeacherForm = {
-    avatarUrl: "",
     name: "",
     description: "",
     subDescription: "",

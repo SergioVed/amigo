@@ -1,6 +1,6 @@
 
 import { PartialType } from "@nestjs/swagger";
-import { IsNotEmpty, IsString, IsUrl } from "class-validator";
+import { IsNotEmpty, IsString } from "class-validator";
 
 export class CreateFeedbackDto {
     @IsString()

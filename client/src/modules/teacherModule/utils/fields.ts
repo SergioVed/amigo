@@ -3,11 +3,6 @@ import { FieldConfig } from "../../../components/AddFormPopup";
 
 export const fields: FieldConfig<TeacherCreateForm>[] = [
         {
-            name: "avatarUrl",
-            label: "Avatar Url",
-            placeholder: "Enter avatar url",
-        },
-        {
             name: "name",
             label: "Name",
             placeholder: "Enter teacher name",
