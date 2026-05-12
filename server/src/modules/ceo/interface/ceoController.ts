@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put, U
 import { CeoService } from "../core/ceoService";
 import { CreateCeoDto, UpdateCeoDto } from "./dto";
 import { AuthGuard } from "src/guards/authGuard";
+import { CeoResponseMapper } from "./ceoResponseMapper";
 
 
 @Controller("ceo")
@@ -12,8 +13,10 @@ export class CeoController {
     ) {}
 
     @Get("/:id")
-    getOne(@Param("id", ParseIntPipe) id: number) {
-        return this.ceoService.getOne(id)
+    async getOne(@Param("id", ParseIntPipe) id: number) {
+        const ceo = await this.ceoService.getOne(id)
+
+        return CeoResponseMapper.toResponse(ceo)
     }
 
     // Add auth guard on production
@@ -23,7 +26,7 @@ export class CeoController {
     }
 
     @UseGuards(AuthGuard)
-    @Patch("/:id")
+    @Put("/:id")
     update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateCeoDto) {
         return this.ceoService.update(id, dto)
     }
