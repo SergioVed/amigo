@@ -1,12 +1,12 @@
 .container {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    min-width: 500px;
-    padding: 8px;
-    border-radius: 16px;
+    gap: 0.5rem;
+    width: min(100%, 35rem);
+    padding: 0.5rem;
+    border-radius: 1rem;
     background: #ffffff;
-    box-shadow: 0 18px 44px rgba(109, 109, 109, 0.08);
+    box-shadow: 0 1.125rem 2.75rem rgba(109, 109, 109, 0.08);
 }
 
 .button {
@@ -14,14 +14,14 @@
     align-items: center;
     justify-content: center;
     flex: 1;
-    min-height: 56px;
-    padding: 0 32px;
+    min-height: 3.5rem;
+    padding: 0 2rem;
     border: none;
-    border-radius: 14px;
+    border-radius: 0.875rem;
     background: transparent;
     color: #747071;
     font-family: "Montserrat", sans-serif;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
@@ -33,8 +33,8 @@
 }
 
 .button:focus-visible {
-    outline: 3px solid rgba(246, 191, 0, 0.35);
-    outline-offset: 2px;
+    outline: 0.1875rem solid rgba(246, 191, 0, 0.35);
+    outline-offset: 0.125rem;
 }
 
 .active {
@@ -46,15 +46,14 @@
     transform: scale(1.01);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
     .container {
         width: 100%;
-        min-width: 0;
     }
 
     .button {
-        min-height: 52px;
-        padding: 0 18px;
-        font-size: 15px;
+        min-height: 3.25rem;
+        padding: 0 1.125rem;
+        font-size: 0.9375rem;
     }
 }

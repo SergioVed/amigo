@@ -4,26 +4,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(16px, 4vw, 40px);
+    padding: clamp(1rem, 4vw, 2.5rem);
     background: rgba(45, 42, 45, 0.52);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(0.25rem);
     z-index: 1000;
 }
 
 .container {
-    width: min(100%, 620px);
-    max-height: min(60vh, 760px);
+    width: min(100%, 38.75rem);
+    max-height: min(60vh, 47.5rem);
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    padding: clamp(24px, 4vw, 40px);
+    gap: 1.5rem;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
     overflow-y: auto;
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 28px;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.7);
+    border-radius: 1.75rem;
     background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(250, 247, 240, 0.96)),
         #ffffff;
-    box-shadow: 0 28px 80px rgba(45, 42, 45, 0.24);
+    box-shadow: 0 1.75rem 5rem rgba(45, 42, 45, 0.24);
     font-family: "Montserrat", sans-serif;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -32,13 +32,13 @@
 .header {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
 }
 
 .title {
     margin: 0;
     color: #2d2a2d;
-    font-size: clamp(24px, 3vw, 34px);
+    font-size: clamp(1.5rem, 3vw, 2.125rem);
     font-weight: 800;
     line-height: 1.15;
 }
@@ -46,7 +46,7 @@
 .subtitle {
     margin: 0;
     color: #777077;
-    font-size: clamp(14px, 1.5vw, 16px);
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     font-weight: 500;
     line-height: 1.5;
 }
@@ -54,45 +54,45 @@
 .fields {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1rem;
 }
 
 .actions {
     display: flex;
     justify-content: flex-end;
-    padding-top: 4px;
+    padding-top: 0.25rem;
 }
 
 .submitButton {
-    min-width: 140px;
-    min-height: 52px;
-    padding: 0 24px;
+    min-width: 8.75rem;
+    min-height: 3.25rem;
+    padding: 0 1.5rem;
     border: none;
-    border-radius: 16px;
+    border-radius: 1rem;
     background: #edba00;
     color: #2d2a2d;
     font-family: inherit;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 14px 28px rgba(237, 186, 0, 0.28);
+    box-shadow: 0 0.875rem 1.75rem rgba(237, 186, 0, 0.28);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .submitButton:hover {
     background: #f6c600;
-    box-shadow: 0 18px 34px rgba(237, 186, 0, 0.34);
-    transform: translateY(-1px);
+    box-shadow: 0 1.125rem 2.125rem rgba(237, 186, 0, 0.34);
+    transform: translateY(-0.0625rem);
 }
 
 .submitButton:active {
     transform: translateY(0);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
     .container {
         max-height: 90vh;
-        border-radius: 22px;
+        border-radius: 1.375rem;
     }
 
     .actions {

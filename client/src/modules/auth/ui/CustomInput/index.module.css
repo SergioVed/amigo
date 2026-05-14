@@ -1,25 +1,25 @@
 .fieldGroup {
     display: flex;
     flex-direction: column;
-    gap: clamp(8px, 1vw, 14px);
+    gap: clamp(0.5rem, 1vw, 0.875rem);
 }
 
 .label {
     color: #2d2a2d;
-    font-size: clamp(15px, 1.7vw, 20px);
+    font-size: clamp(0.9375rem, 1.7vw, 1.25rem);
     font-weight: 700;
     line-height: 1.2;
 }
 
 .input {
     width: 100%;
-    min-height: clamp(50px, 5vw, 70px);
-    padding: 0 clamp(12px, 1.6vw, 20px);
-    border: 2px solid #d6d6d6;
-    border-radius: clamp(14px, 2vw, 24px);
+    min-height: clamp(3.125rem, 5vw, 4.375rem);
+    padding: 0 clamp(0.75rem, 1.6vw, 1.25rem);
+    border: 0.125rem solid #d6d6d6;
+    border-radius: clamp(0.875rem, 2vw, 1.5rem);
     background-color: #ffffff;
     color: #2d2a2d;
-    font-size: clamp(15px, 1.4vw, 20px);
+    font-size: clamp(0.9375rem, 1.4vw, 1.25rem);
     outline: none;
     box-sizing: border-box;
 }
@@ -30,5 +30,5 @@
 
 .input:focus {
     border-color: #EDBA00;
-    box-shadow: 0 0 0 4px rgba(246, 191, 0, 0.18);
+    box-shadow: 0 0 0 0.25rem rgba(246, 191, 0, 0.18);
 }

@@ -1,24 +1,24 @@
 .page {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: clamp(1.5rem, 2vw, 2rem);
     width: 100%;
-    max-width: 1240px;
+    max-width: 77.5rem;
     margin: 0 auto;
-    padding: 28px 56px 40px;
+    padding: clamp(1.5rem, 2vw, 1.75rem) clamp(1.5rem, 4vw, 3.5rem) clamp(2rem, 3vw, 2.5rem);
     box-sizing: border-box;
 }
 
 .hero {
     display: flex;
     align-items: center;
-    gap: 42px;
+    gap: clamp(1.75rem, 3vw, 2.625rem);
     width: 100%;
-    min-height: 250px;
-    padding: 38px 44px;
-    border-radius: 18px;
+    min-height: 15.625rem;
+    padding: clamp(2rem, 3vw, 2.375rem) clamp(2rem, 3vw, 2.75rem);
+    border-radius: 1.125rem;
     background: #2f2d2d;
-    box-shadow: 0 28px 60px rgba(45, 42, 45, 0.18);
+    box-shadow: 0 1.75rem 3.75rem rgba(45, 42, 45, 0.18);
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
@@ -28,12 +28,12 @@
     align-items: center;
     justify-content: center;
     flex: 0 0 auto;
-    width: 190px;
-    height: 190px;
-    border: 8px solid #f3bf00;
+    width: clamp(9.375rem, 13vw, 11.875rem);
+    height: clamp(9.375rem, 13vw, 11.875rem);
+    border: 0.5rem solid #f3bf00;
     border-radius: 50%;
     background: #f3bf00;
-    box-shadow: 0 16px 28px rgba(243, 191, 0, 0.28);
+    box-shadow: 0 1rem 1.75rem rgba(243, 191, 0, 0.28);
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -46,7 +46,7 @@
 
 .avatarFallback {
     color: #2f2d2d;
-    font-size: 72px;
+    font-size: clamp(3.5rem, 5vw, 4.5rem);
     font-weight: 800;
     line-height: 1;
     text-transform: uppercase;
@@ -60,15 +60,15 @@
 .name {
     margin: 0;
     color: #f3bf00;
-    font-size: 42px;
+    font-size: clamp(2.125rem, 3.5vw, 2.625rem);
     font-weight: 800;
     line-height: 1.15;
 }
 
 .position {
-    margin: 24px 0 0;
+    margin: 1.5rem 0 0;
     color: #dedede;
-    font-size: 22px;
+    font-size: clamp(1.1875rem, 1.6vw, 1.375rem);
     font-weight: 600;
     line-height: 1.35;
 }
@@ -77,33 +77,33 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 14px;
+    gap: 0.875rem;
     flex: 0 0 auto;
     margin-left: auto;
 }
 
 .actionButton {
-    min-width: 112px;
-    min-height: 44px;
-    padding: 0 24px;
-    border: 1px solid transparent;
-    border-radius: 10px;
+    min-width: 7rem;
+    min-height: 2.75rem;
+    padding: 0 1.5rem;
+    border: 0.0625rem solid transparent;
+    border-radius: 0.625rem;
     cursor: pointer;
     font: inherit;
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: 800;
     line-height: 1;
     transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
 .actionButton:hover {
-    transform: translateY(-1px);
+    transform: translateY(-0.0625rem);
 }
 
 .primaryButton {
     background: #f3bf00;
     color: #2f2d2d;
-    box-shadow: 0 12px 24px rgba(243, 191, 0, 0.24);
+    box-shadow: 0 0.75rem 1.5rem rgba(243, 191, 0, 0.24);
 }
 
 .primaryButton:hover {
@@ -121,30 +121,30 @@
     background: rgba(243, 191, 0, 0.1);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 56.25rem) {
     .page {
-        padding: 24px;
+        padding: 1.5rem;
     }
 
     .hero {
-        gap: 28px;
+        gap: 1.75rem;
         min-height: 0;
-        padding: 32px;
+        padding: 2rem;
     }
 
     .avatarWrap {
-        width: 150px;
-        height: 150px;
-        border-width: 7px;
+        width: 9.375rem;
+        height: 9.375rem;
+        border-width: 0.4375rem;
     }
 
     .name {
-        font-size: 34px;
+        font-size: 2.125rem;
     }
 
     .position {
-        margin-top: 18px;
-        font-size: 19px;
+        margin-top: 1.125rem;
+        font-size: 1.1875rem;
     }
 
     .actions {
@@ -152,37 +152,37 @@
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
     .page {
-        gap: 24px;
-        padding: 20px 0 28px;
+        gap: 1.5rem;
+        padding: 1.25rem 0 1.75rem;
     }
 
     .hero {
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: 28px 20px;
-        border-radius: 14px;
+        padding: 1.75rem 1.25rem;
+        border-radius: 0.875rem;
     }
 
     .avatarWrap {
-        width: 132px;
-        height: 132px;
-        border-width: 6px;
+        width: 8.25rem;
+        height: 8.25rem;
+        border-width: 0.375rem;
     }
 
     .avatarFallback {
-        font-size: 56px;
+        font-size: 3.5rem;
     }
 
     .name {
-        font-size: 28px;
+        font-size: 1.75rem;
     }
 
     .position {
-        margin-top: 12px;
-        font-size: 17px;
+        margin-top: 0.75rem;
+        font-size: 1.0625rem;
     }
 
     .heroInfo {
@@ -196,7 +196,7 @@
     }
 
     .actionButton {
-        flex: 1 1 132px;
-        min-height: 46px;
+        flex: 1 1 8.25rem;
+        min-height: 2.875rem;
     }
 }

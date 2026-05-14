@@ -3,11 +3,11 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    min-height: 132px;
-    padding: 22px 28px;
-    border-radius: 14px;
+    min-height: 8.25rem;
+    padding: 1.375rem 1.75rem;
+    border-radius: 0.875rem;
     background: #ffffff;
-    box-shadow: 0 20px 48px rgba(109, 109, 109, 0.08);
+    box-shadow: 0 1.25rem 3rem rgba(109, 109, 109, 0.08);
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
@@ -15,15 +15,15 @@
 .header {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
 }
 
 .icon {
     flex: 0 0 auto;
-    width: 42px;
-    height: 42px;
-    padding: 10px;
-    border-radius: 10px;
+    width: 2.625rem;
+    height: 2.625rem;
+    padding: 0.625rem;
+    border-radius: 0.625rem;
     background: #f1f1f1;
     object-fit: contain;
     box-sizing: border-box;
@@ -32,15 +32,15 @@
 .title {
     margin: 0;
     color: #2d292b;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.2;
 }
 
 .info {
-    margin-top: 18px;
+    margin-top: 1.125rem;
     color: #4f4a4d;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
     overflow-wrap: anywhere;
@@ -50,29 +50,29 @@
     margin: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
     .container {
         min-height: 0;
-        padding: 20px;
-        border-radius: 12px;
+        padding: 1.25rem;
+        border-radius: 0.75rem;
     }
 
     .header {
-        gap: 14px;
+        gap: 0.875rem;
     }
 
     .icon {
-        width: 40px;
-        height: 40px;
-        padding: 10px;
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0.625rem;
     }
 
     .title {
-        font-size: 18px;
+        font-size: 1.125rem;
     }
 
     .info {
-        margin-top: 16px;
-        font-size: 15px;
+        margin-top: 1rem;
+        font-size: 0.9375rem;
     }
 }

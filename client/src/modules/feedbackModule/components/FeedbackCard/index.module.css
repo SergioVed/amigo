@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 520px;
-    max-width: 100%;
-    min-height: 320px;
-    padding: 25px;
-    border-radius: 24px;
+    width: min(100%, var(--card-max-width));
+    max-width: var(--card-max-width);
+    min-height: 20rem;
+    padding: 1.5625rem;
+    border-radius: 1.5rem;
     background: #ffffff;
     font-family: "Montserrat", sans-serif;
-    box-shadow: 0 20px 48px rgba(109, 109, 109, 0.08);
+    box-shadow: 0 1.25rem 3rem rgba(109, 109, 109, 0.08);
     box-sizing: border-box;
     transition: transform 0.22s ease, box-shadow 0.22s ease;
     transform-origin: center;
@@ -30,14 +30,14 @@
 .header {
     display: flex;
     align-items: center;
-    gap: 22px;
+    gap: 1.375rem;
 }
 
 .avatar {
     flex: 0 0 auto;
-    width: 88px;
-    height: 88px;
-    border: 5px solid #f6bf00;
+    width: 5.5rem;
+    height: 5.5rem;
+    border: 0.3125rem solid #f6bf00;
     border-radius: 50%;
     object-fit: cover;
     box-sizing: border-box;
@@ -46,53 +46,52 @@
 .name {
     margin: 0;
     color: #2d292b;
-    font-size: 22px;
+    font-size: 1.375rem;
     font-weight: 700;
     line-height: 1.2;
 }
 
 .title {
-    margin: 30px 0 0;
+    margin: 1.875rem 0 0;
     color: #f6bf00;
-    font-size: 22px;
+    font-size: 1.375rem;
     font-weight: 700;
     line-height: 1.2;
 }
 
 .description {
-    margin: 20px 0 0;
+    margin: 1.25rem 0 0;
     color: #4f4a4d;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.5;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
     .card {
-        width: 100%;
         min-height: 0;
-        padding: 24px;
+        padding: 1.5rem;
     }
 
     .header {
-        gap: 18px;
+        gap: 1.125rem;
     }
 
     .avatar {
-        width: 72px;
-        height: 72px;
-        border-width: 4px;
+        width: 4.5rem;
+        height: 4.5rem;
+        border-width: 0.25rem;
     }
 
     .name,
     .title {
-        font-size: 22px;
+        font-size: 1.375rem;
     }
 
     .title {
-        margin-top: 24px;
+        margin-top: 1.5rem;
     }
 
     .description {
-        margin-top: 20px;
+        margin-top: 1.25rem;
     }
 }

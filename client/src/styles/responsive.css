@@ -1,0 +1,22 @@
+:root {
+    font-size: 100%;
+    --page-gutter: clamp(1rem, 2vw, 2rem);
+    --page-gap: clamp(1rem, 1.6vw, 1.5rem);
+    --content-max-width: 90rem;
+    --card-gap: clamp(1rem, 1.4vw, 1.75rem);
+    --card-max-width: 31.25rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 20rem;
+}
+
+body {
+    margin: 0;
+}

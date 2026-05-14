@@ -4,24 +4,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 1.25rem;
     background: rgba(45, 42, 45, 0.45);
     z-index: 1000;
 }
 
 .popup {
-    width: min(100%, 420px);
-    padding: 32px 24px;
-    border-radius: 24px;
+    width: min(100%, 26.25rem);
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
     background: #ffffff;
-    box-shadow: 0 24px 60px rgba(45, 42, 45, 0.18);
+    box-shadow: 0 1.5rem 3.75rem rgba(45, 42, 45, 0.18);
     font-family: "Montserrat", sans-serif;
 }
 
 .text {
-    margin: 0 0 24px;
+    margin: 0 0 1.5rem;
     color: #2d2a2d;
-    font-size: clamp(18px, 1.8vw, 24px);
+    font-size: clamp(1.125rem, 1.8vw, 1.5rem);
     font-weight: 700;
     line-height: 1.4;
     text-align: center;
@@ -29,15 +29,15 @@
 
 .actions {
     display: flex;
-    gap: 12px;
+    gap: 0.75rem;
 }
 
 .deleteButton,
 .cancelButton {
     flex: 1;
-    min-height: 52px;
-    border-radius: 16px;
-    font-size: 16px;
+    min-height: 3.25rem;
+    border-radius: 1rem;
+    font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
@@ -50,21 +50,21 @@
 }
 
 .cancelButton {
-    border: 1px solid #d9d4d9;
+    border: 0.0625rem solid #d9d4d9;
     background: #ff0000;
     color: #ffffff;
 }
 
 .deleteButton:hover,
 .cancelButton:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 10px 24px rgba(45, 42, 45, 0.12);
+    transform: translateY(-0.0625rem);
+    box-shadow: 0 0.625rem 1.5rem rgba(45, 42, 45, 0.12);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
     .popup {
-        padding: 24px 18px;
-        border-radius: 20px;
+        padding: 1.5rem 1.125rem;
+        border-radius: 1.25rem;
     }
 
     .actions {

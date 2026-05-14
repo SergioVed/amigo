@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 0.3125rem;
     width: 100%;
 }
 
@@ -12,13 +12,13 @@
 
 .input {
     width: 100%;
-    min-height: clamp(40px, 5vw, 50px);
-    padding: 0 clamp(8px, 1.6vw, 16px);
-    border: 2px solid #d6d6d6;
-    border-radius: clamp(8px, 1vw, 10px);
+    min-height: clamp(2.5rem, 5vw, 3.125rem);
+    padding: 0 clamp(0.5rem, 1.6vw, 1rem);
+    border: 0.125rem solid #d6d6d6;
+    border-radius: clamp(0.5rem, 1vw, 0.625rem);
     background-color: #ffffff;
     color: #2d2a2d;
-    font-size: clamp(12px, 1.4vw, 18px);
+    font-size: clamp(0.75rem, 1.4vw, 1.125rem);
     outline: none;
     box-sizing: border-box;
 }
@@ -29,5 +29,5 @@
 
 .input:focus {
     border-color: #EDBA00;
-    box-shadow: 0 0 0 4px rgba(246, 191, 0, 0.18);
+    box-shadow: 0 0 0 0.25rem rgba(246, 191, 0, 0.18);
 }

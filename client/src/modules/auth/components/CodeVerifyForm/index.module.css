@@ -1,13 +1,13 @@
 .container {
     display: flex;
     flex-direction: column;
-    gap: clamp(18px, 3vw, 30px);
-    width: min(35%, 560px);
-    padding: clamp(20px, 4vw, 56px) clamp(16px, 4.5vw, 64px);
+    gap: clamp(1.125rem, 3vw, 1.875rem);
+    width: min(100%, 35rem);
+    padding: clamp(1.25rem, 4vw, 3.5rem) clamp(1rem, 4.5vw, 4rem);
     font-family: "Montserrat", sans-serif;
     background-color: #ffffff;
-    border-radius: clamp(14px, 2vw, 28px);
-    box-shadow: 0 clamp(10px, 1.5vw, 18px) clamp(24px, 3.5vw, 40px) rgba(0, 0, 0, 0.12);
+    border-radius: clamp(0.875rem, 2vw, 1.75rem);
+    box-shadow: 0 clamp(0.625rem, 1.5vw, 1.125rem) clamp(1.5rem, 3.5vw, 2.5rem) rgba(0, 0, 0, 0.12);
     box-sizing: border-box;
 }
 
@@ -15,8 +15,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: clamp(64px, 8vw, 100px);
-    width: clamp(64px, 8vw, 100px);
+    height: clamp(4rem, 8vw, 6.25rem);
+    width: clamp(4rem, 8vw, 6.25rem);
     margin: 0 auto;
     border-radius: 50%;
     background-color: #f6bf00;
@@ -29,7 +29,7 @@
 .title {
     margin: 0;
     color: #2d2a2d;
-    font-size: clamp(24px, 3vw, 40px);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
     font-weight: 700;
     line-height: 1.1;
     text-align: center;
@@ -38,7 +38,7 @@
 .description {
     margin: 0;
     color: #6d6d6d;
-    font-size: clamp(15px, 1.7vw, 22px);
+    font-size: clamp(0.9375rem, 1.7vw, 1.375rem);
     font-weight: 500;
     line-height: 1.45;
     text-align: center;
@@ -47,13 +47,13 @@
 .codeSection {
     display: flex;
     flex-direction: column;
-    gap: clamp(14px, 2vw, 24px);
+    gap: clamp(0.875rem, 2vw, 1.5rem);
 }
 
 .codeLabel {
     margin: 0;
     color: #2d2a2d;
-    font-size: clamp(16px, 1.9vw, 24px);
+    font-size: clamp(1rem, 1.9vw, 1.5rem);
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
@@ -62,17 +62,17 @@
 .codeInputs {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: clamp(8px, 1vw, 18px);
+    gap: clamp(0.5rem, 1vw, 1.125rem);
 }
 
 .codeInput {
     width: 100%;
     aspect-ratio: 1 / 1.08;
-    border: 2px solid #d6d6d6;
-    border-radius: clamp(14px, 2vw, 22px);
+    border: 0.125rem solid #d6d6d6;
+    border-radius: clamp(0.875rem, 2vw, 1.375rem);
     background-color: #ffffff;
     color: #2d2a2d;
-    font-size: clamp(20px, 2.3vw, 30px);
+    font-size: clamp(1.25rem, 2.3vw, 1.875rem);
     font-weight: 600;
     text-align: center;
     outline: none;
@@ -81,17 +81,17 @@
 
 .codeInput:focus {
     border-color: #EDBA00;
-    box-shadow: 0 0 0 4px rgba(246, 191, 0, 0.18);
+    box-shadow: 0 0 0 0.25rem rgba(246, 191, 0, 0.18);
 }
 
 .submitButton {
     width: 100%;
-    min-height: clamp(50px, 5vw, 70px);
+    min-height: clamp(3.125rem, 5vw, 4.375rem);
     border: none;
-    border-radius: clamp(14px, 2vw, 22px);
+    border-radius: clamp(0.875rem, 2vw, 1.375rem);
     background-color: #f1f1f1;
     color: #9d9d9d;
-    font-size: clamp(15px, 1.4vw, 20px);
+    font-size: clamp(0.9375rem, 1.4vw, 1.25rem);
     font-weight: 700;
     cursor: pointer;
 }
@@ -99,14 +99,14 @@
 .footer {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem;
     align-items: center;
 }
 
 .footerText {
     margin: 0;
     color: #8c8c8c;
-    font-size: clamp(15px, 1.6vw, 22px);
+    font-size: clamp(0.9375rem, 1.6vw, 1.375rem);
     font-weight: 500;
     text-align: center;
 }
@@ -115,43 +115,43 @@
     border: none;
     background: transparent;
     color: #2d2a2d;
-    font-size: clamp(15px, 1.6vw, 22px);
+    font-size: clamp(0.9375rem, 1.6vw, 1.375rem);
     font-weight: 700;
     cursor: pointer;
     padding: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
     .container {
-        width: min(100%, 460px);
-        margin: 24px auto;
+        width: min(100%, 28.75rem);
+        margin: 1.5rem auto;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 30rem) {
     .container {
         width: 100%;
-        padding: 24px 16px;
-        border-radius: 16px;
-        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 1rem;
+        border-radius: 1rem;
+        box-shadow: 0 0.75rem 1.625rem rgba(0, 0, 0, 0.1);
     }
 
     .codeInputs {
-        gap: 8px;
+        gap: 0.5rem;
     }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 24.375rem) {
     .container {
-        padding: 20px 14px;
-        border-radius: 14px;
+        padding: 1.25rem 0.875rem;
+        border-radius: 0.875rem;
     }
 
     .description {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 
     .codeInputs {
-        gap: 6px;
+        gap: 0.375rem;
     }
 }

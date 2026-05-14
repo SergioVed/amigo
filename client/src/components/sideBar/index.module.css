@@ -2,25 +2,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 248px;
+    width: 15.5rem;
     min-height: 100vh;
     font-family: "Montserrat", sans-serif;
     background-color: #2d2a2d;
     color: #ffffff;
-    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 0.0625rem solid rgba(255, 255, 255, 0.08);
     box-sizing: border-box;
 }
 
 .inner {
     display: flex;
     flex-direction: column;
-    gap: 36px;
-    padding: 24px 12px 0;
+    gap: 2.25rem;
+    padding: 1.5rem 0.75rem 0;
 }
 
 .brand {
-    padding: 0 12px;
-    font-size: 28px;
+    padding: 0 0.75rem;
+    font-size: 1.75rem;
     font-weight: 800;
     line-height: 1;
     letter-spacing: 0.02em;
@@ -29,12 +29,12 @@
 .navigation {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .footer {
-    padding: 20px 24px;
+    padding: 1.25rem 1.5rem;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.875rem;
+    border-top: 0.0625rem solid rgba(255, 255, 255, 0.08);
 }

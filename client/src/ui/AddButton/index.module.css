@@ -1,14 +1,15 @@
 .button {
-    padding: 5px;
-    min-width: 170px;
+    padding: 0.3125rem;
+    width: 100%;
+    min-width: min(100%, 10.625rem);
     color: #2d292b;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 700;
     border: none;
     background-color: #f6bf00;
-    border-radius: 15px;
+    border-radius: 0.9375rem;
     transition: transform 0.22s;
-    min-height: 50px;
+    min-height: 3.125rem;
 }
 
 .button:hover {

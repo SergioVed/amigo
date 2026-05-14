@@ -1,5 +1,15 @@
 
 .actionsContainer {
     display: flex;
-    gap: 25px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--page-gap);
+}
+
+.actionsContainer > :first-child {
+    flex: 1 1 20rem;
+}
+
+.actionsContainer > :last-child {
+    flex: 0 1 12rem;
 }
