@@ -1,4 +1,4 @@
-import { ConflictException, Inject, Injectable, NotFoundException } from "@nestjs/common";
+import { BadRequestException, ConflictException, Inject, Injectable, NotFoundException } from "@nestjs/common";
 import type { ICeoRepository } from "./ceoRepository";
 import { CeoCreationAttrs, CeoEntity, CeoUpdateAttrs } from "./ceoEntity";
 import bcrypt from "bcrypt"
@@ -37,6 +37,10 @@ export class CeoService {
             throw new NotFoundException("Ceo not found")
         }
         ceo.update(data)
-        return await this.ceoRepo.save(ceo)
+        const updatedCeo = await this.ceoRepo.save(ceo)
+        if (!updatedCeo) {
+            throw new BadRequestException("Ceo was not saved")
+        }
+        return updatedCeo
     }
 }

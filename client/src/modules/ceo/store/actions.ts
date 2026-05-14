@@ -2,6 +2,7 @@ import { Dispatch } from "redux"
 import { CeoAction, CeoActionTypes } from "./types"
 import { CeoApi } from "../api/ceoApi"
 import { errorHandler } from "../../../store/errorHandler"
+import { UpdateCeoForm } from "../types"
 
 
 export const fetchCeoAction = () => {
@@ -12,6 +13,18 @@ export const fetchCeoAction = () => {
             dispatch({type: CeoActionTypes.FETCH_CEO_SUCCESS, payload: response.data})
         } catch (error) {
             errorHandler(error, CeoActionTypes.FETCH_CEO_ERROR, dispatch)
+        }
+    }
+}
+
+export const updateCeoAction = (data: UpdateCeoForm) => {
+    return async function (dispatch: Dispatch<CeoAction>) {
+        try {
+            dispatch({type: CeoActionTypes.UPDATE_CEO})
+            const response = await CeoApi.updateCeo(data)
+            dispatch({type: CeoActionTypes.UPDATE_CEO_SUCCESS, payload: response.data})
+        } catch (error) {
+            errorHandler(error, CeoActionTypes.UPDATE_CEO_ERROR, dispatch)
         }
     }
 }

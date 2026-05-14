@@ -1,7 +1,7 @@
 .container {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px;
+    gap: 2rem;
     width: 100%;
 }
 
@@ -9,9 +9,58 @@
     grid-column: 1 / -1;
 }
 
+.passwordInfo {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.passwordMask {
+    color: #555555;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.passwordButton {
+    min-width: 70px;
+    min-height: 40px;
+    padding: 0 24px;
+    border: none;
+    border-radius: 10px;
+    background: #eeeeee;
+    color: #2d292b;
+    cursor: pointer;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.passwordButton:hover {
+    background: #e2e2e2;
+}
+
 @media (max-width: 900px) {
     .container {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .passwordInfo {
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .passwordMask {
+        font-size: 18px;
+    }
+
+    .passwordButton {
+        min-height: 44px;
+        border-radius: 14px;
     }
 }

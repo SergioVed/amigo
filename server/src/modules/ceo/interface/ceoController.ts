@@ -25,9 +25,11 @@ export class CeoController {
         return this.ceoService.create(dto)
     }
 
-    @UseGuards(AuthGuard)
+    // @UseGuards(AuthGuard)
     @Put("/:id")
-    update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateCeoDto) {
-        return this.ceoService.update(id, dto)
+    async update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateCeoDto) {
+        const updatedCeo = await this.ceoService.update(id, dto)
+        
+        return CeoResponseMapper.toResponse(updatedCeo)
     }
 }

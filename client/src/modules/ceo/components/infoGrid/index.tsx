@@ -2,12 +2,17 @@ import { Ceo } from "../../store/types"
 import { InfoBlock } from "../infoBlock"
 import styles from "./index.module.css"
 import userIcon from "../../icons/user.png"
+import { UpdateCeoForm } from "../../types"
+import { Dispatch, SetStateAction } from "react"
 
 interface InfoGridProps {
-    ceo: Ceo
+    ceo: Ceo,
+    isEditing: boolean,
+    form: UpdateCeoForm,
+    setForm: Dispatch<SetStateAction<UpdateCeoForm>>
 }
 
-export const InfoGrid = ({ceo}: InfoGridProps) => {
+export const InfoGrid = ({ceo, form, setForm, isEditing}: InfoGridProps) => {
 
     return (
         <div className={styles.container}>
@@ -15,7 +20,9 @@ export const InfoGrid = ({ceo}: InfoGridProps) => {
             <div className={styles.fullWidth}>
                 <InfoBlock
                     icon={userIcon}
-                    title="About"    
+                    title="About"   
+                    value={form.description ?? ceo.description}
+                    onChange={(value) => setForm(prev => ({...prev, description: value}))}
                 >
                     {ceo.description}
                 </InfoBlock>
@@ -23,14 +30,9 @@ export const InfoGrid = ({ceo}: InfoGridProps) => {
 
             <InfoBlock
                 icon={userIcon}
-                title="Email"    
-            >
-                {ceo.email}
-            </InfoBlock>
-
-            <InfoBlock
-                icon={userIcon}
-                title="Telegram"    
+                title="Telegram"  
+                value={form.telegram ?? ceo.telegram}
+                onChange={(value) => setForm(prev => ({...prev, telegram: value}))}  
             >
                 {ceo.telegram}
             </InfoBlock>
@@ -38,6 +40,8 @@ export const InfoGrid = ({ceo}: InfoGridProps) => {
             <InfoBlock
                 icon={userIcon}
                 title="Instagram"    
+                value={form.instagram ?? ceo.instagram}
+                onChange={(value) => setForm(prev => ({...prev, instagram: value}))}
             >
                 {ceo.instagram}
             </InfoBlock>

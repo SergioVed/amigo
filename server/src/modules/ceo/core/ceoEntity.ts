@@ -89,6 +89,7 @@ export class CeoEntity {
     }
 
     public update (data: CeoUpdateAttrs) {
+        if (data.email !== undefined) this._email = data.email
         if (data.name !== undefined) this._name = data.name
         if (data.description !== undefined) this._description = data.description
         if (data.telegram !== undefined) this._telegram = data.telegram

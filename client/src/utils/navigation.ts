@@ -21,7 +21,7 @@ export const sideBarLinks = [
     },
     {
         to: ADMIN_FULL_PATHS.ceo,
-        label: "Ceo",
+        label: "CEO",
         icon: require("../public/icons/sideBar/feed-back.png"),
         iconAlt: "CEO",
     },
