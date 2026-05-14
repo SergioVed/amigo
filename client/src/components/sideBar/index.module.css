@@ -2,8 +2,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex-shrink: 0;
     width: 15.5rem;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
     font-family: "Montserrat", sans-serif;
     background-color: #2d2a2d;
     color: #ffffff;

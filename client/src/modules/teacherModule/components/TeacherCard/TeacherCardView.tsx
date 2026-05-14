@@ -37,7 +37,7 @@ export const TeacherCardView = ({ teacher }: TeacherCardViewProps) => {
 
                 <div className={styles.powerList}>
                     {teacher.superPower.map((power) => (
-                        <span className={styles.powerItem}>
+                        <span key={power} className={styles.powerItem}>
                             {power}
                         </span>
                     ))}

@@ -11,7 +11,7 @@ export const PriceList = ({prices}: PriceListProps) => {
     return (
         <div className={styles.container}>
             {prices.map(price => (
-                <PriceCard price={price}/>
+                <PriceCard key={price.id} price={price}/>
             ))}
         </div>
     )
