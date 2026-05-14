@@ -16,10 +16,9 @@ export class FeedbackController {
         private imageService: ImageService
     ) {}
 
-    @UseGuards(AuthGuard, ThrottlerGuard)
+    @UseGuards(AuthGuard)
     @Post()
     @UseInterceptors(FileInterceptor("file"))
-    @Throttle({default: {limit: 5, ttl: 60_000}})
     async create(
         @Body() dto: CreateFeedbackDto, 
         @UploadedFile() file: Express.Multer.File
