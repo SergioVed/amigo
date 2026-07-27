@@ -1,0 +1,16 @@
+.header{
+    height: 4rem;
+    width: 100%;
+    background-color: #000;
+}
+
+.headerInner{
+    min-height: 3.5rem;
+    padding-inline: var(--page-padding-inline);
+    background-color: #fff;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

@@ -1,0 +1,45 @@
+.card {
+    width: 100%;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.content {
+    position: relative;
+    margin-top: -2.5rem;
+    padding: 1rem;
+    border: 2px solid #000;
+    border-radius: 1.75rem;
+    background-color: var(--color-white);
+}
+
+.index {
+    display: block;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-primary);
+    font-size: var(--label-size);
+    line-height: var(--label-line-height);
+    letter-spacing: var(--label-letter-spacing);
+}
+
+.content h3 {
+    margin: 0;
+    font-family: var(--font-primary);
+    font-size: var(--body-m-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--button-s-line-height);
+    letter-spacing: var(--button-s-letter-spacing);
+}
+
+.content p {
+    margin: 0.5rem 0 0;
+    font-family: var(--font-primary);
+    font-size: var(--button-s-size);
+    line-height: var(--body-s-line-height);
+    letter-spacing: var(--body-s-letter-spacing);
+}

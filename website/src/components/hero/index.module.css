@@ -1,0 +1,83 @@
+.container {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vh;
+    height: 100vw;
+    background: url("../../assets/hero/image-bg.png") center / cover no-repeat;
+    transform: translate(-50%, -50%) rotate(90deg);
+    z-index: -1;
+}
+
+.title {
+    margin: 1rem;
+    color: var(--color-white);
+    font-family: var(--font-primary);
+    font-size: var(--heading-h1-size);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--display-xl-line-height);
+    letter-spacing: var(--display-xl-letter-spacing);
+}
+
+.title>span {
+    display: block;
+}
+
+.title .lastLine {
+    position: relative;
+    display: block;
+    width: fit-content;
+}
+
+.sticker {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 0.1em);
+    width: 1.3em;
+    height: 1.3em;
+    object-fit: contain;
+    transform: translateY(-50%);
+}
+
+.subtitle {
+    margin: 1.5rem var(--page-padding-inline) 0;
+    color: var(--color-white);
+    font-family: var(--font-primary);
+    font-size: var(--body-m-size);
+    line-height: var(--body-m-line-height);
+    letter-spacing: var(--body-m-letter-spacing);
+}
+
+.btn {
+    display: block;
+    width: calc(100% - (2 * var(--page-padding-inline)));
+    margin: 1.5rem var(--page-padding-inline) 0;
+    padding: 0.75rem 1rem;
+    border: 2px solid #000;
+    border-radius: 0.75rem;
+    background-color: var(--color-white);
+    font-family: var(--font-primary);
+    font-size: var(--button-s-size);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--button-s-line-height);
+    letter-spacing: var(--button-s-letter-spacing);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.stickers {
+display: block;
+    width: 90%;
+    height: auto;
+    margin-top: 7rem;
+    margin-inline: auto;
+    object-fit: contain;
+}
