@@ -9,7 +9,7 @@ export class ProfessorResponseMapper {
             avatarUrl: professor.getAvatarUrl(),
             name: professor.getName(),
             description: professor.getDescription(),
-            subDescription: professor.getSubDescription(),
+            experience: professor.getExperience(),
             videoUrl: professor.getVideoUrl(),
             superPower: professor.getSuperPower(),
             favouriteWord: professor.getFavouriteWord(),

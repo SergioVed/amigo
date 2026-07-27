@@ -2,11 +2,11 @@ export interface CreateProfessorAttrs {
     avatarUrl: string,
     name: string,
     description: string,
-    subDescription: string,
+    experience: number,
     videoUrl: string,
     superPower: string[],
     favouriteWord: string,
-    forStudent: string
+    forStudent: string 
 }
 
 export class Professor {
@@ -16,7 +16,7 @@ export class Professor {
         private _avatarUrl: string,
         private _name: string,
         private _description: string,
-        private _subDescription: string,
+        private _experience: number,
         private _videoUrl: string,
         private _superPower: string[],
         private _favouriteWord: string,
@@ -39,8 +39,8 @@ export class Professor {
         return this._description;
     }
 
-    public getSubDescription(): string {
-        return this._subDescription;
+    public getExperience(): number {
+        return this._experience;
     }
 
     public getVideoUrl(): string {
@@ -66,7 +66,7 @@ export class Professor {
             data.avatarUrl,
             data.name,
             data.description,
-            data.subDescription,
+            data.experience,
             data.videoUrl,
             data.superPower,
             data.favouriteWord,
@@ -78,7 +78,7 @@ export class Professor {
         if (data.avatarUrl !== undefined) this._avatarUrl = data.avatarUrl;
         if (data.name !== undefined) this._name = data.name;
         if (data.description !== undefined) this._description = data.description;
-        if (data.subDescription !== undefined) this._subDescription = data.subDescription;
+        if (data.experience !== undefined) this._experience = data.experience;
         if (data.videoUrl !== undefined) this._videoUrl = data.videoUrl;
         if (data.superPower !== undefined) this._superPower = data.superPower;
         if (data.favouriteWord !== undefined) this._favouriteWord = data.favouriteWord;

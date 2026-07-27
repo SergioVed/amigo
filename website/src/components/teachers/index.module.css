@@ -1,0 +1,39 @@
+
+.container{
+    background-color: #EEE;
+    border-radius: 60px;
+    padding-inline: var(--page-padding-inline);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+h2{
+    max-width: 12ch;
+    margin: 0 auto;
+    font-family: var(--font-primary);
+    font-size: var(--heading-h3-size);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--heading-h3-line-height);
+    letter-spacing: var(--heading-h3-letter-spacing);
+    text-align: center;
+}
+
+h3{
+    margin: 2rem auto;
+    font-family: var(--font-primary);
+    font-size: var(--button-l-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--heading-h3-line-height);
+    letter-spacing: var(--heading-h3-letter-spacing);
+    text-align: center;
+}
+
+.outer{
+    background-color: var(--color-yellow);
+    padding-bottom: 4rem;
+    padding-top: 4rem;
+}
+
+.teacher_box{
+    
+}

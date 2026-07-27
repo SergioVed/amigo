@@ -3,6 +3,7 @@ import { Advantages } from './components/advantages'
 import { Ceo } from './components/ceo'
 import { Header } from './components/header'
 import { Hero } from './components/hero'
+import { Teachers } from './components/teachers'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Hero/>
         <Ceo/>
         <Advantages/>
+        <Teachers/>
       </main>
     </>
   )

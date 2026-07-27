@@ -9,7 +9,7 @@ export interface ProfessorModelCreationAttrs {
     avatar_url: string,
     name: string,
     description: string,
-    sub_description: string,
+    experience: number,
     video_url: string,
     super_power: string[],
     favourite_word: string,
@@ -28,11 +28,11 @@ export class ProfessorModel extends Model<ProfessorModel, ProfessorModelCreation
     @Column({ type: DataType.STRING, allowNull: false })
     declare name: string;
 
-    @Column({ type: DataType.TEXT, allowNull: false })
-    declare description: string;
+    @Column({ type: DataType.INTEGER, allowNull: false })
+    declare experience: number;
 
     @Column({ type: DataType.TEXT, allowNull: false })
-    declare sub_description: string;
+    declare description: string;
 
     @Column({ type: DataType.STRING, allowNull: false })
     declare video_url: string;
