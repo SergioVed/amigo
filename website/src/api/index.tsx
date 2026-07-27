@@ -1,5 +1,6 @@
 import axios from "axios"
-import type { CeoInfo, Teacher } from "../components/ceo/types"
+import type { CeoInfo } from "../components/ceo/types"
+import type { Teacher } from "../components/teachers/types"
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
 export const getCeo = async () => {

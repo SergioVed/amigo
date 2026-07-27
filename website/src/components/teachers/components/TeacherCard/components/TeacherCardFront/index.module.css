@@ -1,0 +1,108 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 19rem;
+    aspect-ratio: 723 / 859;
+    padding: 3.4rem 2.55rem 1.6rem;
+
+    background: url("../../../../../../assets/teachers/card.png") center / 100% 100% no-repeat;
+    color: #111;
+    font-family: var(--font-primary);
+}
+
+.certificate {
+    margin: 0;
+    color: #858585;
+    font-size: var(--label-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--body-m-line-height);
+    letter-spacing: var(--body-m-letter-spacing);
+    text-transform: uppercase;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 7.8rem;
+    gap: 0.8rem;
+    align-items: stretch;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    min-width: 0;
+}
+
+.field {
+    min-width: 0;
+}
+
+.name,
+.experience {
+    margin: 0;
+    overflow-wrap: anywhere;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--heading-h3-line-height);
+    letter-spacing: var(--heading-h3-letter-spacing);
+}
+
+.name {
+    font-size: var(--caption-s-size);
+}
+
+.experience {
+    font-size: var(--button-s-size);
+}
+
+.label {
+    display: block;
+    margin-top: 0.35rem;
+    padding-top: 0.35rem;
+    color: #929292;
+    font-size: var(--label-size);
+    line-height: var(--body-s-line-height);
+    letter-spacing: var(--body-s-letter-spacing);
+    border-top: 1px solid #b4b4b4;
+}
+
+.avatar {
+    display: block;
+    width: 100%;
+    height: 11rem;
+    object-fit: cover;
+    border: 1.5px solid #111;
+    border-radius: 1.3rem;
+}
+
+.description {
+    display: -webkit-box;
+    margin: 1.5rem 0 0;
+    overflow: hidden;
+    font-size: var(--body-s-size);
+    line-height: var(--body-l-line-height);
+    letter-spacing: var(--body-l-letter-spacing);
+}
+
+.more {
+    text-align: left;
+    padding: 0;
+    color: #989898;
+    font: inherit;
+    font-size: var(--label-size);
+    line-height: var(--body-s-line-height);
+    letter-spacing: var(--body-s-letter-spacing);
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
