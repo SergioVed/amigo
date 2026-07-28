@@ -7,6 +7,7 @@ export class ProfessorMapper {
     public static toDomain (data: ProfessorModel): Professor {
         return new Professor(
             data.id,
+            data.has_priority,
             data.avatar_url,
             data.name,
             data.description,
@@ -21,6 +22,7 @@ export class ProfessorMapper {
     public static toPersistence (professor: Professor): ProfessorModelCreationAttrs {
         return {
             avatar_url: professor.getAvatarUrl(),
+            has_priority: professor.getHasPriority(),
             name: professor.getName(),
             description: professor.getDescription(),
             experience: professor.getExperience(),

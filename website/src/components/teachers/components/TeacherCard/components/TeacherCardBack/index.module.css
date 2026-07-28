@@ -1,0 +1,137 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 19rem;
+    aspect-ratio: 723 / 859;
+    padding: 1rem;
+    color: #111;
+    font-family: var(--font-primary);
+    background: var(--color-white);
+    border-radius: 1.5rem;
+}
+
+.name {
+    margin: 0 0 0.7rem;
+    font-size: var(--button-s-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--button-s-line-height);
+    letter-spacing: var(--button-s-letter-spacing);
+}
+
+.content {
+    flex: 1;
+}
+
+.section {
+    padding: 0.75rem 0 0.8rem;
+    border-top: 1px solid #c9c9c9;
+}
+
+.heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.label {
+    margin: 0;
+    color: #a3a3a3;
+    font-size: var(--label-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--label-line-height);
+    letter-spacing: var(--label-letter-spacing);
+}
+
+.icon {
+    flex: 0 0 auto;
+    width: 1rem;
+    height: 1rem;
+    object-fit: contain;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin: 0.75rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.list li,
+.value {
+    position: relative;
+    margin: 0;
+    padding-left: 0.85rem;
+    font-size: var(--body-s-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--body-s-line-height);
+    letter-spacing: var(--body-s-letter-spacing);
+}
+
+.list li::before,
+.value::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "›";
+    font-size: 1.55em;
+    line-height: 0.75;
+}
+
+.value {
+    margin-top: 0.75rem;
+}
+
+.studentSection {
+    padding-bottom: 0;
+}
+
+.video {
+    display: grid;
+    grid-template-columns: 2.1rem 1fr;
+    gap: 0.45rem;
+    align-items: center;
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.play,
+.videoLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.1rem;
+    background: var(--color-yellow);
+}
+
+.play {
+    border-radius: 50%;
+}
+
+.play::before {
+    width: 0;
+    height: 0;
+    margin-left: 0.15rem;
+    content: "";
+    border-top: 0.35rem solid transparent;
+    border-bottom: 0.35rem solid transparent;
+    border-left: 0.55rem solid var(--color-white);
+}
+
+.videoLabel {
+    border-radius: 999px;
+    font-size: var(--button-s-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--button-s-line-height);
+    letter-spacing: var(--button-s-letter-spacing);
+}
+
+.stars{
+    position: absolute;
+    top: 0rem;
+    right: 1rem;
+}

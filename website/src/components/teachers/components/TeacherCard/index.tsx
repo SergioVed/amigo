@@ -9,9 +9,10 @@ export const TeacherCard = (props: Teacher) => {
 
     return(
         <div>
-            {/* {isFlipped ?  */}
-            {/* <TeacherCardBack {...props} onBack={() => setIsFlipped(false)}/> :  */}
-            {/* <TeacherCardFront {...props} onMore={() => setIsFlipped(true)}/> */}
+            {isFlipped ? 
+                <TeacherCardBack {...props} onMore={() => setIsFlipped(false)}/>
+                : <TeacherCardFront {...props} onMore={() => setIsFlipped(true)}/>
+            }
         </div>
     )
 

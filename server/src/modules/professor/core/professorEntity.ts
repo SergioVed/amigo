@@ -1,4 +1,5 @@
 export interface CreateProfessorAttrs {
+    hasPriority: boolean,
     avatarUrl: string,
     name: string,
     description: string,
@@ -13,6 +14,7 @@ export class Professor {
 
     constructor(
         private _id: number | null,
+        private _hasPriority: boolean,
         private _avatarUrl: string,
         private _name: string,
         private _description: string,
@@ -25,6 +27,10 @@ export class Professor {
 
     public getId(): number | null {
         return this._id;
+    }
+
+    public getHasPriority(): boolean {
+        return this._hasPriority
     }
 
     public getAvatarUrl(): string {
@@ -63,6 +69,7 @@ export class Professor {
     public static create(data: CreateProfessorAttrs) {
         return new Professor(
             null,
+            data.hasPriority,
             data.avatarUrl,
             data.name,
             data.description,
@@ -75,6 +82,7 @@ export class Professor {
     }
 
     public update(data: Partial<CreateProfessorAttrs>) {
+        if (data.hasPriority !== undefined) this._hasPriority = data.hasPriority;
         if (data.avatarUrl !== undefined) this._avatarUrl = data.avatarUrl;
         if (data.name !== undefined) this._name = data.name;
         if (data.description !== undefined) this._description = data.description;

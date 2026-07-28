@@ -4,6 +4,7 @@ import type { Teacher } from "./types"
 import { getTeachers } from "../../api"
 import { TeacherCardFront } from "./components/TeacherCard/components/TeacherCardFront"
 import { TeacherCard } from "./components/TeacherCard"
+import { TeacherCardBack } from "./components/TeacherCard/components/TeacherCardBack"
 
 export const Teachers = () => {
 
@@ -40,7 +41,7 @@ export const Teachers = () => {
                     <ul className={styles.teacher_box}>
                         {teachers.map((teacher) => (
                             <li className={styles.teacher_item} key={`${teacher.name}-${teacher.avatarUrl}`}>
-                                <TeacherCardFront {...teacher} />
+                                <TeacherCard {...teacher}/>
                             </li>
                         ))}
                     </ul>

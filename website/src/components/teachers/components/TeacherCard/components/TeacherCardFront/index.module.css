@@ -106,3 +106,13 @@
     border: 0;
     cursor: pointer;
 }
+
+.stars{
+    position: absolute;
+    top: 8rem;
+    left: 5rem;
+}
+
+.profileImageBox{
+    position: relative;
+}

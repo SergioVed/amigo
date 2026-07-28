@@ -7,6 +7,7 @@ import {
 
 export interface ProfessorModelCreationAttrs {
     avatar_url: string,
+    has_priority: boolean,
     name: string,
     description: string,
     experience: number,
@@ -21,6 +22,9 @@ export interface ProfessorModelCreationAttrs {
 export class ProfessorModel extends Model<ProfessorModel, ProfessorModelCreationAttrs>{
     @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
     declare id: number;
+
+    @Column({ type: DataType.BOOLEAN, allowNull: false })
+    declare has_priority: boolean;
 
     @Column({ type: DataType.STRING, allowNull: false })
     declare avatar_url: string;

@@ -1,5 +1,7 @@
 import type { Teacher } from "../../../../types"
 import styles from "./index.module.css"
+import priorityBg from "../../../../../../assets/teachers/cardPriority.png"
+import starts from "../../../../../../assets/teachers/icons/stars.svg"
 
 const experienceLabel = (years: number) => {
     const lastTwoDigits = years % 100
@@ -16,10 +18,16 @@ export const TeacherCardFront = ({
     name,
     description,
     experience,
-}: Teacher) => {
+    hasPriority,
 
-    return(
-        <article className={styles.container}>
+    onMore
+}: Teacher & { onMore: () => void }) => {
+
+    return (
+        <article
+            className={styles.container}
+            style={hasPriority ? { backgroundImage: `url(${priorityBg})` } : undefined}
+        >
             <div className={styles.profile}>
                 <div className={styles.info}>
                     <p className={styles.certificate}>
@@ -39,16 +47,20 @@ export const TeacherCardFront = ({
                     </div>
                 </div>
 
-                <img
-                    className={styles.avatar}
-                    src={avatarUrl}
-                    alt={`Викладачка ${name}`}
-                />
+                <div className={styles.profileImageBox}>
+                    <img
+                        className={styles.avatar}
+                        src={avatarUrl}
+                        alt={`Викладачка ${name}`}
+                    />
+                    {hasPriority ? <img src={starts} className={styles.stars} /> : <></>}
+                </div>
+
             </div>
 
             <p className={styles.description}>{description}</p>
 
-            <button className={styles.more} type="button" onClick={() => null}>
+            <button className={styles.more} type="button" onClick={onMore}>
                 Більше
             </button>
 

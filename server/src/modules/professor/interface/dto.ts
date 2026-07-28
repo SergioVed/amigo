@@ -1,5 +1,5 @@
 import { PartialType } from "@nestjs/swagger";
-import { ArrayNotEmpty, IsArray, IsNotEmpty, IsNumber, IsString, IsUrl } from "class-validator";
+import { ArrayNotEmpty, IsArray, IsBoolean, IsNotEmpty, IsNumber, IsString, IsUrl } from "class-validator";
 import { CreateProfessorAttrs } from "../core/professorEntity.js";
 
 export class CreateProfessorDto {
@@ -7,6 +7,9 @@ export class CreateProfessorDto {
     @IsString()
     @IsNotEmpty()
     name!: string;
+
+    @IsBoolean()
+    hasPriority!: boolean;
 
     @IsString()
     @IsNotEmpty()
