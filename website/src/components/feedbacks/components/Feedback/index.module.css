@@ -1,0 +1,71 @@
+.container {
+    box-sizing: border-box;
+    padding: 0.5rem;
+    color: #111;
+    font-family: var(--font-primary);
+    background-color: var(--color-white);
+    border: 1px solid #111;
+    border-radius: 1rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.avatarFrame {
+    display: grid;
+    width: 2rem;
+    aspect-ratio: 1;
+    place-items: center;
+    overflow: hidden;
+    background-color: var(--color-yellow);
+    clip-path: polygon(50% 96%, 8% 57%, 3% 36%, 7% 19%, 19% 8%, 34% 6%, 50% 17%, 66% 6%, 81% 8%, 93% 19%, 97% 36%, 92% 57%);
+}
+
+.avatar {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    clip-path: inherit;
+}
+
+.name {
+    margin: 0;
+    font-size: var(--body-s-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--body-s-line-height);
+    letter-spacing: var(--body-s-letter-spacing);
+}
+
+.description {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: var(--body-s-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--body-s-line-height);
+    letter-spacing: var(--body-s-letter-spacing);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.description.expanded {
+    display: block;
+    overflow: visible;
+}
+
+.toggle {
+    padding: 0;
+    color: #999;
+    font-family: var(--font-primary);
+    font-size: var(--label-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--label-line-height);
+    letter-spacing: var(--label-letter-spacing);
+    text-align: left;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
