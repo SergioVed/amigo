@@ -1,5 +1,5 @@
 import { FieldConfig } from "../../../components/AddFormPopup";
-import { PriceForm, PriceType } from "../types";
+import { PriceCategory, PriceForm, PriceType } from "../types";
 
 export const fields: FieldConfig<PriceForm>[] = [
     {
@@ -20,7 +20,7 @@ export const fields: FieldConfig<PriceForm>[] = [
     },
 ]
 
-export const selectOptions: {name: string, value: PriceType}[] = [
+export const typeOptions: {name: string, value: PriceType}[] = [
     {
         name: "Individual",
         value: "individual"
@@ -28,4 +28,20 @@ export const selectOptions: {name: string, value: PriceType}[] = [
         name: "Pair",
         value: "pair"
     }
+]
+
+export const categoryOptions: {name: string, value: PriceCategory}[] = [
+    {
+        name: "Trial",
+        value: "trial"
+    }, {
+        name: "Single",
+        value: "single"
+    }, {
+        name: "Subscription",
+        value: "subscription"
+    }, {
+        name: "With Mari",
+        value: "with_mari"
+    },
 ]

@@ -1,15 +1,17 @@
 
 import { Dispatch, SetStateAction } from "react"
 import { CustomInput } from "../../../../ui/CustomInput"
-import { PriceType } from "../../types"
+import { PriceCategory, PriceType } from "../../types"
 import styles from "./index.module.css"
-import { PriceTypeSelect } from "../../ui/PriceTypeSelect"
+import { PriceSelect } from "../../ui/PriceTypeSelect"
+import { categoryOptions, typeOptions } from "../../utils/fields"
 
 export interface PriceCardFormData {
     title: string
     amount: number
     description: string
     type: PriceType
+    category: PriceCategory
 }
 
 interface PriceCardFormProps {
@@ -44,10 +46,21 @@ export const PriceCardForm = ({form, setForm}: PriceCardFormProps) => {
                 placeholder="Enter description"
             />
 
-            <PriceTypeSelect
+            <PriceSelect
+                label="Type"
+                options={typeOptions}
                 type={form.type}
                 onChange={(type) => {
                     setForm(prev => ({...prev, type: type}))
+                }}
+            />
+
+             <PriceSelect
+                label="Category"
+                options={categoryOptions}
+                type={form.category}
+                onChange={(category) => {
+                    setForm(prev => ({...prev, category: category}))
                 }}
             />
         </div>

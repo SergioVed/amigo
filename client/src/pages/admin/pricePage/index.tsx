@@ -12,7 +12,9 @@ import { addPriceAction,
     PriceList,
     filterPrices,
     fields,
-    PriceTypeSelect
+    PriceSelect,
+    typeOptions,
+    categoryOptions
 } from "../../../modules/priceModule"
 
 export const PricePage = () => {
@@ -58,10 +60,21 @@ export const PricePage = () => {
                 onSubmit={() => {
                     handleAddPrice(form)
                 }}>
-                <PriceTypeSelect
+                <PriceSelect
+                    label="Type"
+                    options={typeOptions}
                     type={form.type}
                     onChange={(type) => {
                         setForm(prev => ({ ...prev, type: type }))
+                    }}
+                />
+
+                <PriceSelect
+                    label="Category"
+                    options={categoryOptions}
+                    type={form.category}
+                    onChange={(category) => {
+                        setForm(prev => ({ ...prev, category: category }))
                     }}
                 />
             </AddFormPopup>}

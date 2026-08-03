@@ -1,25 +1,25 @@
-import { Dispatch } from "redux"
-import { PriceCardFormData } from "../../components/PriceCard/priceCardForm"
-import { selectOptions } from "../../utils/fields"
 import styles from "./index.module.css"
-import { SetStateAction } from "react"
-import { PriceType } from "../../types"
 
-interface PriceTypeSelectProps {
-    type: PriceType
-    onChange: (value: PriceType) => void
+interface PriceSelectProps<T> {
+    label: string,
+    type: T
+    onChange: (value: T) => void,
+    options: Array<{
+        name: string,
+        value: string
+    }>
 }
 
-export const PriceTypeSelect = ({type, onChange}: PriceTypeSelectProps) => {
+export const PriceSelect = <T extends string>({type, onChange, label, options}: PriceSelectProps<T>) => {
     return (
         <div className={styles.selectField}>
-            <label className={styles.selectLabel}>Type</label>
+            <label className={styles.selectLabel}>{label}</label>
             <select
                 className={styles.select}
                 value={type}
-                onChange={(e) => onChange(e.target.value as PriceType)}
+                onChange={(e) => onChange(e.target.value as T)}
             >
-                {selectOptions.map(option => (
+                {options.map(option => (
                     <option key={option.value} value={option.value}>
                         {option.name}
                     </option>

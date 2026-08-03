@@ -1,0 +1,200 @@
+.outer {
+    display: grid;
+    justify-items: center;
+    padding-bottom: 4rem;
+    font-family: var(--font-primary);
+    background-color: var(--color-yellow);
+}
+
+.container {
+    box-sizing: border-box;
+    display: grid;
+    gap: 2rem;
+    width: min(100%, 43.5rem);
+    padding: 3rem var(--page-padding-inline) 8rem;
+    background-color: #f2f2f2;
+    border-radius: 3.75rem;
+}
+
+.header {
+    display: grid;
+    gap: 1rem;
+    text-align: center;
+    justify-items: center;
+}
+
+.header h2,
+.header p,
+.price_box h3,
+.price_box h4,
+.price_box p,
+.status {
+    margin: 0;
+}
+
+.header h2 {
+    margin: auto;
+
+    font-family: var(--font-primary);
+    font-size: var(--heading-h3-size);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--heading-h3-line-height);
+    letter-spacing: var(--heading-h3-letter-spacing);
+}
+
+.header p,
+.status {
+    font-size: var(--body-s-size);
+    line-height: var(--body-s-line-height);
+    letter-spacing: var(--body-s-letter-spacing);
+}
+
+.status {
+    padding: 2rem;
+    text-align: center;
+}
+
+.price_type_toggle {
+    display: grid;
+    justify-items: center;
+}
+
+.price_box {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.introductory {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.875rem;
+}
+
+.introductory_card,
+.mari_card,
+.subscriptions,
+.subscription_card {
+    box-sizing: border-box;
+    border: 1.5px solid #111;
+}
+
+.introductory_card {
+    display: grid;
+    align-content: space-between;
+    background-color: var(--color-white);
+    border-radius: 20px;
+    gap: 1.5rem;
+    padding: 1.3rem;
+}
+
+.introductory_card h3,
+.mari_card h3 {
+    max-width: 9ch;
+    font-size: var(--caption-s-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--caption-s-line-height);
+    letter-spacing: var(--caption-s-letter-spacing);
+    text-align: start;
+}
+
+.amount {
+    font-size: var(--heading-h3-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--heading-h3-line-height);
+    letter-spacing: var(--heading-h3-letter-spacing);
+    white-space: nowrap;
+}
+
+.subscription_amount{
+    font-size: var(--caption-l-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--caption-l-line-height);
+    letter-spacing: var(--caption-l-letter-spacing);
+    white-space: nowrap;
+}
+
+.mari_card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "title title"
+        "amount description";
+    align-items: end;
+    gap: 2rem 1rem;
+    background-color: var(--color-yellow);
+    padding: 1.3rem;
+    border-radius: 20px;
+}
+
+.mari_card h3 {
+    grid-area: title;
+    max-width: none;
+}
+
+.mari_card .amount {
+    grid-area: amount;
+}
+
+.description {
+    font-size: var(--body-s-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--body-s-line-height);
+    letter-spacing: var(--body-s-letter-spacing);
+}
+
+.mari_card .description {
+    grid-area: description;
+}
+
+.subscriptions {
+    display: grid;
+    gap: 2.5rem;
+    padding: 1.3rem;
+    background-color: var(--color-white);
+    border-radius: 20px;
+}
+
+.subscriptions > h3 {
+    font-size: var(--body-m-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--body-m-line-height);
+    letter-spacing: var(--body-m-letter-spacing);
+    text-align: start;
+    text-transform: capitalize;
+}
+
+.subscription_list {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.subscription_card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "title amount"
+        "title description";
+    align-items: center;
+    padding: 1.3rem;
+    border-color: var(--color-yellow);
+    border-radius: 1.875rem;
+}
+
+.subscription_card h4 {
+    grid-area: title;
+    font-size: var(--button-s-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--button-s-line-height);
+    letter-spacing: var(--button-s-letter-spacing);
+}
+
+.subscription_card .amount {
+    grid-area: amount;
+    align-self: end;
+}
+
+.subscription_card .description {
+    grid-area: description;
+    align-self: start;
+    justify-self: end;
+}

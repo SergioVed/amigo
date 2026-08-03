@@ -4,8 +4,7 @@
     position: relative;
     width: min(100%, var(--card-max-width));
     max-width: var(--card-max-width);
-    min-height: 15.625rem;
-    padding: 4.375rem 1.25rem 1.25rem 1.25rem;
+    padding: 1.3rem;
     border-radius: 1.5rem;
     background: #ffffff;
     font-family: "Montserrat", sans-serif;

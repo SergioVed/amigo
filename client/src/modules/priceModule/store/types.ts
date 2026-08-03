@@ -1,3 +1,4 @@
+import { PriceCategory } from "../types"
 
 type PriceType = "individual" | "pair"
 
@@ -7,6 +8,7 @@ export interface Price {
     title: string,
     description: string,
     type: PriceType
+    category: PriceCategory
 }
 
 

@@ -23,6 +23,7 @@ export const PriceCard = ({price}: PriceCardProps) => {
         amount: price.amount,
         description: price.description,
         type: price.type,
+        category: price.category
     })
 
     function cancel() {
@@ -32,6 +33,7 @@ export const PriceCard = ({price}: PriceCardProps) => {
             amount: price.amount,
             description: price.description,
             type: price.type,
+            category: price.category
         })
     }
 
@@ -53,6 +55,10 @@ export const PriceCard = ({price}: PriceCardProps) => {
 
         if (form.type !== price.type) {
             formToUpdate.type = form.type
+        }
+
+        if (form.category !== price.category){
+            formToUpdate.category = form.category
         }
 
         dispatch(updatePriceAction(formToUpdate, id))
