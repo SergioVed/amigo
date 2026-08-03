@@ -1,10 +1,12 @@
-export type PriceType = "individual" | "pair" | "special"
+export type PriceType = "individual" | "pair" | "special";
+export type PriceCategory = "trial" | "single" | "with_mari" | "subscription";
 
 export interface CreatePriceAttrs {
     amount: number,
     title: string,
     description: string,
-    type: PriceType
+    type: PriceType,
+    category: PriceCategory
 }
 
 export interface UpdatePriceAttrs extends Partial<CreatePriceAttrs> {}
@@ -16,7 +18,8 @@ export class Price {
         private _amount: number,
         private _title: string,
         private _description: string,
-        private _type: PriceType
+        private _type: PriceType,
+        private _category: PriceCategory
     ) {}
 
     public getId(): number | null {
@@ -39,13 +42,18 @@ export class Price {
         return this._type;
     }
 
+    public getCategory(): PriceCategory {
+        return this._category
+    }
+
     public static create (data: CreatePriceAttrs) {
         return new Price(
             null,
             data.amount,
             data.title, 
             data.description,
-            data.type
+            data.type,
+            data.category
         )
     }
 
@@ -53,6 +61,7 @@ export class Price {
         if (data.amount !== undefined) this._amount = data.amount
         if (data.description !== undefined) this._description = data.description
         if (data.title !== undefined) this._title = data.title;
-        if (data.type !== undefined) this._type = data.type
+        if (data.type !== undefined) this._type = data.type;
+        if (data.category !== undefined) this._category = data.category;
     }
 }

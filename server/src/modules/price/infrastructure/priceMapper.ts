@@ -10,7 +10,8 @@ export class PriceMapper {
             data.amount,
             data.title,
             data.description,
-            data.type
+            data.type,
+            data.category
         )
     }
 
@@ -19,7 +20,8 @@ export class PriceMapper {
             amount: price.getAmount(),
             title: price.getTitle(),
             description: price.getDescription(),
-            type: price.getType()
+            type: price.getType(),
+            category: price.getCategory()
         }
     }  
 

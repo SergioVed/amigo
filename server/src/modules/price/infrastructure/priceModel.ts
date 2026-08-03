@@ -1,11 +1,12 @@
 import { Column, DataType, Model, Table } from "sequelize-typescript";
-import type { PriceType } from "../core/priceEntity";
+import type { PriceCategory, PriceType } from "../core/priceEntity";
 
 export interface PriceModelCreationAttrs {
     amount: number,
     title: string,
     description: string,
-    type: PriceType
+    type: PriceType,
+    category: PriceCategory
 }
 
 @Table({tableName: "price"})
@@ -24,4 +25,7 @@ export class PriceModel extends Model<PriceModel, PriceModelCreationAttrs> {
 
     @Column({ type: DataType.STRING, allowNull: false })
     declare type: PriceType;
+
+    @Column({ type: DataType.STRING, allowNull: false })
+    declare category: PriceCategory;
 }
