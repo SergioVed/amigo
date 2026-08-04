@@ -1,0 +1,18 @@
+export const stickers = [
+    { text: "EASY PEASY", className: "easy" },
+    { text: "TÚ PUEDES", className: "puedes" },
+    { text: "☎️", className: "phone" },
+    { text: "🇪🇸", className: "spain" },
+    { text: "BOOK A CLASS", className: "bookClass" },
+    { text: "🇬🇧", className: "english" },
+    { text: "📒", className: "notebook" },
+    { text: "🔥", className: "fire" },
+    { text: "🐱", className: "cat" },
+    { text: "💪🏻", className: "strong" },
+    { text: "📁", className: "folder" },
+    { text: "YES, AMIGO", className: "amigo" },
+    { text: "VAMOS YA", className: "vamos" },
+    { text: "😍", className: "love" },
+    { text: "💻", className: "laptop" },
+    { text: "🚪", className: "door" },
+]

@@ -1,0 +1,115 @@
+.container {
+    display: grid;
+    justify-items: center;
+    padding-inline: var(--page-padding-inline);
+    padding-bottom: 7rem;
+    font-family: var(--font-primary);
+    background-color: var(--color-yellow);
+}
+
+.content {
+    display: grid;
+    gap: 1.25rem;
+    width: min(100%, 30.5rem);
+}
+
+.visual {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    box-sizing: border-box;
+    height: 30rem;
+    overflow: hidden;
+    padding-top: 3.5rem;
+    background-color: #f2f2f2;
+    border: 1.5px solid #111;
+    border-radius: 2.75rem;
+}
+
+.visual h2 {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    font-size: var(--heading-h3-size);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--heading-h3-line-height);
+    letter-spacing: var(--heading-h3-letter-spacing);
+    text-align: center;
+}
+
+.visual img {
+    position: absolute;
+    bottom: 0rem;
+    width: 100%;
+    max-width: none;
+}
+
+.questions,
+.question {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.question_button,
+.answer {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    background-color: #f2f2f2;
+    border-radius: 2.5rem;
+}
+
+.question_button {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    min-height: 6rem;
+    padding: 1.5rem 2rem;
+    color: #111;
+    font-family: var(--font-primary);
+    font-size: var(--body-m-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--body-m-line-height);
+    letter-spacing: var(--body-m-letter-spacing);
+    text-align: left;
+    border: 1.5px solid #111;
+    cursor: pointer;
+}
+
+.question_button:focus-visible {
+    outline: 0.1875rem solid var(--color-white);
+    outline-offset: 0.1875rem;
+}
+
+.icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 2.125rem;
+    height: 2.125rem;
+    background-color: var(--color-yellow);
+    border-radius: 50%;
+}
+
+.icon::after {
+    width: 0.5rem;
+    height: 0.5rem;
+    content: "";
+    border-right: 0.125rem solid var(--color-white);
+    border-bottom: 0.125rem solid var(--color-white);
+    transform: translateY(-0.125rem) rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.icon_open::after {
+    transform: translateY(0.125rem) rotate(225deg);
+}
+
+.answer {
+    padding: 2rem;
+    font-size: var(--body-m-size);
+    font-weight: var(--font-weight-medium);
+    line-height: var(--body-m-line-height);
+    letter-spacing: var(--body-m-letter-spacing);
+}

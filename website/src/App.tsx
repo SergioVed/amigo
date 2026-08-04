@@ -5,7 +5,9 @@ import { Feedbacks } from './components/feedbacks'
 import { Header } from './components/header'
 import { Hero } from './components/hero'
 import { Prices } from './components/prices'
+import { Questions } from './components/questions'
 import { Teachers } from './components/teachers'
+import { TrialLesson } from './components/trial-lesson'
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
         <Teachers/>
         <Feedbacks/>
         <Prices/>
+        <Questions/>
+        <TrialLesson/>
       </main>
     </>
   )
