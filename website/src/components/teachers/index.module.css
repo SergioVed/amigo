@@ -1,5 +1,7 @@
 
 .container{
+    margin: 0 auto;
+    max-width: 30rem;
     background-color: #EEE;
     border-radius: 60px;
     padding-inline: var(--page-padding-inline);
@@ -36,8 +38,11 @@ h3{
 
 .teacher_box{
     display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 30rem;
     gap: 1.5rem;
-    margin: 0;
+    margin: 0 auto;
     padding: 1rem 0 1.5rem;
     overflow-x: auto;
     list-style: none;

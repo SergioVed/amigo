@@ -10,7 +10,7 @@
 .content {
     display: grid;
     gap: 1.25rem;
-    width: min(100%, 30.5rem);
+    width: min(100%, 30rem);
 }
 
 .visual {

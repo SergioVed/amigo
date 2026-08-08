@@ -2,6 +2,7 @@ import './App.css'
 import { Advantages } from './components/advantages'
 import { Ceo } from './components/ceo'
 import { Feedbacks } from './components/feedbacks'
+import { Footer } from './components/footer'
 import { Header } from './components/header'
 import { Hero } from './components/hero'
 import { Prices } from './components/prices'
@@ -24,6 +25,7 @@ function App() {
         <Prices/>
         <Questions/>
         <TrialLesson/>
+        <Footer/>
       </main>
     </>
   )

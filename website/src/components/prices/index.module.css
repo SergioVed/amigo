@@ -7,10 +7,12 @@
 }
 
 .container {
+    margin-top: 3rem;
     box-sizing: border-box;
     display: grid;
     gap: 2rem;
-    width: min(100%, 43.5rem);
+    width: 100%;
+    max-width: 30rem;
     padding: 3rem var(--page-padding-inline) 5rem;
     background-color: #f2f2f2;
     border-radius: 3.75rem;

@@ -2,7 +2,7 @@
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    height: 100vh;
+    min-height: 100svh;
 }
 
 .container::before {
@@ -10,15 +10,18 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100vh;
-    height: 100vw;
+    width: 150vmax;
+    height: 100vmax;
     background: url("../../assets/hero/image-bg.png") center / cover no-repeat;
     transform: translate(-50%, -50%) rotate(90deg);
     z-index: -1;
 }
 
 .title {
-    margin: 1rem;
+    box-sizing: border-box;
+    width: calc(100% - (2 * var(--page-padding-inline)));
+    max-width: 30rem;
+    margin: 1rem auto 0;
     color: var(--color-white);
     font-family: var(--font-primary);
     font-size: var(--heading-h1-size);
@@ -48,7 +51,10 @@
 }
 
 .subtitle {
-    margin: 1.5rem var(--page-padding-inline) 0;
+    box-sizing: border-box;
+    width: calc(100% - (2 * var(--page-padding-inline)));
+    max-width: 30rem;
+    margin: 1.5rem auto 0;
     color: var(--color-white);
     font-family: var(--font-primary);
     font-size: var(--body-m-size);
@@ -58,26 +64,36 @@
 
 .btn {
     display: block;
+    box-sizing: border-box;
     width: calc(100% - (2 * var(--page-padding-inline)));
-    margin: 1.5rem var(--page-padding-inline) 0;
+    max-width: 30rem;
+    margin: 1.5rem auto 0;
     padding: 0.75rem 1rem;
     border: 2px solid #000;
     border-radius: 0.75rem;
     background-color: var(--color-white);
+
     font-family: var(--font-primary);
     font-size: var(--button-s-size);
     font-weight: var(--font-weight-bold);
     line-height: var(--button-s-line-height);
     letter-spacing: var(--button-s-letter-spacing);
+
     text-transform: uppercase;
     cursor: pointer;
 }
 
 .stickers {
-display: block;
+    display: block;
     width: 90%;
+    max-width: 28rem;
     height: auto;
-    margin-top: 7rem;
+    margin-top: clamp(2rem, 10vh, 7rem);
     margin-inline: auto;
     object-fit: contain;
+}
+
+
+@media (min-width: 768px) {
+
 }

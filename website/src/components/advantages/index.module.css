@@ -19,7 +19,9 @@
 
 .container{
     box-sizing: border-box;
-    width: 100%;
+    width: calc(100% - (2 * var(--page-padding-inline)));
+    max-width: 30rem;
+    margin-inline: auto;
 
     display: flex;
     flex-direction: column;
@@ -28,6 +30,4 @@
     background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
-
-    padding-inline: var(--page-padding-inline);
 }

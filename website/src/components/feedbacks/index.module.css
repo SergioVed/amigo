@@ -1,15 +1,15 @@
 .container {
     box-sizing: border-box;
-    padding-inline: var(--page-padding-inline);
     overflow: hidden;
     background-color: var(--color-yellow);
 }
 
 .notebook {
     box-sizing: border-box;
-    width: min(100%, 48.75rem);
+    width: 100%;
+    max-width: 30rem;
     margin-inline: auto;
-    padding: min(74%, 36.25rem) clamp(1rem, 4vw, 2rem) 3rem;
+    padding: min(74%, 23rem) clamp(1rem, 4vw, 2rem) 2rem;
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100% auto;

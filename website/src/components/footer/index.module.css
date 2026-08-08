@@ -1,0 +1,64 @@
+.footer {
+    box-sizing: border-box;
+    width: 100%;
+    color: var(--color-yellow);
+    background-color: var(--color-yellow);
+    font-family: var(--font-primary);
+}
+
+.card {
+    box-sizing: border-box;
+    width: min(100%, 29.375rem);
+    margin-inline: auto;
+    padding: 2rem 2.375rem 2.5rem;
+    background-color: #f1f1f1;
+    border-radius: 3.75rem 3.75rem 0 0;
+}
+
+.logo {
+    display: block;
+    width: min(100%, 17.25rem);
+    height: auto;
+}
+
+.tagline {
+    margin: 0.5rem 0 0;
+    font-size: var(--button-s-size);
+    font-weight: 400;
+    line-height: var(--button-s-line-height);
+    letter-spacing: var(--button-s-letter-spacing);
+}
+
+.socials {
+    display: flex;
+    gap: 0.625rem;
+    margin-top: 2rem;
+}
+
+.socialLink {
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    flex: 0 0 auto;
+    background-color: #000;
+    border-radius: 0.625rem;
+    transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.socialLink img {
+    display: block;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    object-fit: contain;
+}
+
+.socialLink:hover {
+    opacity: 0.8;
+    transform: translateY(-0.125rem);
+}
+
+.socialLink:focus-visible {
+    outline: 0.1875rem solid #1594ef;
+    outline-offset: 0.1875rem;
+}
