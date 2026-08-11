@@ -11,6 +11,15 @@ interface TeacherCardFormProps {
 }
 
 export const TeacherCardForm = ({ form, setForm }: TeacherCardFormProps) => {
+    function updateSuperPower(index: number, value: string) {
+        setForm(prev => {
+            const superPower = [...prev.superPower]
+            superPower[index] = value
+
+            return {...prev, superPower}
+        })
+    }
+
     return (
         <div className={styles.form}>
             <CustomInput
@@ -25,6 +34,37 @@ export const TeacherCardForm = ({ form, setForm }: TeacherCardFormProps) => {
                 value={form.description}
                 onChange={(e) => setForm((prev) => ({ ...prev, description: e.target.value }))}
                 placeholder="Enter description"
+            />
+
+            <CustomInput
+                label="Experience"
+                value={form.experience}
+                type="number"
+                onChange={(e) => setForm((prev) => ({ ...prev, experience: Number(e.target.value) }))}
+                placeholder="Enter experience"
+            />
+
+            <label>
+                <input
+                    type="checkbox"
+                    checked={form.hasPriority}
+                    onChange={(e) => setForm((prev) => ({ ...prev, hasPriority: e.target.checked }))}
+                />
+                Has priority
+            </label>
+
+            <CustomInput
+                label="First Super Power"
+                value={form.superPower[0] ?? ""}
+                onChange={(e) => updateSuperPower(0, e.target.value)}
+                placeholder="Enter first super power"
+            />
+
+            <CustomInput
+                label="Second Super Power"
+                value={form.superPower[1] ?? ""}
+                onChange={(e) => updateSuperPower(1, e.target.value)}
+                placeholder="Enter second super power"
             />
 
             <div className={styles.videoLink}>

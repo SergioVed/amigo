@@ -24,6 +24,8 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
         avatarUrl: teacher.avatarUrl,
         name: teacher.name,
         description: teacher.description,
+        experience: teacher.experience,
+        hasPriority: teacher.hasPriority,
         videoUrl: teacher.videoUrl,
         superPower: teacher.superPower,
         favouriteWord: teacher.favouriteWord,
@@ -45,6 +47,14 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
 
         if (form.description !== teacher.description) {
             formToUpdate.description = form.description
+        }
+
+        if (form.experience !== teacher.experience) {
+            formToUpdate.experience = form.experience
+        }
+
+        if (form.hasPriority !== teacher.hasPriority) {
+            formToUpdate.hasPriority = form.hasPriority
         }
 
         if (form.videoUrl !== teacher.videoUrl) {

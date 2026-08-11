@@ -2,9 +2,12 @@ export interface TeacherCreateForm {
     name: string
     description: string
     videoUrl: string
-    superPower: string
+    superPower1: string
+    superPower2: string
     favouriteWord: string
     forStudent: string
+    experience: number
+    hasPriority: boolean
 }
 
 export interface TeacherCreatePayload {
@@ -14,4 +17,6 @@ export interface TeacherCreatePayload {
     superPower: string[]
     favouriteWord: string
     forStudent: string
+    experience: number
+    hasPriority: boolean
 }

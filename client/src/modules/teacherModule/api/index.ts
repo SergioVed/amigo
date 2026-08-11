@@ -27,6 +27,8 @@ export class TeachersApi {
         formData.append("forStudent", data.forStudent)
         formData.append("videoUrl", data.videoUrl)
         formData.append("favouriteWord", data.favouriteWord)
+        formData.append("experience", String(data.experience))
+        formData.append("hasPriority", String(data.hasPriority))
         
         data.superPower.forEach((item) => {
             formData.append("superPower", item)

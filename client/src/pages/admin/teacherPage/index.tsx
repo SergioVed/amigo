@@ -29,9 +29,16 @@ export const TeacherPage = () => {
             return
         }
 
+        const {superPower1, superPower2, ...teacherData} = form
+        const superPower = [superPower1.trim(), superPower2.trim()]
+
+        if (superPower.some(power => !power)) {
+            return
+        }
+
         dispatch(addTeacherAction({
-            ...form,
-            superPower: form.superPower.split(",")
+            ...teacherData,
+            superPower
         }, selectedFile))
 
         setIsOpen(false)
@@ -75,7 +82,16 @@ export const TeacherPage = () => {
                 onSubmit={() => handleSubmit(form)}
             >
                 <input type="file" onChange={(e) => handleSelectFile(e)}/>
-                <input type="checkbox"/>
+                <label>
+                    <input
+                        type="checkbox"
+                        checked={form.hasPriority}
+                        onChange={(e) => {
+                            setForm(prev => ({...prev, hasPriority: e.target.checked}))
+                        }}
+                    />
+                    Has priority
+                </label>
 
             </AddFormPopup>
         </div>

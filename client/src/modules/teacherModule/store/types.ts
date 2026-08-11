@@ -5,6 +5,8 @@ export interface Teacher {
     avatarUrl: string,
     name: string,
     description: string,
+    experience: number,
+    hasPriority: boolean,
     videoUrl: string,
     superPower: string[],
     favouriteWord: string,

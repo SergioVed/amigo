@@ -1,5 +1,6 @@
 import { PartialType } from "@nestjs/swagger";
 import { ArrayNotEmpty, IsArray, IsBoolean, IsNotEmpty, IsNumber, IsString, IsUrl } from "class-validator";
+import { Transform, Type } from "class-transformer";
 import { CreateProfessorAttrs } from "../core/professorEntity.js";
 
 export class CreateProfessorDto {
@@ -8,6 +9,7 @@ export class CreateProfessorDto {
     @IsNotEmpty()
     name!: string;
 
+    @Transform(({ value }) => value === true || value === "true")
     @IsBoolean()
     hasPriority!: boolean;
 
@@ -15,6 +17,7 @@ export class CreateProfessorDto {
     @IsNotEmpty()
     description!: string;
 
+    @Type(() => Number)
     @IsNumber()
     experience!: number;
 
