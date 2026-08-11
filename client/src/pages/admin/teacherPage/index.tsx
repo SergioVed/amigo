@@ -13,6 +13,7 @@ import {
     createTeacherForm,
     filterTeachers
 } from "../../../modules/teacherModule"
+import { AddImageInput } from "../../../ui/AddImageInput"
 
 export const TeacherPage = () => {
 
@@ -81,7 +82,8 @@ export const TeacherPage = () => {
                 fields={fields}
                 onSubmit={() => handleSubmit(form)}
             >
-                <input type="file" onChange={(e) => handleSelectFile(e)}/>
+                <AddImageInput handleSelectFile={handleSelectFile}/>
+
                 <label>
                     <input
                         type="checkbox"

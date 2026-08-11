@@ -64,6 +64,74 @@
     line-height: 1.5;
 }
 
+.editForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 3.25rem;
+}
+
+.fileField,
+.textareaField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3125rem;
+    width: 100%;
+}
+
+.editLabel {
+    color: #474747;
+    font-weight: 600;
+}
+
+.fileInput {
+    width: 100%;
+    padding: 0.625rem;
+    border: 0.125rem solid #d6d6d6;
+    border-radius: 0.625rem;
+    background: #ffffff;
+    color: #4f4a4d;
+    box-sizing: border-box;
+}
+
+.fileInput::file-selector-button {
+    margin-right: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: #2d292b;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.textarea {
+    width: 100%;
+    min-height: 9rem;
+    padding: 0.875rem 1rem;
+    border: 0.125rem solid #d6d6d6;
+    border-radius: 0.625rem;
+    background: #ffffff;
+    color: #2d2a2d;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.textarea::placeholder {
+    color: #9d9d9d;
+}
+
+.textarea:focus,
+.fileInput:focus-visible {
+    border-color: #edba00;
+    box-shadow: 0 0 0 0.25rem rgba(246, 191, 0, 0.18);
+}
+
 @media (max-width: 40rem) {
     .card {
         min-height: 0;
@@ -91,5 +159,9 @@
 
     .description {
         margin-top: 1.25rem;
+    }
+
+    .editForm {
+        padding-top: 3rem;
     }
 }

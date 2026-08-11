@@ -1,6 +1,8 @@
-import { Dispatch, SetStateAction, useState } from "react"
+import { ChangeEvent, Dispatch, SetStateAction } from "react"
 import { CustomInput } from "../../../../ui/CustomInput"
 import { FeedbackForm } from "../../types"
+import styles from "./index.module.css"
+import { AddImageInput } from "../../../../ui/AddImageInput"
 
 interface EditCardProps {
     form: FeedbackForm
@@ -20,11 +22,8 @@ export const FeedbackEditCard = ({ form, setForm, setSelectedFile }: EditCardPro
     }
 
     return (
-        <>
-            <input 
-                type="file"
-                onChange={handleSelectFile}
-            />
+        <div className={styles.editForm}>
+            <AddImageInput handleSelectFile={(e: ChangeEvent<HTMLInputElement>) => handleSelectFile(e)}/>
 
             <CustomInput
                 placeholder="Name ..."
@@ -33,13 +32,16 @@ export const FeedbackEditCard = ({ form, setForm, setSelectedFile }: EditCardPro
                 label="Name"
             />
 
-
-            <CustomInput
-                placeholder="Description ..."
-                onChange={(e) => setForm(prev => ({ ...prev, description: e.target.value }))}
-                value={form.description}
-                label="Description"
-            />
-        </>
+            <label className={styles.textareaField}>
+                <span className={styles.editLabel}>Description</span>
+                <textarea
+                    className={styles.textarea}
+                    placeholder="Description ..."
+                    value={form.description}
+                    rows={6}
+                    onChange={(e) => setForm(prev => ({ ...prev, description: e.target.value }))}
+                />
+            </label>
+        </div>
     )
 }

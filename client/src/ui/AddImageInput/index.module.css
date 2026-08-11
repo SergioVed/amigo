@@ -1,0 +1,33 @@
+.fileField {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3125rem;
+    width: 100%;
+}
+
+.editLabel {
+    color: #474747;
+    font-weight: 600;
+}
+
+.fileInput {
+    width: 100%;
+    padding: 0.625rem;
+    border: 0.125rem solid #d6d6d6;
+    border-radius: 0.625rem;
+    background: #ffffff;
+    color: #4f4a4d;
+    box-sizing: border-box;
+}
+
+.fileInput::file-selector-button {
+    margin-right: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: #2d292b;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+}

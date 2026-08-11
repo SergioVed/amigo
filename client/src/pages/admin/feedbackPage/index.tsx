@@ -5,6 +5,7 @@ import { AddFormPopup } from "../../../components/AddFormPopup";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { addFeedbackAction, createFeedbackForm, FeedbackForm, FeedbackList, fetchFeedbacksAction, fields } from "../../../modules/feedbackModule";
+import { AddImageInput } from "../../../ui/AddImageInput";
 
 export const FeedbackPage = () => {
     const dispatch = useAppDispatch()
@@ -58,7 +59,7 @@ export const FeedbackPage = () => {
                 fields={fields}
                 onSubmit={() => submit(form)}
             >
-                <input type="file" onChange={handleFileChange}/>
+                <AddImageInput handleSelectFile={handleFileChange}/>
             </AddFormPopup>
 
             <FeedbackList
