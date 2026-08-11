@@ -3,8 +3,6 @@
     flex-direction: column;
 
     position: relative;
-    width: min(100%, var(--card-max-width));
-    max-width: var(--card-max-width);
     padding: 1.75rem;
     border-radius: 1.5rem;
     background: #ffffff;

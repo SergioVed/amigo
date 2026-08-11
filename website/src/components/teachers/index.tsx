@@ -65,23 +65,35 @@ export const Teachers = () => {
                 {!isLoading && !error && (
                     <>
                         <ul className={styles.teacher_box} ref={teacherListRef}>
-                            {teachers.map((teacher, index) => (
-                                <motion.li
-                                    className={styles.teacher_item}
-                                    key={`${teacher.name}-${teacher.avatarUrl}`}
-                                    initial={{ y: -100, opacity: 0 }}
-                                    whileInView={{ y: 0, opacity: 1 }}
-                                    viewport={{ once: true, amount: 0.25 }}
-                                    transition={{
-                                        type: "spring",
-                                        stiffness: 110,
-                                        damping: 15,
-                                        delay: index * 0.15
-                                    }}
-                                >
-                                    <TeacherCard {...teacher}/>
-                                </motion.li>
-                            ))}
+                            {teachers.map((teacher, index) => {
+                                const key = `${teacher.name}-${teacher.avatarUrl}`
+
+                                if (index < 3) {
+                                    return (
+                                        <li className={styles.teacher_item} key={key}>
+                                            <TeacherCard {...teacher}/>
+                                        </li>
+                                    )
+                                }
+
+                                return (
+                                    <motion.li
+                                        className={styles.teacher_item}
+                                        key={key}
+                                        initial={{ y: -100, opacity: 0 }}
+                                        whileInView={{ y: 0, opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.25 }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 110,
+                                            damping: 15,
+                                            delay: (index - 3) * 0.15
+                                        }}
+                                    >
+                                        <TeacherCard {...teacher}/>
+                                    </motion.li>
+                                )
+                            })}
                         </ul>
 
                         <div className={styles.navigation} aria-label="Навігація викладачами">
