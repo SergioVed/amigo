@@ -78,7 +78,22 @@ export const Ceo = () => {
     return (
         <div className={styles.outer} id="ceo">
             <section className={styles.container}>
-                <img className={styles.photoFrame} src={CeoImg} alt="" />
+                <motion.img
+                    className={styles.photoFrame}
+                    src={info?.image ? info.image : CeoImg}
+                    alt=""
+                    initial={{ x: -120, opacity: 0 }}
+                    whileInView={{
+                        x: [-120, 18, 0],
+                        opacity: [0, 1, 1]
+                    }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    transition={{
+                        duration: 1.1,
+                        times: [0, 0.8, 1],
+                        ease: "easeOut"
+                    }}
+                />
 
                 <motion.div
                     className={styles.description}

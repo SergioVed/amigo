@@ -6,11 +6,12 @@ import { CeoRepositoryImpl } from "./infrastructure/ceoRepositoryImpl";
 import { CeoController } from "./interface/ceoController";
 import { AuthGuard } from "src/guards/authGuard";
 import { JwtModule } from "@nestjs/jwt";
+import { ImageService } from "../image/imageService";
 
 
 @Module({
     imports: [SequelizeModule.forFeature([CeoModel]), JwtModule],
-    providers: [CeoService, AuthGuard, {
+    providers: [CeoService, AuthGuard, ImageService, {
         provide: "ICeoRepository",
         useClass: CeoRepositoryImpl
     }],

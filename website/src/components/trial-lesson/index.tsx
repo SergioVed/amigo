@@ -23,8 +23,29 @@ export const TrialLesson = () => {
                     </motion.h2>
 
                     <div className={styles.action}>
-                        <p>Тицьни, щоб познайомитися</p>
-                        <button type="button">Записатися на пробне заняття</button>
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+                        >
+                            Тицьни, щоб познайомитися
+                        </motion.p>
+                        <motion.button
+                            type="button"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            whileHover={{ y: -3, scale: 1.03 }}
+                            whileTap={{ scale: 0.98 }}
+                            viewport={{ once: true, amount: 0.5 }}
+                            transition={{
+                                opacity: { duration: 1.2, delay: 0.4, ease: "easeOut" },
+                                y: { duration: 0.2, ease: "easeOut" },
+                                scale: { duration: 0.2, ease: "easeOut" }
+                            }}
+                        >
+                            Записатися на пробне заняття
+                        </motion.button>
                     </div>
                 </div>
 

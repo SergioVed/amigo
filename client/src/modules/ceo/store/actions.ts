@@ -17,11 +17,11 @@ export const fetchCeoAction = () => {
     }
 }
 
-export const updateCeoAction = (data: UpdateCeoForm) => {
+export const updateCeoAction = (data: UpdateCeoForm, file: File | null) => {
     return async function (dispatch: Dispatch<CeoAction>) {
         try {
             dispatch({type: CeoActionTypes.UPDATE_CEO})
-            const response = await CeoApi.updateCeo(data)
+            const response = await CeoApi.updateCeo(data, file)
             dispatch({type: CeoActionTypes.UPDATE_CEO_SUCCESS, payload: response.data})
         } catch (error) {
             errorHandler(error, CeoActionTypes.UPDATE_CEO_ERROR, dispatch)

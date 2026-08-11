@@ -9,6 +9,7 @@ import { UpdateCeoForm } from "../../../modules/ceo/types"
 import { createCeoForm } from "../../../modules/ceo/utils/form"
 import { CustomInput } from "../../../ui/CustomInput"
 import { CeoEditContext } from "../../../modules/ceo/utils/context"
+import { AddImageInput } from "../../../ui/AddImageInput"
 
 export const CeoPage = () => {
 
@@ -18,21 +19,30 @@ export const CeoPage = () => {
     const [imageError, setImageError] = useState(false)
     const [isEditing, setIsEditing] = useState<boolean>(false)
     const [form, setForm] = useState<UpdateCeoForm>({})
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
     function saveCeo(form: UpdateCeoForm) {
-        dispatch(updateCeoAction(form))
+        dispatch(updateCeoAction(form, selectedFile))
+        setSelectedFile(null)
         setIsEditing(false)
     }
 
     function cancelCeoUpdate() {
+        setForm(createCeoForm(ceo))
+        setSelectedFile(null)
         setIsEditing(false)
+    }
+
+    function handleSelectFile(e: React.ChangeEvent<HTMLInputElement>) {
+        setSelectedFile(e.target.files?.[0] ?? null)
     }
 
     useEffect(() => {
         if (ceo) {
             setForm(createCeoForm(ceo))
+            setImageError(false)
         }
-    }, [ceo])
+    }, [ceo, ceo?.image])
 
     useEffect(() => {
         if (!loading && !isFetched) {
@@ -66,12 +76,15 @@ export const CeoPage = () => {
 
                     <div className={styles.heroInfo}>
                         {isEditing
-                            ? <CustomInput
-                                placeholder="Enter Name ..."
-                                value={form.name ?? ceo.name}
-                                label="Enter your name"
-                                onChange={(e) => setForm(prev => ({ ...prev, name: e.target.value }))}
-                            />
+                            ? <>
+                                <CustomInput
+                                    placeholder="Enter Name ..."
+                                    value={form.name ?? ceo.name}
+                                    label="Enter your name"
+                                    onChange={(e) => setForm(prev => ({ ...prev, name: e.target.value }))}
+                                />
+                                <AddImageInput handleSelectFile={handleSelectFile}/>
+                            </>
                             : <h2 className={styles.name}>{ceo.name}</h2>
                         }
                     </div>

@@ -66,9 +66,23 @@ export const Prices = () => {
                         ЦІНИ
                     </motion.h2>
 
-                    <PriceTypeToogleBtn value={selectedType} onChange={handleTypeChange} />
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+                    >
+                        <PriceTypeToogleBtn value={selectedType} onChange={handleTypeChange} />
+                    </motion.div>
 
-                    <p>Урок триває 55 хвилин • Ціни на уроки англійської та іспанської — однакові</p>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
+                    >
+                        Урок триває 55 хвилин • Ціни на уроки англійської та іспанської — однакові
+                    </motion.p>
                 </header>
 
 

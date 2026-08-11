@@ -1,15 +1,18 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post, Put, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { CeoService } from "../core/ceoService";
 import { CreateCeoDto, UpdateCeoDto } from "./dto";
-import { AuthGuard } from "src/guards/authGuard";
 import { CeoResponseMapper } from "./ceoResponseMapper";
+import { FileInterceptor } from "@nestjs/platform-express";
+import { ImageService } from "src/modules/image/imageService";
+import type { Express } from "express";
 
 
 @Controller("ceo")
 export class CeoController {
 
     constructor (
-        private ceoService: CeoService
+        private ceoService: CeoService,
+        private imageService: ImageService
     ) {}
 
     @Get("/:id")
@@ -27,8 +30,14 @@ export class CeoController {
 
     // @UseGuards(AuthGuard)
     @Put("/:id")
-    async update(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateCeoDto) {
-        const updatedCeo = await this.ceoService.update(id, dto)
+    @UseInterceptors(FileInterceptor("file"))
+    async update(
+        @Param("id", ParseIntPipe) id: number,
+        @Body() dto: UpdateCeoDto,
+        @UploadedFile() file?: Express.Multer.File
+    ) {
+        const image = file ? await this.imageService.saveImage(file) : undefined
+        const updatedCeo = await this.ceoService.update(id, {...dto, ...(image && {image})})
         
         return CeoResponseMapper.toResponse(updatedCeo)
     }
