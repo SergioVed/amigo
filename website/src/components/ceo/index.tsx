@@ -3,6 +3,57 @@ import CeoImg from "../../assets/ceo/photo-frame.png"
 import { useEffect, useState } from "react"
 import type { CeoInfo } from "./types"
 import { getCeo } from "../../api"
+import { motion, stagger } from "motion/react"
+
+const infoVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            delayChildren: stagger(0.16)
+        }
+    }
+}
+
+const infoBlockVariants = {
+    hidden: {
+        y: 80,
+        opacity: 0
+    },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring" as const,
+            stiffness: 100,
+            damping: 16
+        }
+    }
+}
+
+const descriptionVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            delayChildren: stagger(0.2)
+        }
+    }
+}
+
+const descriptionItemVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { duration: 0.7, ease: "easeOut" as const }
+    }
+}
+
+const descriptionHeadingVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { duration: 1.2, ease: "easeOut" as const }
+    }
+}
 
 export const Ceo = () => {
     const [info, setInfo] = useState<CeoInfo | null>(null)
@@ -29,37 +80,49 @@ export const Ceo = () => {
             <section className={styles.container}>
                 <img className={styles.photoFrame} src={CeoImg} alt="" />
 
-                <div className={styles.description}>
+                <motion.div
+                    className={styles.description}
+                    variants={descriptionVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                >
                     {loading && <p role="status">Завантаження...</p>}
                     {error && <p role="alert">{error}</p>}
 
-                    <h2>
+                    <motion.h2 variants={descriptionHeadingVariants}>
                         {info
                             ? `Привіт! Я – ${info.name}, засновниця школи AMIGO`
                             : "Привіт! Я – Марі, засновниця школи AMIGO"}
-                    </h2>
-                    <p>
+                    </motion.h2>
+                    <motion.p variants={descriptionItemVariants}>
                         {info?.description
                             ?? "7 років життя в Іспанії навчили мене однієї простої речі: мова змінює життя. Саме тому я створила AMIGO — школу, де кожен студент знаходить свою людину для вивчення мови."}
-                    </p>
-                </div>
+                    </motion.p>
+                </motion.div>
 
-                <div className={styles.info}>
-                    <div className={styles.infoBlock}>
+                <motion.div
+                    className={styles.info}
+                    variants={infoVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.25 }}
+                >
+                    <motion.div className={styles.infoBlock} variants={infoBlockVariants}>
                         <strong>5</strong>
                         <span>років навчаємо мовам</span>
-                    </div>
+                    </motion.div>
 
-                    <div className={styles.infoBlock}>
+                    <motion.div className={styles.infoBlock} variants={infoBlockVariants}>
                         <strong>3000+</strong>
                         <span>студентів пройшли навчання</span>
-                    </div>
+                    </motion.div>
 
-                    <div className={styles.infoBlock}>
+                    <motion.div className={styles.infoBlock} variants={infoBlockVariants}>
                         <strong>90+</strong>
                         <span>студентів переїхали до Іспанії</span>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </section>
         </div>
 

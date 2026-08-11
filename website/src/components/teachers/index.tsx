@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import type { Teacher } from "./types"
 import { getTeachers } from "../../api"
 import { TeacherCard } from "./components/TeacherCard"
+import { motion } from "motion/react"
 
 export const Teachers = () => {
 
@@ -41,8 +42,22 @@ export const Teachers = () => {
         <div className={styles.outer}>
             <section className={styles.container} id="teachers">
                 
-                <h2>НАШІ PROFESORAS</h2>
-                <h3>[викладачі]</h3>
+                <motion.h2
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                >
+                    НАШІ PROFESORAS
+                </motion.h2>
+                <motion.h3
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                >
+                    [викладачі]
+                </motion.h3>
 
                 {isLoading && <p className={styles.status}>Завантажуємо викладачів…</p>}
                 {error && <p className={styles.status}>Не вдалося завантажити викладачів.</p>}
@@ -50,10 +65,22 @@ export const Teachers = () => {
                 {!isLoading && !error && (
                     <>
                         <ul className={styles.teacher_box} ref={teacherListRef}>
-                            {teachers.map((teacher) => (
-                                <li className={styles.teacher_item} key={`${teacher.name}-${teacher.avatarUrl}`}>
+                            {teachers.map((teacher, index) => (
+                                <motion.li
+                                    className={styles.teacher_item}
+                                    key={`${teacher.name}-${teacher.avatarUrl}`}
+                                    initial={{ y: -100, opacity: 0 }}
+                                    whileInView={{ y: 0, opacity: 1 }}
+                                    viewport={{ once: true, amount: 0.25 }}
+                                    transition={{
+                                        type: "spring",
+                                        stiffness: 110,
+                                        damping: 15,
+                                        delay: index * 0.15
+                                    }}
+                                >
                                     <TeacherCard {...teacher}/>
-                                </li>
+                                </motion.li>
                             ))}
                         </ul>
 

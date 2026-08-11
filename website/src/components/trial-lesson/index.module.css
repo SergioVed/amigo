@@ -90,6 +90,9 @@
 }
 
 .sticker {
+    --bounce-y: 0px;
+    --bounce-scale: 1;
+
     position: absolute;
     display: grid;
     place-items: center;
@@ -97,6 +100,7 @@
     color: #fff;
     white-space: nowrap;
     user-select: none;
+    transform: translateY(var(--bounce-y)) scale(var(--bounce-scale));
 }
 
 .easy,
@@ -110,11 +114,11 @@
     padding: 1rem 2rem;
 }
 
-.easy { bottom: 60%; left: 0%; background: #cf99d5; transform: rotate(-25deg); }
-.puedes { bottom: 55%; left: 60%; background: #db431d; transform: rotate(31deg); }
-.bookClass { bottom: 26%; left: -1.4rem; background: #db431d; transform: rotate(42deg); }
-.amigo { bottom: 19%; left: 60%; background: #778c2b; transform: rotate(11deg); }
-.vamos { bottom: 0; left: 0.25rem; background: #cf99d5; transform: rotate(-11deg); }
+.easy { bottom: 60%; left: 0%; background: #cf99d5; transform: translateY(var(--bounce-y)) rotate(-25deg) scale(var(--bounce-scale)); }
+.puedes { bottom: 55%; left: 60%; background: #db431d; transform: translateY(var(--bounce-y)) rotate(31deg) scale(var(--bounce-scale)); }
+.bookClass { bottom: 26%; left: -1.4rem; background: #db431d; transform: translateY(var(--bounce-y)) rotate(42deg) scale(var(--bounce-scale)); }
+.amigo { bottom: 19%; left: 60%; background: #778c2b; transform: translateY(var(--bounce-y)) rotate(11deg) scale(var(--bounce-scale)); }
+.vamos { bottom: 0; left: 0.25rem; background: #cf99d5; transform: translateY(var(--bounce-y)) rotate(-11deg) scale(var(--bounce-scale)); }
 
 .phone, .spain, .english, .notebook, .fire, .cat, .strong, .folder, .love, .laptop, .door {
     width: 4rem;
@@ -198,19 +202,19 @@
     }
 
     .love { bottom: 24%; left: 0; }
-    .amigo { bottom: 38%; left: 7%; transform: rotate(9deg); }
-    .vamos { bottom: 0; left: 2%; transform: rotate(-8deg); }
+    .amigo { bottom: 38%; left: 7%; transform: translateY(var(--bounce-y)) rotate(9deg) scale(var(--bounce-scale)); }
+    .vamos { bottom: 0; left: 2%; transform: translateY(var(--bounce-y)) rotate(-8deg) scale(var(--bounce-scale)); }
     .notebook { bottom: 18%; left: 28%; }
     .folder { bottom: 42%; left: 35%; }
     .door { bottom: 0; left: 23%; }
     .laptop { bottom: 0; left: 34%; }
     .phone { bottom: 36%; left: 50%; }
     .strong { bottom: 18%; left: 58%; }
-    .puedes { bottom: 0; left: 42%; transform: rotate(14deg); }
+    .puedes { bottom: 0; left: 42%; transform: translateY(var(--bounce-y)) rotate(14deg) scale(var(--bounce-scale)); }
     .spain { bottom: 0; left: 63%; }
-    .easy { bottom: 28%; left: 66%; transform: rotate(-7deg); }
+    .easy { bottom: 28%; left: 66%; transform: translateY(var(--bounce-y)) rotate(-7deg) scale(var(--bounce-scale)); }
     .english { bottom: 0; left: 80%; }
     .cat { bottom: 55%; left: 76%; }
-    .bookClass { bottom: 42%; left: 84%; transform: rotate(42deg); }
+    .bookClass { bottom: 42%; left: 84%; transform: translateY(var(--bounce-y)) rotate(42deg) scale(var(--bounce-scale)); }
     .fire { right: 1%; bottom: 0; left: auto; }
 }

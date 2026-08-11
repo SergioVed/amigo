@@ -1,6 +1,7 @@
 import type { FeedbackProps } from "../../types"
 import { useId, useState } from "react"
 import styles from "./index.module.css"
+import { motion } from "motion/react"
 
 export const Feedback = ({
     name,
@@ -17,7 +18,15 @@ export const Feedback = ({
                 <span className={styles.avatarFrame}>
                     <img className={styles.avatar} src={avatarUrl} alt="" />
                 </span>
-                <h3 className={styles.name}>{name}</h3>
+                <motion.h3
+                    className={styles.name}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                >
+                    {name}
+                </motion.h3>
             </header>
 
             <p

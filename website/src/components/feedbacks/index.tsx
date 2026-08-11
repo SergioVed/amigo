@@ -4,6 +4,32 @@ import { Feedback } from "./components/Feedback"
 import type { FeedbackProps } from "./types"
 import { useEffect, useState } from "react"
 import { getFeedbacks } from "../../api"
+import { motion, stagger } from "motion/react"
+
+const feedbackListVariants = {
+    hidden: {},
+    visible: {
+        transition: {
+            delayChildren: stagger(0.18)
+        }
+    }
+}
+
+const feedbackItemVariants = {
+    hidden: {
+        y: -120,
+        opacity: 0
+    },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring" as const,
+            stiffness: 110,
+            damping: 14
+        }
+    }
+}
 
 export const Feedbacks = () => {
 
@@ -35,13 +61,23 @@ export const Feedbacks = () => {
                 {error && <p className={styles.status}>{error}</p>}
 
                 {!loading && !error && (
-                    <ul className={styles.list}>
+                    <motion.ul
+                        className={styles.list}
+                        variants={feedbackListVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.15 }}
+                    >
                         {feedbacks.map((feedback, index) => (
-                            <li className={styles.item} key={`${feedback.name}-${index}`}>
+                            <motion.li
+                                className={styles.item}
+                                key={`${feedback.name}-${index}`}
+                                variants={feedbackItemVariants}
+                            >
                                 <Feedback {...feedback}/>
-                            </li>
+                            </motion.li>
                         ))}
-                    </ul>
+                    </motion.ul>
                 )}
             </div>
         </section>

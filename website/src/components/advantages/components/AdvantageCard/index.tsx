@@ -1,5 +1,6 @@
 import type { AdvantageCardProps } from "../../types"
 import styles from "./index.module.css"
+import { motion } from "motion/react"
 
 export const AdvantageCard = ({
     index,
@@ -18,7 +19,14 @@ export const AdvantageCard = ({
 
             <div className={styles.content}>
                 <span className={styles.index}>[ {index} ]</span>
-                <h3>{title}</h3>
+                <motion.h3
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                >
+                    {title}
+                </motion.h3>
                 <p>{description}</p>
             </div>
         </article>

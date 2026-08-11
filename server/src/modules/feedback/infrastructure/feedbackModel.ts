@@ -2,7 +2,6 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
 
 export interface FeedbackModelCreationAttrs {
     name: string,
-    title: string,
     description: string,
     avatar_url: string
 }
@@ -14,9 +13,6 @@ export class FeedbackModel extends Model<FeedbackModel, FeedbackModelCreationAtt
 
     @Column({ type: DataType.STRING(50), allowNull: false })
     declare name: string;
-
-    @Column({ type: DataType.STRING(255), allowNull: false })
-    declare title: string;
 
     @Column({ type: DataType.TEXT, allowNull: false })
     declare description: string;

@@ -33,12 +33,6 @@ export const FeedbackEditCard = ({ form, setForm, setSelectedFile }: EditCardPro
                 label="Name"
             />
 
-            <CustomInput
-                placeholder="Title ..."
-                onChange={(e) => setForm(prev => ({ ...prev, title: e.target.value }))}
-                value={form.title}
-                label="Title"
-            />
 
             <CustomInput
                 placeholder="Description ..."

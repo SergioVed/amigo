@@ -7,7 +7,6 @@ export class FeedbackResponseMapper {
         return {
             id: feedback.getId(),
             name: feedback.getName(),
-            title: feedback.getTitle(),
             description: feedback.getDescription(),
             avatarUrl: feedback.getUrl()
         }

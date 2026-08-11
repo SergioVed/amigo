@@ -14,7 +14,6 @@ export class FeedbackApi {
         const formData = new FormData()
 
         formData.append("name", data.name)
-        formData.append("title", data.title)
         formData.append("description", data.description)
         formData.append("file", file)
 
@@ -30,10 +29,6 @@ export class FeedbackApi {
 
         if (data.name !== undefined) {
             formData.append("name", data.name)
-        }
-
-        if (data.title !== undefined) {
-            formData.append("title", data.title)
         }
 
         if (data.description !== undefined) {

@@ -19,8 +19,6 @@ export const FeedbackViewCard = ({feedback}: FeedbackCardProps) => {
                 <h2 className={styles.name}>{feedback.name}</h2>
             </div>
 
-            <p className={styles.title}>{feedback.title}</p>
-
             <p className={styles.description}>{feedback.description}</p>
         </>
     )

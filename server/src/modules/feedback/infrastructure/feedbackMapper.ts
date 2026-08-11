@@ -7,7 +7,6 @@ export class FeedbackMapper {
         return new Feedback(
             data.id,
             data.name,
-            data.title,
             data.description,
             data.avatar_url
         )
@@ -16,7 +15,6 @@ export class FeedbackMapper {
     public static toPersistence(feedback: Feedback): FeedbackModelCreationAttrs {
         return {
             name: feedback.getName(),
-            title: feedback.getTitle(),
             description: feedback.getDescription(),
             avatar_url: feedback.getUrl()
         }

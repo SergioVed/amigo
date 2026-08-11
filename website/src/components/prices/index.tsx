@@ -3,6 +3,18 @@ import styles from "./index.module.css"
 import type { PriceProps, PriceType } from "./types"
 import { getPrices } from "../../api"
 import { PriceTypeToogleBtn } from "./components/PriceTypeToogleBtn"
+import { motion } from "motion/react"
+
+const priceCardAnimation = {
+    initial: { y: 80, opacity: 0 },
+    whileInView: { y: 0, opacity: 1 },
+    viewport: { once: true, amount: 0.25 },
+    transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 16
+    }
+}
 
 export const Prices = () => {
     const [prices, setPrices] = useState<PriceProps[]>([])
@@ -45,7 +57,14 @@ export const Prices = () => {
             <section className={styles.container}>
 
                 <header className={styles.header}>
-                    <h2>ЦІНИ</h2>
+                    <motion.h2
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                    >
+                        ЦІНИ
+                    </motion.h2>
 
                     <PriceTypeToogleBtn value={selectedType} onChange={handleTypeChange} />
 
@@ -60,34 +79,63 @@ export const Prices = () => {
                     <div className={styles.price_box}>
                         <div className={styles.introductory}>
                             {introductoryPrices.map((price, index) => (
-                                <article className={styles.introductory_card} key={`${price.category}-${index}`}>
-                                    <h3>{price.title}</h3>
+                                <motion.article
+                                    className={styles.introductory_card}
+                                    key={`${price.category}-${index}`}
+                                    {...priceCardAnimation}
+                                >
+                                    <motion.h3
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{ opacity: 1 }}
+                                        viewport={{ once: true, amount: 0.5 }}
+                                        transition={{ duration: 1.2, ease: "easeOut" }}
+                                    >
+                                        {price.title}
+                                    </motion.h3>
                                     <p className={styles.amount}>₴{formatAmount(price.amount)}</p>
-                                </article>
+                                </motion.article>
                             ))}
                         </div>
 
                         {mariPrice && (
-                            <article className={styles.mari_card}>
-                                <h3>{mariPrice.title}</h3>
+                            <motion.article className={styles.mari_card} {...priceCardAnimation}>
+                                <motion.h3
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true, amount: 0.5 }}
+                                    transition={{ duration: 1.2, ease: "easeOut" }}
+                                >
+                                    {mariPrice.title}
+                                </motion.h3>
                                 <p className={styles.amount}>₴{formatAmount(mariPrice.amount)}</p>
                                 <p className={styles.description}>{mariPrice.description}</p>
-                            </article>
+                            </motion.article>
                         )}
 
                         {subscriptions.length > 0 && (
-                            <section className={styles.subscriptions}>
-                                <h3>Абонементи</h3>
+                            <motion.section {...priceCardAnimation} className={styles.subscriptions}>
+                                <motion.h3
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true, amount: 0.5 }}
+                                    transition={{ duration: 1.2, ease: "easeOut" }}
+                                >
+                                    Абонементи
+                                </motion.h3>
                                 <div className={styles.subscription_list}>
                                     {subscriptions.map((price, index) => (
-                                        <article className={styles.subscription_card} key={`${price.title}-${index}`}>
+                                        <motion.article
+                                            className={styles.subscription_card}
+                                            key={`${price.title}-${index}`}
+                                            {...priceCardAnimation}
+                                        >
                                             <h4>{price.title}</h4>
                                             <p className={styles.subscription_amount}>₴{formatAmount(price.amount)}</p>
                                             <p className={styles.description}>{price.description}</p>
-                                        </article>
+                                        </motion.article>
                                     ))}
                                 </div>
-                            </section>
+                            </motion.section>
                         )}
                     </div>
                 )}

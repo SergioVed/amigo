@@ -1,14 +1,15 @@
 .header{
+    position: fixed;
+    z-index: 10;
     height: 4rem;
     width: 100%;
-    background-color: #000;
 }
 
 .headerInner{
     box-sizing: border-box;
     min-height: 3.5rem;
     padding-inline: var(--page-padding-inline);
-    background-color: #fff;
+    background-color: var(--color-grey);
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
     display: flex;
@@ -22,14 +23,58 @@
     display: block;
 }
 
+.menuButton {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menuButton:focus-visible {
+    outline: 3px solid #111;
+    outline-offset: 3px;
+}
+
 .desktopNav {
     display: none;
+}
+
+.mobileNav {
+    position: absolute;
+    top: calc(100% - 0.5rem);
+    right: var(--page-padding-inline);
+    left: var(--page-padding-inline);
+    display: flex;
+    padding: 1.25rem;
+    flex-direction: column;
+    gap: 0.25rem;
+    background-color: var(--color-white);
+    border: 2px solid #111;
+    border-radius: 1.5rem;
+    box-shadow: 0 0.75rem 0 rgb(0 0 0 / 18%);
+}
+
+.mobileNav a {
+    padding: 0.875rem 0rem;
+    color: #111;
+    font-family: var(--font-primary);
+    font-size: var(--button-s-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--button-s-line-height);
+    text-decoration: none;
+    border-radius: 0.75rem;
+}
+
+.mobileNav a:hover,
+.mobileNav a:focus-visible {
+    background-color: var(--color-yellow);
+    outline: none;
 }
 
 @media (min-width: 1024px) {
     .headerInner {
         width: 100%;
-        max-width: var(--desktop-content-max-width);
         min-height: 4rem;
         margin-inline: auto;
         padding-inline: clamp(3rem, 5vw, 5rem);
@@ -38,6 +83,11 @@
     }
 
     .menu {
+        display: block;
+    }
+
+    .menuButton,
+    .mobileNav {
         display: none;
     }
 

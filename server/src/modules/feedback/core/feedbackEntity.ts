@@ -1,6 +1,5 @@
 export interface CreateFeedbackAttrs {
     name: string,
-    title: string,
     description: string,
     avatarUrl: string
 }
@@ -12,7 +11,6 @@ export class Feedback {
     constructor(
         private _id: number | null,
         private _name: string,
-        private _title: string,
         private _description: string,
         private _avatarUrl: string
     ) { }
@@ -23,10 +21,6 @@ export class Feedback {
 
     public getName(): string {
         return this._name;
-    }
-
-    public getTitle(): string {
-        return this._title;
     }
 
     public getDescription(): string {
@@ -41,7 +35,6 @@ export class Feedback {
         return new Feedback(
             null,
             data.name,
-            data.title,
             data.description,
             data.avatarUrl
         )
@@ -49,7 +42,6 @@ export class Feedback {
 
     public update(data: Partial<CreateFeedbackAttrs>) {
         if (data.name !== undefined) this._name = data.name;
-        if (data.title !== undefined) this._title = data.title;
         if (data.description !== undefined) this._description = data.description;
         if (data.avatarUrl !== undefined) this._avatarUrl = data.avatarUrl;
     }

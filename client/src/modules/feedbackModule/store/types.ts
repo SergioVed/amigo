@@ -1,7 +1,6 @@
 export interface Feedback {
     id: number,
     name: string,
-    title: string,
     description: string,
     avatarUrl: string
 }

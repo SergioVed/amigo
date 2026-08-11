@@ -24,7 +24,6 @@ export const FeedbackCard = ({ feedback }: FeedbackCardProps) => {
 
     const [form, setForm] = useState<FeedbackForm>({
         name: feedback.name,
-        title: feedback.title,
         description: feedback.description,
     })
     const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -37,9 +36,6 @@ export const FeedbackCard = ({ feedback }: FeedbackCardProps) => {
             formToUpdate.name = form.name
         }
 
-        if (form.title !== feedback.title) {
-            formToUpdate.title = form.title
-        }
 
         if (form.description !== feedback.description) {
             formToUpdate.description = form.description

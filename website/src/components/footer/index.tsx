@@ -5,9 +5,9 @@ import tiktokIcon from "../../assets/footer/tiktok.svg"
 import styles from "./index.module.css"
 
 const socialLinks = [
-    { label: "Instagram", href: "https://www.instagram.com/", icon: instagramIcon },
-    { label: "TikTok", href: "https://www.tiktok.com/", icon: tiktokIcon },
-    { label: "Telegram", href: "https://t.me/", icon: telegramIcon },
+    { label: "Instagram", href: "https://www.instagram.com/mariya_amarilla/?hl=uk", icon: instagramIcon },
+    { label: "TikTok", href: "https://www.tiktok.com/@mari.amari_?_t=ZM-8znpvlQibxw&_r=1&fbclid=PAcGRvZgJzcnRjBmFwcF9pZA85MzY2MTk3NDMzOTI0NTkAAadmCiZpqXf5T_pJ3aQXHZvT3ekuaEDq3Nk6N3rAKiCMIQrEGfeRaSLfNV8JIw", icon: tiktokIcon },
+    { label: "Telegram", href: "https://t.me/mariya_amarilla", icon: telegramIcon },
 ]
 
 export const Footer = () => {
