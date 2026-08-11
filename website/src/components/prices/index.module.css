@@ -200,3 +200,115 @@
     align-self: start;
     justify-self: end;
 }
+
+@media (min-width: 1024px) {
+    .outer {
+        padding: clamp(4rem, 6vw, 6rem) 0;
+    }
+
+    .container {
+        width: calc(100% - 3rem);
+        max-width: var(--desktop-content-max-width);
+        margin-top: 0;
+        padding: clamp(3rem, 5vw, 5rem) 3% clamp(3rem, 5vw, 5rem);
+        gap: clamp(1rem, 2vw, 2rem);
+        border-radius: clamp(3rem, 7vw, 6rem);
+    }
+
+    .header {
+        gap: clamp(1rem, 2vw, 2rem);
+    }
+
+    .header h2 {
+        font-size: clamp(var(--heading-h3-size), 4vw, var(--heading-h1-size));
+    }
+
+    .header p,
+    .status {
+        font-size: clamp(var(--body-s-size), 1vw, var(--button-s-size));
+    }
+
+    .price_box {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(0.5rem, 1vw, 1rem);
+    }
+
+    .introductory {
+        display: contents;
+    }
+
+    .introductory_card,
+    .mari_card {
+        min-height: clamp(9rem, 15vw, 13rem);
+        padding: clamp(1.25rem, 2vw, 2rem);
+        border-radius: 1.75rem;
+    }
+
+    .introductory_card h3,
+    .mari_card h3 {
+        max-width: none;
+        font-size: clamp(var(--caption-s-size), 2vw, var(--caption-l-size));
+    }
+
+    .amount {
+        font-size: clamp(var(--heading-h3-size), 4vw, var(--heading-h1-size));
+    }
+
+    .mari_card {
+        position: relative;
+    }
+
+    .mari_card::after {
+        position: absolute;
+        top: -3.5rem;
+        right: -1rem;
+        width: clamp(5rem, 9vw, 8rem);
+        aspect-ratio: 73 / 77;
+        background: url("../../assets/teachers/icons/stars.svg") center / contain no-repeat;
+        content: "";
+        pointer-events: none;
+    }
+
+    .subscriptions {
+        grid-column: 1 / -1;
+        grid-template-columns: minmax(10rem, 1fr) 4fr;
+        align-items: center;
+        gap: clamp(1rem, 2vw, 2rem);
+        padding: clamp(1.25rem, 2vw, 2rem);
+        border-radius: 1.75rem;
+    }
+
+    .subscriptions > h3 {
+        font-size: clamp(var(--body-m-size), 2.5vw, var(--heading-h3-size));
+    }
+
+    .subscription_list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.25rem;
+    }
+
+    .subscription_card {
+        min-height: clamp(8rem, 13vw, 11rem);
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title"
+            "amount"
+            "description";
+        align-content: space-between;
+        padding: clamp(1rem, 1.5vw, 1.5rem);
+        border-radius: 1rem;
+    }
+
+    .subscription_card h4 {
+        font-size: clamp(var(--button-s-size), 1.5vw, var(--button-l-size));
+    }
+
+    .subscription_amount {
+        font-size: clamp(var(--caption-l-size), 3vw, var(--heading-h2-size));
+    }
+
+    .subscription_card .description {
+        justify-self: start;
+        font-size: clamp(var(--body-s-size), 1vw, var(--button-s-size));
+    }
+}

@@ -1,18 +1,25 @@
 .container {
+    background-color: #000;
+}
+
+.inner {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    min-height: 100svh;
+    min-height: 70svh;
 }
 
-.container::before {
+.inner::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     width: 150vmax;
     height: 100vmax;
-    background: url("../../assets/hero/image-bg.png") center / cover no-repeat;
+    background: url("../../assets/hero/image-bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50% auto;
     transform: translate(-50%, -50%) rotate(90deg);
     z-index: -1;
 }
@@ -94,6 +101,62 @@
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
+    .inner {
+        min-height: clamp(32rem, 52vw, 42rem);
+    }
 
+    .inner::before {
+        inset: 0;
+        width: 98%;
+        height: auto;
+
+        margin: 0 auto;
+
+        background-size: cover;
+
+        background-position: center top;
+        transform: none;
+    }
+
+    .title {
+        width: 44%;
+        max-width: 40rem;
+        margin: clamp(2rem, 4vw, 3.5rem) 0 0 max(4.75%, calc((100% - var(--desktop-content-max-width)) / 2 + 4rem));
+        font-size: clamp(var(--heading-h1-size), 5.85vw, var(--display-xl-size));
+    }
+
+    .subtitle {
+        width: 44%;
+        max-width: 40rem;
+        margin: 1.75rem 0 0 max(4.75%, calc((100% - var(--desktop-content-max-width)) / 2 + 4rem));
+    }
+
+    .btn {
+        width: auto;
+        max-width: none;
+        margin: clamp(3rem, 7vw, 6rem) 0 0 max(4.75%, calc((100% - var(--desktop-content-max-width)) / 2 + 4rem));
+    }
+
+    .stickers {
+        position: absolute;
+        right: 6%;
+        bottom:0%;
+        width: 42%;
+        max-width: 36rem;
+        margin: 0;
+    }
+}
+
+@media (min-width: 1440px) {
+    .inner {
+        max-width: var(--desktop-content-max-width);
+        margin: 0 auto;
+    }
+
+    .title,
+    .subtitle,
+    .btn {
+        margin-left: 4.75%;
+    }
 }

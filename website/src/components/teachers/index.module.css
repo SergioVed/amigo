@@ -9,7 +9,7 @@
     padding-bottom: 6rem;
 }
 
-h2{
+.container h2{
     max-width: 12ch;
     margin: 0 auto;
     font-family: var(--font-primary);
@@ -20,7 +20,7 @@ h2{
     text-align: center;
 }
 
-h3{
+.container h3{
     margin: 2rem auto;
     font-family: var(--font-primary);
     font-size: var(--button-l-size);
@@ -60,4 +60,76 @@ h3{
     margin: 2rem 0;
     font-family: var(--font-primary);
     text-align: center;
+}
+
+.navigation {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .outer {
+        padding: clamp(8rem, 10vw, 10rem) 0;
+    }
+
+    .container {
+        box-sizing: border-box;
+        width: calc(100% - 3.5rem);
+        max-width: var(--desktop-content-max-width);
+        padding: clamp(4rem, 6vw, 6rem) 5% clamp(3rem, 5vw, 5rem);
+        background-image:
+            linear-gradient(rgb(237 186 0 / 14%) 1px, transparent 1px),
+            linear-gradient(90deg, rgb(237 186 0 / 14%) 1px, transparent 1px);
+        background-size: 3.5rem 3.5rem;
+        border-radius: 4.5rem;
+    }
+
+    .container h2 {
+        max-width: none;
+        font-size: clamp(var(--heading-h3-size), 4vw, var(--heading-h1-size));
+    }
+
+    .container h3 {
+        margin: 1.25rem auto 0;
+        font-size: clamp(var(--button-l-size), 2.5vw, var(--heading-h3-size));
+    }
+
+    .teacher_box {
+        width: 100%;
+        max-width: none;
+        gap: clamp(0.5rem, 1vw, 1rem);
+        margin-top: clamp(3rem, 6vw, 6rem);
+        padding: 0;
+        scrollbar-width: none;
+    }
+
+    .teacher_box::-webkit-scrollbar {
+        display: none;
+    }
+
+    .navigation {
+        display: flex;
+        justify-content: center;
+        gap: clamp(3rem, 8vw, 7rem);
+        margin-top: 1.75rem;
+    }
+
+    .navigation button {
+        display: grid;
+        width: 3rem;
+        height: 3rem;
+        padding: 0;
+        place-items: center;
+        color: var(--color-white);
+        font: inherit;
+        font-size: var(--button-l-size);
+        background-color: var(--color-yellow);
+        border: 0;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .navigation button:focus-visible {
+        outline: 0.1875rem solid #1594ef;
+        outline-offset: 0.1875rem;
+    }
 }

@@ -41,7 +41,7 @@ export const Prices = () => {
     }
 
     return (
-        <section className={styles.outer}>
+        <section className={styles.outer} id="prices">
             <section className={styles.container}>
 
                 <header className={styles.header}>

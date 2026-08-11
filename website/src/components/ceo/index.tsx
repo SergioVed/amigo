@@ -25,7 +25,7 @@ export const Ceo = () => {
     }, [])
 
     return (
-        <div className={styles.outer}>
+        <div className={styles.outer} id="ceo">
             <section className={styles.container}>
                 <img className={styles.photoFrame} src={CeoImg} alt="" />
 

@@ -1,6 +1,7 @@
 :root {
     /* Global layout */
     --page-padding-inline: 1rem;
+    --desktop-content-max-width: 90rem;
 
     /* Global font family */
     --font-primary: "Montserrat", sans-serif;
@@ -93,6 +94,16 @@
     --button-s-size: 1rem;
     --button-s-line-height: 1;
     --button-s-letter-spacing: -0.02em;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 body {

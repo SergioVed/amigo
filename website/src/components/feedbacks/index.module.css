@@ -10,9 +10,14 @@
     max-width: 30rem;
     margin-inline: auto;
     padding: min(74%, 23rem) clamp(1rem, 4vw, 2rem) 2rem;
+    background-image: url("../../assets/feedbacks/bg.png");
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100% auto;
+}
+
+.desktopStickers {
+    display: none;
 }
 
 .list {
@@ -40,4 +45,68 @@
     background-color: var(--color-white);
     border: 2px solid #111;
     border-radius: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .notebook {
+        position: relative;
+        isolation: isolate;
+        width: calc(100% - 2rem);
+        max-width: var(--desktop-content-max-width);
+        min-height: clamp(48rem, 72vw, 68rem);
+        padding: clamp(7rem, 11vw, 13rem) 4% clamp(3rem, 5vw, 5rem) 36%;
+        overflow: hidden;
+        background-image: url("../../assets/feedbacks/bg2.png");
+        background-position: top center;
+        background-size: 100% 100%;
+    }
+
+    .desktopStickers {
+        position: absolute;
+        top: 7%;
+        left: 0;
+        z-index: 1;
+        display: block;
+        width: 40%;
+        height: auto;
+        pointer-events: none;
+    }
+
+    .list {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        gap: clamp(0.5rem, 1vw, 1rem);
+    }
+
+    .status {
+        position: relative;
+        z-index: 2;
+        width: 64%;
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 1440px) {
+    .notebook {
+        padding: clamp(6rem, 7vw, 8rem) 4% clamp(3rem, 5vw, 5rem) clamp(25rem, 27vw, 30rem);
+    }
+
+    .desktopStickers {
+        top: 4%;
+    }
+
+    .list {
+        display: block;
+        columns: 2;
+        column-gap: clamp(0.5rem, 1vw, 1rem);
+    }
+
+    .item {
+        display: inline-block;
+        margin-bottom: clamp(0.5rem, 1vw, 1rem);
+        break-inside: avoid;
+    }
 }

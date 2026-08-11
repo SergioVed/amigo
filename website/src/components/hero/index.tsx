@@ -6,23 +6,25 @@ export const Hero = () => {
 
     return (
         <section className={styles.container}>
-            <h1 className={styles.title}>
-                <span>Онлайн-</span>
-                <span>школа</span>
-                <span>іноземних</span>
-                <span className={styles.lastLine}>
-                    мов
-                    <img src={Sticker} alt="" className={styles.sticker} />
-                </span>
-            </h1>
+            <div className={styles.inner}>
+                <h1 className={styles.title}>
+                    <span>Онлайн-</span>
+                    <span>школа</span>
+                    <span>іноземних</span>
+                    <span className={styles.lastLine}>
+                        мов
+                        <img src={Sticker} alt="" className={styles.sticker} />
+                    </span>
+                </h1>
 
-            <p className={styles.subtitle}>Ми - йога для твого мозку</p>
+                <p className={styles.subtitle}>Ми - йога для твого мозку</p>
 
-            <button className={styles.btn}>
-                Записатися на пробне заняття
-            </button>
+                <button className={styles.btn}>
+                    Записатися на пробне заняття
+                </button>
 
-            <img src={Stickers} alt="" className={styles.stickers}/>
+                <img src={Stickers} alt="" className={styles.stickers}/>
+            </div>
         </section>
     )
 

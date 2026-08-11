@@ -62,3 +62,51 @@
     outline: 0.1875rem solid #1594ef;
     outline-offset: 0.1875rem;
 }
+
+@media (min-width: 1024px) {
+    .footer {
+        padding-top: clamp(3rem, 5vw, 5rem);
+    }
+
+    .card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "logo socials"
+            "tagline socials";
+        align-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: var(--desktop-content-max-width);
+        min-height: clamp(10rem, 14vw, 12rem);
+        padding: clamp(1.75rem, 3vw, 3rem);
+        border-radius: clamp(3.75rem, 7vw, 6rem) clamp(3.75rem, 7vw, 6rem) 0 0;
+    }
+
+    .logo {
+        grid-area: logo;
+        width: clamp(17.25rem, 24vw, 21rem);
+    }
+
+    .tagline {
+        grid-area: tagline;
+        margin-top: 0.25rem;
+        font-size: clamp(var(--button-s-size), 1.5vw, var(--button-m-size));
+    }
+
+    .socials {
+        grid-area: socials;
+        align-self: center;
+        margin: 0;
+    }
+
+    .socialLink {
+        width: clamp(2rem, 3vw, 2.5rem);
+        height: clamp(2rem, 3vw, 2.5rem);
+    }
+
+    .socialLink img {
+        width: clamp(0.9375rem, 1.5vw, 1.25rem);
+        height: clamp(0.9375rem, 1.5vw, 1.25rem);
+    }
+}

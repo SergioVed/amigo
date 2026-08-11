@@ -1,16 +1,15 @@
 import styles from "./index.module.css"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import type { Teacher } from "./types"
 import { getTeachers } from "../../api"
-import { TeacherCardFront } from "./components/TeacherCard/components/TeacherCardFront"
 import { TeacherCard } from "./components/TeacherCard"
-import { TeacherCardBack } from "./components/TeacherCard/components/TeacherCardBack"
 
 export const Teachers = () => {
 
     const [teachers, setTeachers] = useState<Teacher[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [error, setError] = useState<string | null>(null)
+    const teacherListRef = useRef<HTMLUListElement>(null)
 
     useEffect(() => {
         const loadTeachers = async () => {
@@ -27,9 +26,20 @@ export const Teachers = () => {
         loadTeachers()
     }, [])
 
+    const scrollTeachers = (direction: -1 | 1) => {
+        const list = teacherListRef.current
+
+        if (!list) return
+
+        list.scrollBy({
+            left: direction * Math.min(list.clientWidth * 0.8, 360),
+            behavior: "smooth",
+        })
+    }
+
     return(
         <div className={styles.outer}>
-            <section className={styles.container}>
+            <section className={styles.container} id="teachers">
                 
                 <h2>НАШІ PROFESORAS</h2>
                 <h3>[викладачі]</h3>
@@ -38,13 +48,24 @@ export const Teachers = () => {
                 {error && <p className={styles.status}>Не вдалося завантажити викладачів.</p>}
 
                 {!isLoading && !error && (
-                    <ul className={styles.teacher_box}>
-                        {teachers.map((teacher) => (
-                            <li className={styles.teacher_item} key={`${teacher.name}-${teacher.avatarUrl}`}>
-                                <TeacherCard {...teacher}/>
-                            </li>
-                        ))}
-                    </ul>
+                    <>
+                        <ul className={styles.teacher_box} ref={teacherListRef}>
+                            {teachers.map((teacher) => (
+                                <li className={styles.teacher_item} key={`${teacher.name}-${teacher.avatarUrl}`}>
+                                    <TeacherCard {...teacher}/>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div className={styles.navigation} aria-label="Навігація викладачами">
+                            <button type="button" onClick={() => scrollTeachers(-1)} aria-label="Попередні викладачі">
+                                ←
+                            </button>
+                            <button type="button" onClick={() => scrollTeachers(1)} aria-label="Наступні викладачі">
+                                →
+                            </button>
+                        </div>
+                    </>
                 )}
 
             </section>

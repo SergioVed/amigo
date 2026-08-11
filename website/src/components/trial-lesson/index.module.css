@@ -38,6 +38,10 @@
     text-shadow: 0 0.075rem 0 #a77c00;
 }
 
+.desktopTitle {
+    display: none;
+}
+
 .action {
     width: 100%;
     margin-top: 3.1rem;
@@ -123,10 +127,90 @@
 .spain { bottom: 48%; left: 52%; background: #2581bc; }
 .english { bottom: 32%; left: 45%; background: #778c2b; }
 .notebook { bottom: 30%; left: 27%; background: #2581bc; }
-.fire { bottom: 33%; right: 4.8rem; background: #cf99d5; }
+.fire { bottom: 33%; left: 65%; background: #cf99d5; }
 .cat { bottom: 30%; left: 83%; background: #db431d; }
 .strong { bottom: 11%; left: 0.75rem; background: #778c2b; }
 .folder { bottom: 16%; left: 40%; background: #cf99d5; }
 .love { bottom: 0; left: 40%; background: #2581bc; }
 .laptop { bottom: 0; left: 60%; background: #f6bd00; }
 .door { bottom: 0; left: 80%; background: #db431d; }
+
+@media (min-width: 1024px) {
+    .section {
+        padding: clamp(5rem, 8vw, 8rem) 0 clamp(3rem, 5vw, 5rem);
+    }
+
+    .card {
+        width: 88%;
+        max-width: var(--desktop-content-max-width);
+        min-height: clamp(32rem, 47vw, 38rem);
+        border-radius: clamp(3rem, 6vw, 5rem);
+    }
+
+    .content {
+        min-height: 0;
+        padding: clamp(2rem, 3vw, 3rem) 2rem 0;
+    }
+
+    .content h2 {
+        font-size: clamp(var(--heading-h2-size), 7vw, var(--display-xl-size));
+    }
+
+    .mobileTitle {
+        display: none;
+    }
+
+    .desktopTitle {
+        display: block;
+    }
+
+    .action {
+        width: min(100%, 27rem);
+        margin-top: clamp(1.25rem, 2vw, 2rem);
+    }
+
+    .action p {
+        font-size: clamp(var(--button-s-size), 1.5vw, var(--button-m-size));
+    }
+
+    .action button {
+        min-height: 3.5rem;
+        font-size: clamp(var(--button-s-size), 1.5vw, var(--button-m-size));
+    }
+
+    .stickers {
+        inset: clamp(16rem, 24vw, 19rem) 0 0;
+    }
+
+    .easy,
+    .puedes,
+    .bookClass,
+    .amigo,
+    .vamos {
+        padding: clamp(1rem, 1.5vw, 1.5rem) clamp(2rem, 3vw, 3rem);
+        font-size: clamp(var(--button-s-size), 2vw, var(--body-l-size));
+    }
+
+    .phone, .spain, .english, .notebook, .fire, .cat, .strong, .folder, .love, .laptop, .door {
+        width: clamp(4rem, 7vw, 5.5rem);
+        height: clamp(4rem, 7vw, 5.5rem);
+        font-size: clamp(2rem, 3.5vw, 3rem);
+    }
+
+    .love { bottom: 24%; left: 0; }
+    .amigo { bottom: 38%; left: 7%; transform: rotate(9deg); }
+    .vamos { bottom: 0; left: 2%; transform: rotate(-8deg); }
+    .notebook { bottom: 18%; left: 28%; }
+    .folder { bottom: 42%; left: 35%; }
+    .door { bottom: 0; left: 23%; }
+    .laptop { bottom: 0; left: 34%; }
+    .phone { bottom: 36%; left: 50%; }
+    .strong { bottom: 18%; left: 58%; }
+    .puedes { bottom: 0; left: 42%; transform: rotate(14deg); }
+    .spain { bottom: 0; left: 63%; }
+    .easy { bottom: 28%; left: 66%; transform: rotate(-7deg); }
+    .english { bottom: 0; left: 80%; }
+    .cat { bottom: 55%; left: 76%; }
+    .bookClass { bottom: 42%; left: 84%; transform: rotate(42deg); }
+    .fire { right: 1%; bottom: 0; left: auto; }
+}

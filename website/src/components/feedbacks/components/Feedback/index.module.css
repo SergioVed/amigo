@@ -69,3 +69,33 @@
     border: 0;
     cursor: pointer;
 }
+
+@media (min-width: 1024px) {
+    .container {
+        padding: clamp(1rem, 1.5vw, 1.5rem);
+        border-width: 2px;
+        border-radius: 1.75rem;
+    }
+
+    .avatarFrame,
+    .avatar {
+        width: clamp(2rem, 3vw, 3rem);
+        height: clamp(2rem, 3vw, 3rem);
+    }
+
+    .name {
+        font-size: var(--body-m-size);
+    }
+
+    .description,
+    .description.expanded {
+        display: block;
+        margin-bottom: 0;
+        overflow: visible;
+        -webkit-line-clamp: unset;
+    }
+
+    .toggle {
+        display: none;
+    }
+}

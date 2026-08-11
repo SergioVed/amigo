@@ -116,3 +116,9 @@
 .profileImageBox{
     position: relative;
 }
+
+@media (min-width: 1024px) {
+    .container {
+        width: clamp(19rem, 22vw, 22rem);
+    }
+}

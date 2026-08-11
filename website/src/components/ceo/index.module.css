@@ -1,6 +1,7 @@
 .container{
+    z-index: 1;
     margin: 0 auto;
-    max-width: 30rem;
+    max-width: 35rem;
     min-height: 100vh;
     padding-bottom: 4rem;
     background-color: #EEE;
@@ -25,6 +26,7 @@
 }
 
 .description h2{
+    text-align: start;
     margin: 0;
     font-family: var(--font-primary);
     font-size: var(--heading-h3-size);
@@ -79,5 +81,97 @@
 }
 
 .outer{
+    position: relative;
+    isolation: isolate;
     background-color: var(--color-yellow);
+}
+
+@media (min-width: 1024px) {
+    .container {
+        display: grid;
+        box-sizing: border-box;
+        grid-template-columns: minmax(20rem, 2fr) minmax(24rem, 3fr);
+        grid-template-areas:
+            "photo description"
+            "info info";
+        align-items: center;
+        width: 100%;
+        max-width: var(--desktop-content-max-width);
+        min-height: 0;
+        margin-inline: auto;
+        padding: clamp(5rem, 8vw, 8rem) 4.75% clamp(3rem, 5vw, 5rem);
+        background-image:
+            linear-gradient(rgb(237 186 0 / 14%) 1px, transparent 1px),
+            linear-gradient(90deg, rgb(237 186 0 / 14%) 1px, transparent 1px);
+        background-size: 3.5rem 3.5rem;
+        border-radius: 4.5rem;
+        top: -2rem;
+    }
+
+    .photoFrame {
+        grid-area: photo;
+        align-self: end;
+        width: 100%;
+        max-width: 30rem;
+        margin: 0 auto -3rem 0;
+    }
+
+    .description {
+        grid-area: description;
+        align-self: center;
+        width: 100%;
+        max-width: 34rem;
+        margin: 0 auto;
+    }
+
+    .description h2 {
+        font-size: clamp(var(--heading-h3-size), 4vw, var(--heading-h1-size));
+        font-weight: var(--font-weight-semibold);
+    }
+
+    .description p {
+        max-width: 38rem;
+        font-size: clamp(var(--body-m-size), 2vw, var(--body-l-size));
+        line-height: var(--body-l-line-height);
+    }
+
+    .info {
+        position: relative;
+        z-index: 1;
+        grid-area: info;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
+        max-width: none;
+        gap: 0.4rem;
+        margin: 0;
+    }
+
+    .infoBlock {
+        min-height: clamp(7.5rem, 14vw, 10rem);
+        padding: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .infoBlock span {
+        font-size: clamp(var(--caption-s-size), 2vw, var(--body-l-size));
+        line-height: var(--body-l-line-height);
+    }
+}
+
+@media (min-width: 1440px) {
+    .outer {
+        background-color: #000;
+    }
+
+    .outer::before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        aspect-ratio: 3840 / 1037;
+        background: url("../../assets/hero/vector.png") center bottom / 100% 100% no-repeat;
+        pointer-events: none;
+    }
 }

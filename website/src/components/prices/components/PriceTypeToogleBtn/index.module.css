@@ -49,3 +49,17 @@
 .active:hover {
     transform: scale(1.01);
 }
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 0.5rem;
+        border-radius: 1rem;
+    }
+
+    .button {
+        min-height: 2.75rem;
+        padding-inline: clamp(1.25rem, 2.5vw, 2.5rem);
+        border-radius: 0.75rem;
+        font-size: clamp(var(--label-size), 1.25vw, var(--button-s-size));
+    }
+}

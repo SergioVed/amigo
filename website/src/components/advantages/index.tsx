@@ -7,7 +7,7 @@ export const Advantages = () => {
 
 
     return(
-        <section className={styles.outer}>
+        <section className={styles.outer} id="advantages">
             
             <h2>ПУНДИКИ НАШОЇ ШКОЛИ</h2>
 

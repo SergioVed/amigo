@@ -4,6 +4,10 @@
     flex-direction: column;
     gap: 3rem;
     background-color: var(--color-yellow);
+    background-image: url("../../assets/advantages/advantages-bg.png");
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
 }
 
 .outer h2{
@@ -26,8 +30,45 @@
     display: flex;
     flex-direction: column;
 
-    background-image: url("../../assets/advantages/advantages-bg.png");
-    background-size: 100% auto;
-    background-position: top center;
-    background-repeat: no-repeat;
+}
+
+@media (min-width: 1024px) {
+    .outer {
+        gap: 0;
+        padding-top: clamp(4rem, 7vw, 7rem);
+        background-image: none;
+        background-image: url("../../assets/advantages/advatages-bg-desctop.png");
+        background-position: center;
+    }
+
+    .outer h2 {
+        position: relative;
+        z-index: 1;
+        margin-bottom: clamp(-1rem, -1vw, 0rem);
+        font-size: clamp(var(--heading-h3-size), 4vw, var(--heading-h1-size));
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        width: 100%;
+        max-width: var(--desktop-content-max-width);
+        padding: clamp(3rem, 5vw, 5rem) 5.5% clamp(5rem, 8vw, 8rem);
+        gap: clamp(0.5rem, 1vw, 1rem);
+        background-size: 100% 100%;
+        background-position: center;
+    }
+}
+
+@media (min-width: 1440px) {
+    .outer {
+        background-image: url("../../assets/advantages/advatages-bg-desctop.png");
+        background-size: 100% auto;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+    }
+
+    .container{
+        background-image: none;
+    }
 }

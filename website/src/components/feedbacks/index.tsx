@@ -1,5 +1,5 @@
 import styles from "./index.module.css"
-import bg from "../../assets/feedbacks/bg.png"
+import stickers from "../../assets/feedbacks/stickers.png"
 import { Feedback } from "./components/Feedback"
 import type { FeedbackProps } from "./types"
 import { useEffect, useState } from "react"
@@ -27,8 +27,10 @@ export const Feedbacks = () => {
     }, [])
 
     return (
-        <section className={styles.container} aria-label="Відгуки студентів">
-            <div className={styles.notebook} style={{ backgroundImage: `url(${bg})` }}>
+        <section className={styles.container} id="feedbacks" aria-label="Відгуки студентів">
+            <div className={styles.notebook}>
+                <img className={styles.desktopStickers} src={stickers} alt="" aria-hidden="true" />
+
                 {loading && <p className={styles.status}>Завантажуємо відгуки…</p>}
                 {error && <p className={styles.status}>{error}</p>}
 
