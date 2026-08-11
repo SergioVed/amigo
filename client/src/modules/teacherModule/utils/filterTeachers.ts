@@ -16,7 +16,6 @@ export const filterTeachers = (teachers: Teacher[], query: string) => {
         [
             teacher.name,
             teacher.description,
-            teacher.subDescription
         ].some((value) => (
             value.toLocaleLowerCase().includes(normalisedQuery)
         ))

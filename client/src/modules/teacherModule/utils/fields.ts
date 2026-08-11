@@ -13,11 +13,6 @@ export const fields: FieldConfig<TeacherCreateForm>[] = [
             placeholder: "Enter description",
         },
         {
-            name: "subDescription",
-            label: "Sub Description",
-            placeholder: "Enter sub description",
-        },
-        {
             name: "videoUrl",
             label: "Video Url",
             placeholder: "Enter video url",

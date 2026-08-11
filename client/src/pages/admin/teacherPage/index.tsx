@@ -75,6 +75,7 @@ export const TeacherPage = () => {
                 onSubmit={() => handleSubmit(form)}
             >
                 <input type="file" onChange={(e) => handleSelectFile(e)}/>
+                <input type="checkbox"/>
 
             </AddFormPopup>
         </div>

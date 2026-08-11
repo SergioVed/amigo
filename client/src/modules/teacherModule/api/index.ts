@@ -24,7 +24,6 @@ export class TeachersApi {
 
         formData.append("name", data.name)
         formData.append("description", data.description)
-        formData.append("subDescription", data.subDescription)
         formData.append("forStudent", data.forStudent)
         formData.append("videoUrl", data.videoUrl)
         formData.append("favouriteWord", data.favouriteWord)

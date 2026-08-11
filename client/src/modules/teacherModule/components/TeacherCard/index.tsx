@@ -24,7 +24,6 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
         avatarUrl: teacher.avatarUrl,
         name: teacher.name,
         description: teacher.description,
-        subDescription: teacher.subDescription,
         videoUrl: teacher.videoUrl,
         superPower: teacher.superPower,
         favouriteWord: teacher.favouriteWord,
@@ -46,10 +45,6 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
 
         if (form.description !== teacher.description) {
             formToUpdate.description = form.description
-        }
-
-        if (form.subDescription !== teacher.subDescription) {
-            formToUpdate.subDescription = form.subDescription
         }
 
         if (form.videoUrl !== teacher.videoUrl) {

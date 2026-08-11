@@ -16,8 +16,6 @@ export const TeacherCardView = ({ teacher }: TeacherCardViewProps) => {
             />
             <p className={styles.description}>{teacher.description}</p>
 
-            <p className={styles.subDescription}>{teacher.subDescription}</p>
-
             <a
                 className={styles.videoLink}
                 href={teacher.videoUrl}

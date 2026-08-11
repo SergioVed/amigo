@@ -27,13 +27,6 @@ export const TeacherCardForm = ({ form, setForm }: TeacherCardFormProps) => {
                 placeholder="Enter description"
             />
 
-            <CustomInput
-                label="Sub Description"
-                value={form.subDescription}
-                onChange={(e) => setForm((prev) => ({ ...prev, subDescription: e.target.value }))}
-                placeholder="Enter sub description"
-            />
-
             <div className={styles.videoLink}>
                 <img
                     src={require("../../public/icons/video.png")}

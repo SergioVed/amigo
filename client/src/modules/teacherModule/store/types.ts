@@ -5,7 +5,6 @@ export interface Teacher {
     avatarUrl: string,
     name: string,
     description: string,
-    subDescription: string,
     videoUrl: string,
     superPower: string[],
     favouriteWord: string,
