@@ -1,6 +1,6 @@
 .container {
     background-color: #000;
-    padding-top: 5rem;
+    padding-top: 4rem;
 }
 
 .inner {
@@ -20,7 +20,7 @@
     background: url("../../assets/hero/image-bg.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 50% auto;
+    background-size: 100% auto;
     transform: translate(-50%, -50%) rotate(90deg);
     z-index: -1;
 }
