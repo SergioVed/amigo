@@ -20,14 +20,10 @@
     text-align: center;
 }
 
-.container h3{
+.options {
+    display: flex;
+    justify-content: center;
     margin: 2rem auto;
-    font-family: var(--font-primary);
-    font-size: var(--button-l-size);
-    font-weight: var(--font-weight-semibold);
-    line-height: var(--heading-h3-line-height);
-    letter-spacing: var(--heading-h3-letter-spacing);
-    text-align: center;
 }
 
 .outer{
@@ -88,9 +84,8 @@
         font-size: clamp(var(--heading-h3-size), 4vw, var(--heading-h1-size));
     }
 
-    .container h3 {
+    .options {
         margin: 1.25rem auto 0;
-        font-size: clamp(var(--button-l-size), 2.5vw, var(--heading-h3-size));
     }
 
     .teacher_box {

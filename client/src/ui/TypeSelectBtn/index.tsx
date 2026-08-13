@@ -1,27 +1,27 @@
 import styles from "./index.module.css"
 
-interface PriceSelectProps<T> {
+interface TypeSelectBtnProps<T> {
     label: string,
-    type: T
+    value: T
     onChange: (value: T) => void,
     options: Array<{
-        name: string,
-        value: string
+        title: string,
+        value: T
     }>
 }
 
-export const PriceSelect = <T extends string>({type, onChange, label, options}: PriceSelectProps<T>) => {
+export const TypeSelectBtn = <T extends string>({value, onChange, label, options}: TypeSelectBtnProps<T>) => {
     return (
         <div className={styles.selectField}>
             <label className={styles.selectLabel}>{label}</label>
             <select
                 className={styles.select}
-                value={type}
+                value={value}
                 onChange={(e) => onChange(e.target.value as T)}
             >
                 {options.map(option => (
                     <option key={option.value} value={option.value}>
-                        {option.name}
+                        {option.title}
                     </option>
                 ))}
             </select>

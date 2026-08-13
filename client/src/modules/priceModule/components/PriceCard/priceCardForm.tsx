@@ -3,8 +3,8 @@ import { Dispatch, SetStateAction } from "react"
 import { CustomInput } from "../../../../ui/CustomInput"
 import { PriceCategory, PriceType } from "../../types"
 import styles from "./index.module.css"
-import { PriceSelect } from "../../ui/PriceTypeSelect"
 import { categoryOptions, typeOptions } from "../../utils/fields"
+import { TypeSelectBtn } from "../../../../ui/TypeSelectBtn"
 
 export interface PriceCardFormData {
     title: string
@@ -46,19 +46,19 @@ export const PriceCardForm = ({form, setForm}: PriceCardFormProps) => {
                 placeholder="Enter description"
             />
 
-            <PriceSelect
+            <TypeSelectBtn
                 label="Type"
                 options={typeOptions}
-                type={form.type}
+                value={form.type}
                 onChange={(type) => {
                     setForm(prev => ({...prev, type: type}))
                 }}
             />
 
-             <PriceSelect
+             <TypeSelectBtn
                 label="Category"
                 options={categoryOptions}
-                type={form.category}
+                value={form.category}
                 onChange={(category) => {
                     setForm(prev => ({...prev, category: category}))
                 }}

@@ -20,28 +20,28 @@ export const fields: FieldConfig<PriceForm>[] = [
     },
 ]
 
-export const typeOptions: {name: string, value: PriceType}[] = [
+export const typeOptions: {title: string, value: PriceType}[] = [
     {
-        name: "Individual",
+        title: "Individual",
         value: "individual"
     }, {
-        name: "Pair",
+        title: "Pair",
         value: "pair"
     }
 ]
 
-export const categoryOptions: {name: string, value: PriceCategory}[] = [
+export const categoryOptions: {title: string, value: PriceCategory}[] = [
     {
-        name: "Trial",
+        title: "Trial",
         value: "trial"
     }, {
-        name: "Single",
+        title: "Single",
         value: "single"
     }, {
-        name: "Subscription",
+        title: "Subscription",
         value: "subscription"
     }, {
-        name: "With Mari",
+        title: "With Mari",
         value: "with_mari"
     },
 ]

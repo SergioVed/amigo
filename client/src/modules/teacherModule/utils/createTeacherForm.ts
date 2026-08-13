@@ -10,4 +10,5 @@ export const createTeacherForm: TeacherCreateForm = {
     superPower2: "",
     favouriteWord: "",
     forStudent: "",
+    language: "SPANISH"
 }

@@ -31,6 +31,7 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
         superPower: teacher.superPower,
         favouriteWord: teacher.favouriteWord,
         forStudent: teacher.forStudent,
+        language: teacher.language,
     })
 
     function handleUpdateTeacher() {
@@ -72,6 +73,10 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
 
         if (form.forStudent !== teacher.forStudent) {
             formToUpdate.forStudent = form.forStudent
+        }
+
+        if (form.language !== teacher.language) {
+            formToUpdate.language = form.language
         }
 
         dispatch(updateTeacherAction(teacher.id, formToUpdate, selectedFile))

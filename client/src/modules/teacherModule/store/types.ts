@@ -1,4 +1,4 @@
-import { TeacherCreateForm } from "../types"
+import { Language } from "../types"
 
 export interface Teacher {
     id: number,
@@ -10,7 +10,8 @@ export interface Teacher {
     videoUrl: string,
     superPower: string[],
     favouriteWord: string,
-    forStudent: string
+    forStudent: string,
+    language: Language
 }
 
 export interface TeachersState {

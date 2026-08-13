@@ -11,9 +11,11 @@ import {
     addTeacherAction,
     fetchTeachersAction,
     createTeacherForm,
-    filterTeachers
+    filterTeachers,
 } from "../../../modules/teacherModule"
 import { AddImageInput } from "../../../ui/AddImageInput"
+import { TypeSelectBtn } from "../../../ui/TypeSelectBtn"
+import { typeOptions } from "../../../modules/teacherModule/utils/options"
 
 export const TeacherPage = () => {
 
@@ -94,6 +96,13 @@ export const TeacherPage = () => {
                     />
                     Has priority
                 </label>
+
+                <TypeSelectBtn
+                    label="Choose Language"
+                    value={form.language}
+                    onChange={(language) => setForm(prev => ({...prev, language}))}
+                    options={typeOptions}
+                />
 
             </AddFormPopup>
         </div>

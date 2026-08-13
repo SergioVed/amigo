@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import styles from "./index.module.css"
 import type { PriceProps, PriceType } from "./types"
 import { getPrices } from "../../api"
-import { PriceTypeToogleBtn } from "./components/PriceTypeToogleBtn"
+import { OptionBtn } from "../OptionBtn"
 import { motion } from "motion/react"
 
 const priceCardAnimation = {
@@ -15,6 +15,11 @@ const priceCardAnimation = {
         damping: 16
     }
 }
+
+const priceTypeOptions: { label: string; value: PriceType }[] = [
+    { label: "Індивідуальні", value: "individual" },
+    { label: "Парні", value: "pair" },
+]
 
 export const Prices = () => {
     const [prices, setPrices] = useState<PriceProps[]>([])
@@ -72,7 +77,12 @@ export const Prices = () => {
                         viewport={{ once: true, amount: 0.5 }}
                         transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
                     >
-                        <PriceTypeToogleBtn value={selectedType} onChange={handleTypeChange} />
+                        <OptionBtn
+                            options={priceTypeOptions}
+                            value={selectedType}
+                            onChange={handleTypeChange}
+                            ariaLabel="Тип уроків"
+                        />
                     </motion.div>
 
                     <motion.p

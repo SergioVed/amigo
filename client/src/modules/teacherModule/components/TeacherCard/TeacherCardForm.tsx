@@ -4,6 +4,8 @@ import { CustomInput } from "../../../../ui/CustomInput"
 import { Teacher } from "../../../teacherModule/store/types"
 import { AddImageInput } from "../../../../ui/AddImageInput"
 import { compressImage } from "../../../../utils/compressImage"
+import { TypeSelectBtn } from "../../../../ui/TypeSelectBtn"
+import { typeOptions } from "../../utils/options"
 
 type TeacherFormData = Omit<Teacher, "id">
 
@@ -78,6 +80,13 @@ export const TeacherCardForm = ({ form, setForm, setSelectedFile }: TeacherCardF
                 />
                 Has priority
             </label>
+
+            <TypeSelectBtn
+                label="Choose Language"
+                value={form.language}
+                onChange={(language) => setForm((prev) => ({ ...prev, language }))}
+                options={typeOptions}
+            />
 
             <CustomInput
                 label="First Super Power"

@@ -9,5 +9,8 @@ export interface Teacher {
     videoUrl: string,
     superPower: string[],
     favouriteWord: string,
-    forStudent: string 
+    forStudent: string
+    language: TeacherLanguage
 }
+
+export type TeacherLanguage = "SPANISH" | "ENGLISH"

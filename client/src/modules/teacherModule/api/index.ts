@@ -52,6 +52,10 @@ export class TeachersApi {
             })
         }
 
+        if (data.language !== undefined) {
+            formData.append("language", data.language)
+        }
+
         if (file !== null) {
             formData.append("file", file)
         }
@@ -73,6 +77,7 @@ export class TeachersApi {
         formData.append("favouriteWord", data.favouriteWord)
         formData.append("experience", String(data.experience))
         formData.append("hasPriority", String(data.hasPriority))
+        formData.append("language", data.language)
         
         data.superPower.forEach((item) => {
             formData.append("superPower", item)

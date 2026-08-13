@@ -7,7 +7,8 @@ export interface TeacherCreateForm {
     favouriteWord: string
     forStudent: string
     experience: number
-    hasPriority: boolean
+    hasPriority: boolean,
+    language: Language
 }
 
 export interface TeacherCreatePayload {
@@ -18,5 +19,9 @@ export interface TeacherCreatePayload {
     favouriteWord: string
     forStudent: string
     experience: number
-    hasPriority: boolean
+    hasPriority: boolean,
+    language: Language
 }
+
+
+export type Language = "SPANISH" | "ENGLISH"

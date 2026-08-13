@@ -12,10 +12,10 @@ import { addPriceAction,
     PriceList,
     filterPrices,
     fields,
-    PriceSelect,
     typeOptions,
     categoryOptions
 } from "../../../modules/priceModule"
+import { TypeSelectBtn } from "../../../ui/TypeSelectBtn"
 
 export const PricePage = () => {
 
@@ -60,19 +60,19 @@ export const PricePage = () => {
                 onSubmit={() => {
                     handleAddPrice(form)
                 }}>
-                <PriceSelect
+                <TypeSelectBtn
                     label="Type"
                     options={typeOptions}
-                    type={form.type}
+                    value={form.type}
                     onChange={(type) => {
                         setForm(prev => ({ ...prev, type: type }))
                     }}
                 />
 
-                <PriceSelect
+                <TypeSelectBtn
                     label="Category"
                     options={categoryOptions}
-                    type={form.category}
+                    value={form.category}
                     onChange={(category) => {
                         setForm(prev => ({ ...prev, category: category }))
                     }}
