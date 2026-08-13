@@ -1,27 +1,53 @@
-import { Dispatch, SetStateAction } from "react"
+import { ChangeEvent, Dispatch, SetStateAction } from "react"
 import styles from "./index.module.css"
 import { CustomInput } from "../../../../ui/CustomInput"
 import { Teacher } from "../../../teacherModule/store/types"
+import { AddImageInput } from "../../../../ui/AddImageInput"
+import { compressImage } from "../../../../utils/compressImage"
 
 type TeacherFormData = Omit<Teacher, "id">
 
 interface TeacherCardFormProps {
     form: TeacherFormData
     setForm: Dispatch<SetStateAction<TeacherFormData>>
+    setSelectedFile: (file: File | null) => void
 }
 
-export const TeacherCardForm = ({ form, setForm }: TeacherCardFormProps) => {
+
+
+export const TeacherCardForm = ({ form, setForm, setSelectedFile }: TeacherCardFormProps) => {
+
+    async function handleSelectImage(e: ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0]
+
+        if (!file) {
+            return
+        }
+
+        try {
+            setSelectedFile(await compressImage(file))
+        } catch (error) {
+            setSelectedFile(null)
+            alert(error instanceof Error ? error.message : "Could not prepare the selected image")
+            e.target.value = ""
+        }
+    }
+
     function updateSuperPower(index: number, value: string) {
         setForm(prev => {
             const superPower = [...prev.superPower]
             superPower[index] = value
 
-            return {...prev, superPower}
+            return { ...prev, superPower }
         })
     }
 
     return (
         <div className={styles.form}>
+            <AddImageInput
+                handleSelectFile={handleSelectImage}
+            />
+
             <CustomInput
                 label="Name"
                 value={form.name}

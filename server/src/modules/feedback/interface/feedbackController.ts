@@ -23,7 +23,7 @@ export class FeedbackController {
         @Body() dto: CreateFeedbackDto, 
         @UploadedFile() file: Express.Multer.File
     ) {
-        const secure_url = await this.imageService.saveImage(file)
+        const secure_url = await this.imageService.saveImage(file, "feedback")
 
         const result = await this.feedbackService.create({...dto, avatarUrl: secure_url})
         return FeedbackResponseMapper.toResponse(result)
@@ -55,7 +55,7 @@ export class FeedbackController {
             const feedback = await this.feedbackService.getOne(id)
             avatarUrl = feedback.getUrl()
         } else {
-            avatarUrl = await this.imageService.saveImage(file)
+            avatarUrl = await this.imageService.saveImage(file, "feedback")
         }
 
         const result = await this.feedbackService.update(id, {...dto, avatarUrl: avatarUrl})

@@ -19,6 +19,7 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
 
     const [isEditing, setIsEditing] = useState<boolean>(false)
     const [visible, setVisible] = useState<boolean>(false)
+    const [selectedFile, setSelectedFile] = useState<File | null>(null)
 
     const [form, setForm] = useState({
         avatarUrl: teacher.avatarUrl,
@@ -73,13 +74,15 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
             formToUpdate.forStudent = form.forStudent
         }
 
-        dispatch(updateTeacherAction(teacher.id, formToUpdate))
+        dispatch(updateTeacherAction(teacher.id, formToUpdate, selectedFile))
+        setSelectedFile(null)
         setIsEditing(false)
     }
 
     function cancel() {
         setIsEditing(false)
         setForm({...teacher})
+        setSelectedFile(null)
     }
 
     function handleDeleteTeacher() {
@@ -100,7 +103,11 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
             <DeletePopup onDelete={handleDeleteTeacher} setVisible={setVisible} visible={visible}/>
 
             {isEditing
-                ? <TeacherCardForm form={form} setForm={setForm}/>
+                ? <TeacherCardForm
+                    form={form}
+                    setForm={setForm}
+                    setSelectedFile={setSelectedFile}
+                />
                 : <TeacherCardView teacher={teacher}/>
             }
         </div>

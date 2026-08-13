@@ -11,8 +11,52 @@ export class TeachersApi {
         return $api.get("/professor")
     }
 
-    static updateTeacher (id: number, data: UpdateTeacherPayload) {
-        return $api.put(`/professor/${id}`, data)
+    static updateTeacher (id: number, data: UpdateTeacherPayload, file: File | null = null) {
+        const formData = new FormData()
+
+        if (data.avatarUrl !== undefined) {
+            formData.append("avatarUrl", data.avatarUrl)
+        }
+
+        if (data.name !== undefined) {
+            formData.append("name", data.name)
+        }
+
+        if (data.description !== undefined) {
+            formData.append("description", data.description)
+        }
+
+        if (data.forStudent !== undefined) {
+            formData.append("forStudent", data.forStudent)
+        }
+
+        if (data.videoUrl !== undefined) {
+            formData.append("videoUrl", data.videoUrl)
+        }
+
+        if (data.favouriteWord !== undefined) {
+            formData.append("favouriteWord", data.favouriteWord)
+        }
+
+        if (data.experience !== undefined) {
+            formData.append("experience", String(data.experience))
+        }
+
+        if (data.hasPriority !== undefined) {
+            formData.append("hasPriority", String(data.hasPriority))
+        }
+
+        if (data.superPower !== undefined) {
+            data.superPower.forEach((item) => {
+                formData.append("superPower", item)
+            })
+        }
+
+        if (file !== null) {
+            formData.append("file", file)
+        }
+
+        return $api.put(`/professor/${id}`, formData)
     }
 
     static deleteTeaher (id: number) {

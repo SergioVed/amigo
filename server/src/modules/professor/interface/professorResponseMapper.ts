@@ -15,6 +15,7 @@ export class ProfessorResponseMapper {
             superPower: professor.getSuperPower(),
             favouriteWord: professor.getFavouriteWord(),
             forStudent: professor.getForStudent(),
+            language: professor.getLanguage()
         }
     }
 }

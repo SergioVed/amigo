@@ -1,7 +1,7 @@
 import { PartialType } from "@nestjs/swagger";
-import { ArrayNotEmpty, IsArray, IsBoolean, IsNotEmpty, IsNumber, IsString, IsUrl } from "class-validator";
+import { ArrayNotEmpty, IsArray, IsBoolean, IsIn, IsNotEmpty, IsNumber, IsString, IsUrl } from "class-validator";
 import { Transform, Type } from "class-transformer";
-import { CreateProfessorAttrs } from "../core/professorEntity.js";
+import type { Language } from "../core/professorEntity.js";
 
 export class CreateProfessorDto {
 
@@ -37,6 +37,10 @@ export class CreateProfessorDto {
     @IsString()
     @IsNotEmpty()
     forStudent!: string;
+
+    @IsIn(["SPANISH", "ENGLISH"])
+    @IsNotEmpty()
+    language!: Language
 }
 
 export class UpdateProfessorDto extends PartialType(CreateProfessorDto) {}

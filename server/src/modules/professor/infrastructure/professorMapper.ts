@@ -15,7 +15,8 @@ export class ProfessorMapper {
             data.video_url,
             data.super_power,
             data.favourite_word,
-            data.for_student
+            data.for_student,
+            data.language
         )
     }
 
@@ -30,6 +31,7 @@ export class ProfessorMapper {
             super_power: professor.getSuperPower(),
             favourite_word: professor.getFavouriteWord(),
             for_student: professor.getForStudent(),
+            language: professor.getLanguage()
         }
     }
 }

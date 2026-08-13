@@ -12,10 +12,10 @@ export class ImageService {
         })
     }
 
-    async saveImage(file: Express.Multer.File) {
+    async saveImage(file: Express.Multer.File, folder: "feedback" | "teacher") {
         const result = await new Promise<UploadApiResponse>((resolve, reject) => {
             const uploadStream = cloudinary.uploader.upload_stream({
-                folder: "amigo/feedback",
+                folder: `amigo/${folder}`,
                 resource_type: "image"
             }, (error, result) => {
                 if (error) return reject(error)

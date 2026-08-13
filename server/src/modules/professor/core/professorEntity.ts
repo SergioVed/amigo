@@ -1,3 +1,5 @@
+export type Language = "SPANISH" | "ENGLISH"
+
 export interface CreateProfessorAttrs {
     hasPriority: boolean,
     avatarUrl: string,
@@ -7,7 +9,8 @@ export interface CreateProfessorAttrs {
     videoUrl: string,
     superPower: string[],
     favouriteWord: string,
-    forStudent: string 
+    forStudent: string,
+    language: Language
 }
 
 export class Professor {
@@ -22,7 +25,8 @@ export class Professor {
         private _videoUrl: string,
         private _superPower: string[],
         private _favouriteWord: string,
-        private _forStudent: string
+        private _forStudent: string,
+        private _language: Language
     ) { }
 
     public getId(): number | null {
@@ -65,6 +69,10 @@ export class Professor {
         return this._forStudent;
     }
 
+    public getLanguage(): Language {
+        return this._language;
+    }
+
 
     public static create(data: CreateProfessorAttrs) {
         return new Professor(
@@ -77,7 +85,8 @@ export class Professor {
             data.videoUrl,
             data.superPower,
             data.favouriteWord,
-            data.forStudent
+            data.forStudent,
+            data.language
         )
     }
 
@@ -91,6 +100,7 @@ export class Professor {
         if (data.superPower !== undefined) this._superPower = data.superPower;
         if (data.favouriteWord !== undefined) this._favouriteWord = data.favouriteWord;
         if (data.forStudent !== undefined) this._forStudent = data.forStudent;
+        if (data.language !== undefined) this._language = data.language;
     }
 }
 

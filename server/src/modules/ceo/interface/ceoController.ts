@@ -36,7 +36,7 @@ export class CeoController {
         @Body() dto: UpdateCeoDto,
         @UploadedFile() file?: Express.Multer.File
     ) {
-        const image = file ? await this.imageService.saveImage(file) : undefined
+        const image = file ? await this.imageService.saveImage(file, "teacher") : undefined
         const updatedCeo = await this.ceoService.update(id, {...dto, ...(image && {image})})
         
         return CeoResponseMapper.toResponse(updatedCeo)

@@ -30,7 +30,7 @@ export class ProfessorController {
         @Body() dto: CreateProfessorDto,
         @UploadedFile() file: Express.Multer.File
     ) {
-        const secure_url = await this.imageService.saveImage(file)
+        const secure_url = await this.imageService.saveImage(file, "teacher")
 
         const professor = await this.professorService.create({...dto, avatarUrl: secure_url})
         return ProfessorResponseMapper.toResponse(professor)
@@ -38,8 +38,23 @@ export class ProfessorController {
 
     @UseGuards(AuthGuard)
     @Put("/:id")
-    async update (@Param("id", ParseIntPipe) id: number, @Body() dto: UpdateProfessorDto) {
-        const professor = await this.professorService.update(id, dto)
+    @UseInterceptors(FileInterceptor("file"))
+    async update (
+        @Param("id", ParseIntPipe) id: number,
+        @Body() dto: UpdateProfessorDto,
+        @UploadedFile() file: Express.Multer.File
+    ) {
+
+        let avatarUrl;
+
+        if(!file){
+            const teacher = await this.getOne(id)
+            avatarUrl = teacher.getAvatarUrl()
+        } else {
+            avatarUrl = await this.imageService.saveImage(file, "teacher")
+        }
+
+        const professor = await this.professorService.update(id, {...dto, avatarUrl: avatarUrl})
         return ProfessorResponseMapper.toResponse(professor)
     }
 

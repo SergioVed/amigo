@@ -4,6 +4,7 @@ import {
     Model,
     Table,
 } from "sequelize-typescript";
+import type { Language } from "../core/professorEntity";
 
 export interface ProfessorModelCreationAttrs {
     avatar_url: string,
@@ -14,7 +15,8 @@ export interface ProfessorModelCreationAttrs {
     video_url: string,
     super_power: string[],
     favourite_word: string,
-    for_student: string
+    for_student: string,
+    language: Language
 }
 
 
@@ -49,4 +51,7 @@ export class ProfessorModel extends Model<ProfessorModel, ProfessorModelCreation
 
     @Column({ type: DataType.TEXT, allowNull: false })
     declare for_student: string;
+
+    @Column({ type: DataType.STRING, allowNull: false })
+    declare language: Language
 }

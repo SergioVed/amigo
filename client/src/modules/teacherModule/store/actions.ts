@@ -17,12 +17,12 @@ export const fetchTeachersAction = () => {
     }
 }
 
-export const updateTeacherAction = (id: number, data: UpdateTeacherPayload) => {
+export const updateTeacherAction = (id: number, data: UpdateTeacherPayload, file: File | null) => {
     return async (dispatch: Dispatch<TeachersAction>) => {
 
         try {
             dispatch({type: TeachersActionTypes.UPDATE_TEACHER})
-            const response = await TeachersApi.updateTeacher(id, data)
+            const response = await TeachersApi.updateTeacher(id, data, file)
             dispatch({type: TeachersActionTypes.UPDATE_TEACHER_SUCCESS, payload: response.data })
         } catch (e) {
             errorHandler(e, TeachersActionTypes.UPDATE_TEACHER_ERROR, dispatch)

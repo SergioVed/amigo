@@ -110,6 +110,10 @@
 
 
 @media (min-width: 1024px) {
+    .container{
+        padding-top: 5rem;
+    }
+
     .inner {
         min-height: clamp(32rem, 52vw, 42rem);
     }
@@ -157,6 +161,7 @@
 }
 
 @media (min-width: 1440px) {
+
     .inner {
         max-width: var(--desktop-content-max-width);
         margin: 0 auto;
