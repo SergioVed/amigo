@@ -31,8 +31,10 @@ export const TrialLesson = () => {
                         >
                             Тицьни, щоб познайомитися
                         </motion.p>
-                        <motion.button
-                            type="button"
+                        <motion.a
+                            href="https://t.me/mariya_amarilla"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             whileHover={{ y: -3, scale: 1.03 }}
@@ -45,7 +47,7 @@ export const TrialLesson = () => {
                             }}
                         >
                             Записатися на пробне заняття
-                        </motion.button>
+                        </motion.a>
                     </div>
                 </div>
 

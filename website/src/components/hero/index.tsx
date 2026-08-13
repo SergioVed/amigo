@@ -49,15 +49,24 @@ export const Hero = () => {
                     Ми - йога для твого мозку
                 </motion.p>
 
-                <motion.button
+                <motion.a
                     className={styles.btn}
+                    href="https://t.me/mariya_amarilla"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
+                    whileHover={{ y: -3, scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
                     viewport={{ once: true, amount: 0.5 }}
-                    transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
+                    transition={{
+                        opacity: { duration: 1.2, delay: 0.4, ease: "easeOut" },
+                        y: { duration: 0.2, ease: "easeOut" },
+                        scale: { duration: 0.2, ease: "easeOut" }
+                    }}
                 >
                     Записатися на пробне заняття
-                </motion.button>
+                </motion.a>
 
                 <img src={Stickers} alt="" className={styles.stickers}/>
             </div>

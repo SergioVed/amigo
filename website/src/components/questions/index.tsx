@@ -2,7 +2,7 @@ import { useState } from "react"
 import styles from "./index.module.css"
 import questionsImage from "../../assets/questions/img.png"
 import { questions } from "./utils/questions"
-import { motion, stagger } from "motion/react"
+import { AnimatePresence, motion, stagger } from "motion/react"
 
 const questionsVariants = {
     hidden: {},
@@ -78,11 +78,24 @@ export const Questions = () => {
                                     <span className={`${styles.icon} ${isOpen ? styles.icon_open : ""}`} aria-hidden="true" />
                                 </button>
 
-                                {isOpen && (
-                                    <p className={styles.answer} id={`question-answer-${index}`}>
-                                        {answer}
-                                    </p>
-                                )}
+                                <AnimatePresence initial={false}>
+                                    {isOpen && (
+                                        <motion.div
+                                            className={styles.answerWrapper}
+                                            id={`question-answer-${index}`}
+                                            initial={{ height: 0, opacity: 0, y: -8 }}
+                                            animate={{ height: "auto", opacity: 1, y: 0 }}
+                                            exit={{ height: 0, opacity: 0, y: -8 }}
+                                            transition={{
+                                                height: { duration: 0.32, ease: "easeInOut" },
+                                                opacity: { duration: 0.22, ease: "easeOut" },
+                                                y: { duration: 0.25, ease: "easeOut" },
+                                            }}
+                                        >
+                                            <p className={styles.answer}>{answer}</p>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </motion.article>
                         )
                     })}

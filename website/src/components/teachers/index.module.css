@@ -5,8 +5,7 @@
     background-color: #EEE;
     border-radius: 60px;
     padding-inline: var(--page-padding-inline);
-    padding-top: 3rem;
-    padding-bottom: 6rem;
+    padding-block: 4rem;
 }
 
 .container h2{
@@ -64,14 +63,14 @@
 
 @media (min-width: 1024px) {
     .outer {
-        padding: clamp(8rem, 10vw, 10rem) 0;
+        padding-block: 4rem;
     }
 
     .container {
         box-sizing: border-box;
         width: calc(100% - 3.5rem);
         max-width: var(--desktop-content-max-width);
-        padding: clamp(4rem, 6vw, 6rem) 5% clamp(3rem, 5vw, 5rem);
+        padding: 4rem 5%;
         background-image:
             linear-gradient(rgb(237 186 0 / 14%) 1px, transparent 1px),
             linear-gradient(90deg, rgb(237 186 0 / 14%) 1px, transparent 1px);

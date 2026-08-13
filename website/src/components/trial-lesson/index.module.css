@@ -1,7 +1,7 @@
 .section {
     box-sizing: border-box;
     width: 100%;
-    padding: 3.75rem 0 4.75rem;
+    padding-block: 4rem;
     background-color: var(--color-yellow);
     font-family: var(--font-primary);
 }
@@ -57,7 +57,9 @@
     letter-spacing: var(--button-s-letter-spacing)
 }
 
-.action button {
+.action a {
+    display: grid;
+    place-items: center;
     box-sizing: border-box;
     width: 100%;
     min-height: 4.125rem;
@@ -72,10 +74,11 @@
     line-height: var(--button-s-line-height);
     letter-spacing: var(--button-s-letter-spacing);
     text-transform: uppercase;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.action button:focus-visible {
+.action a:focus-visible {
     outline: 0.1875rem solid #1594ef;
     outline-offset: 0.1875rem;
 }
@@ -141,7 +144,7 @@
 
 @media (min-width: 1024px) {
     .section {
-        padding: clamp(5rem, 8vw, 8rem) 0 clamp(3rem, 5vw, 5rem);
+        padding-block: 4rem;
     }
 
     .card {
@@ -177,7 +180,7 @@
         font-size: clamp(var(--button-s-size), 1.5vw, var(--button-m-size));
     }
 
-    .action button {
+    .action a {
         min-height: 3.5rem;
         font-size: clamp(var(--button-s-size), 1.5vw, var(--button-m-size));
     }

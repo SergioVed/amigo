@@ -95,7 +95,15 @@
     letter-spacing: var(--button-s-letter-spacing);
 
     text-transform: uppercase;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
+}
+
+.btn:focus-visible {
+    outline: 0.1875rem solid #1594ef;
+    outline-offset: 0.1875rem;
 }
 
 .stickers {
@@ -146,7 +154,6 @@
 
     .btn {
         width: auto;
-        max-width: none;
         margin: clamp(3rem, 7vw, 6rem) 0 0 max(4.75%, calc((100% - var(--desktop-content-max-width)) / 2 + 4rem));
     }
 

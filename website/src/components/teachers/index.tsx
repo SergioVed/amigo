@@ -62,7 +62,7 @@ export const Teachers = () => {
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
                 >
-                    НАШІ PROFESORAS
+                    НАШІ ВИКЛАДАЧІ
                 </motion.h2>
                 <motion.div
                     className={styles.options}

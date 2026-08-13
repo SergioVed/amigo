@@ -2,7 +2,7 @@
     display: grid;
     justify-items: center;
     padding-inline: var(--page-padding-inline);
-    padding-bottom: 7rem;
+    padding-block: 4rem;
     font-family: var(--font-primary);
     background-color: var(--color-yellow);
 }
@@ -40,7 +40,8 @@
 .visual img {
     position: absolute;
     bottom: 0rem;
-    width: 100%;
+    width: auto;
+    max-height: 20rem;
     max-width: none;
 }
 
@@ -114,9 +115,19 @@
     letter-spacing: var(--body-m-letter-spacing);
 }
 
+.answerWrapper {
+    overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .answerWrapper {
+        transform: none !important;
+    }
+}
+
 @media (min-width: 1024px) {
     .container {
-        padding: clamp(4rem, 6vw, 6rem) clamp(3rem, 5vw, 5rem) clamp(5rem, 8vw, 8rem);
+        padding: 4rem clamp(3rem, 5vw, 5rem);
     }
 
     .content {
@@ -142,7 +153,9 @@
     .visual img {
         right: -4%;
         bottom: 0;
-        width: 112%;
+        width: 98%;
+        margin: 0 auto;
+        max-height: 40rem;
     }
 
     .questions {

@@ -2,6 +2,7 @@
 .outer{
     display: flex;
     flex-direction: column;
+    padding-block: 4rem;
     gap: 3rem;
     background-color: var(--color-yellow);
     background-image: url("../../assets/advantages/advantages-bg.png");
@@ -35,7 +36,6 @@
 @media (min-width: 1024px) {
     .outer {
         gap: 0;
-        padding-top: clamp(4rem, 7vw, 7rem);
         background-image: none;
         background-image: url("../../assets/advantages/advatages-bg-desctop.png");
         background-position: center;
@@ -53,7 +53,7 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         width: 100%;
         max-width: var(--desktop-content-max-width);
-        padding: clamp(3rem, 5vw, 5rem) 5.5% clamp(5rem, 8vw, 8rem);
+        padding: 4rem 5.5%;
         gap: clamp(0.5rem, 1vw, 1rem);
         background-size: 100% 100%;
         background-position: center;

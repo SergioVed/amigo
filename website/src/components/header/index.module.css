@@ -53,6 +53,13 @@
     border: 2px solid #111;
     border-radius: 1.5rem;
     box-shadow: 0 0.75rem 0 rgb(0 0 0 / 18%);
+    transform-origin: top center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mobileNav {
+        transform: none !important;
+    }
 }
 
 .mobileNav a {
@@ -105,9 +112,37 @@
         line-height: 1;
         text-decoration: none;
         white-space: nowrap;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .desktopNav a:hover {
+        color: var(--color-yellow);
+        transform: translateY(-2px);
+    }
+
+    .desktopNav a:active {
+        transform: translateY(1px) scale(0.97);
+    }
+
+    .desktopNav a:focus-visible {
+        color: var(--color-yellow);
+        outline: 2px solid var(--color-yellow);
+        outline-offset: 0.35rem;
+        border-radius: 0.25rem;
     }
 
     .desktopNav a + a {
         border-left: 1px solid var(--color-yellow);
+    }
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+    .desktopNav a {
+        transition: none;
+    }
+
+    .desktopNav a:hover,
+    .desktopNav a:active {
+        transform: none;
     }
 }

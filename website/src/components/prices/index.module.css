@@ -1,19 +1,19 @@
 .outer {
     display: grid;
     justify-items: center;
-    padding-bottom: 4rem;
+    padding-block: 4rem;
     font-family: var(--font-primary);
     background-color: var(--color-yellow);
 }
 
 .container {
-    margin-top: 3rem;
+    margin-top: 0;
     box-sizing: border-box;
     display: grid;
     gap: 2rem;
     width: 100%;
     max-width: 30rem;
-    padding: 3rem var(--page-padding-inline) 5rem;
+    padding: 4rem var(--page-padding-inline);
     background-color: #f2f2f2;
     border-radius: 3.75rem;
 }
@@ -203,14 +203,14 @@
 
 @media (min-width: 1024px) {
     .outer {
-        padding: clamp(4rem, 6vw, 6rem) 0;
+        padding-block: 4rem;
     }
 
     .container {
         width: calc(100% - 3rem);
         max-width: var(--desktop-content-max-width);
         margin-top: 0;
-        padding: clamp(3rem, 5vw, 5rem) 3% clamp(3rem, 5vw, 5rem);
+        padding: 4rem 3%;
         gap: clamp(1rem, 2vw, 2rem);
         border-radius: clamp(3rem, 7vw, 6rem);
     }

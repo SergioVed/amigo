@@ -2,6 +2,33 @@ import styles from "./index.module.css"
 import LogoImage from "../../assets/header/logo.svg"
 import MenuImage from "../../assets/header/menu.svg"
 import { useEffect, useState } from "react"
+import { AnimatePresence, motion } from "motion/react"
+
+const mobileMenuAnimation = {
+    hidden: { opacity: 0, y: -18, scale: 0.98 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.25,
+            ease: "easeOut" as const,
+            staggerChildren: 0.04,
+            delayChildren: 0.05,
+        },
+    },
+    exit: {
+        opacity: 0,
+        y: -12,
+        scale: 0.98,
+        transition: { duration: 0.18, ease: "easeIn" as const },
+    },
+}
+
+const mobileLinkAnimation = {
+    hidden: { opacity: 0, x: -10 },
+    visible: { opacity: 1, x: 0 },
+}
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -46,19 +73,25 @@ export const Header = () => {
                 </button>
             </div>
 
-            {isMenuOpen && (
-                <nav
-                    className={styles.mobileNav}
-                    id="mobile-navigation"
-                    aria-label="Мобільна навігація"
-                >
-                    <a href="#ceo" onClick={closeMenu}>Про засновницю</a>
-                    <a href="#advantages" onClick={closeMenu}>Переваги</a>
-                    <a href="#teachers" onClick={closeMenu}>Викладачі</a>
-                    <a href="#feedbacks" onClick={closeMenu}>Відгуки</a>
-                    <a href="#prices" onClick={closeMenu}>Ціни</a>
-                </nav>
-            )}
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.nav
+                        className={styles.mobileNav}
+                        id="mobile-navigation"
+                        aria-label="Мобільна навігація"
+                        variants={mobileMenuAnimation}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                    >
+                        <motion.a variants={mobileLinkAnimation} href="#ceo" onClick={closeMenu}>Про засновницю</motion.a>
+                        <motion.a variants={mobileLinkAnimation} href="#advantages" onClick={closeMenu}>Переваги</motion.a>
+                        <motion.a variants={mobileLinkAnimation} href="#teachers" onClick={closeMenu}>Викладачі</motion.a>
+                        <motion.a variants={mobileLinkAnimation} href="#feedbacks" onClick={closeMenu}>Відгуки</motion.a>
+                        <motion.a variants={mobileLinkAnimation} href="#prices" onClick={closeMenu}>Ціни</motion.a>
+                    </motion.nav>
+                )}
+            </AnimatePresence>
         </header>
     )
 
