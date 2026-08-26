@@ -1,7 +1,5 @@
 import { LoginState, LoginAction, LoginActionTypes } from "./types"
 
-const token = localStorage.getItem("token")
-
 const initialState: LoginState = {
     loading: false,
     error: null,
@@ -33,7 +31,6 @@ export const loginReducer = (state = initialState, action: LoginAction): LoginSt
                 loading: false,
                 error: null,
                 accessToken: action.payload.accessToken,
-                refreshToken: action.payload.refreshToken,
                 isAuth: true,
                 authChecked: true
             }

@@ -3,7 +3,7 @@ import { AccessPayload, RefreshPayload } from "../core/types";
 import * as uuid from "uuid"
 import { JwtService } from "@nestjs/jwt";
 import { Injectable } from "@nestjs/common";
-import type { Response } from "express";
+import type { CookieOptions, Response } from "express";
 
 @Injectable()
 export class TokenHelper {
@@ -42,20 +42,25 @@ export class TokenHelper {
 
     } 
 
+    private static getRefreshCookieOptions = (): CookieOptions => {
+        const isProduction = process.env.NODE_ENV === "production"
+
+        return {
+            httpOnly: true,
+            secure: isProduction,
+            sameSite: isProduction ? "none" : "lax",
+            path: "/",
+        }
+    }
+
     public static sendTokens = (res: Response, tokens) => {
         res.cookie('refreshToken', tokens.refreshToken, {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            ...TokenHelper.getRefreshCookieOptions(),
             maxAge: 15 * 24 * 60 * 60 * 1000,
         })
     }
 
     public static clearTokens = (res: Response) => {
-        res.clearCookie("refreshToken", {
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax"
-        })
+        res.clearCookie("refreshToken", TokenHelper.getRefreshCookieOptions())
     }
 }

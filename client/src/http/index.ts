@@ -10,8 +10,13 @@ const $api = axios.create({
     baseURL: API_URL
 })
 
+let refreshPromise: Promise<string> | null = null
+
 $api.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+    const token = localStorage.getItem('token')
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`
+    }
 
     return config
 })
@@ -21,25 +26,29 @@ $api.interceptors.response.use((config) => {
 }, async (error) => {
     const originalRequest = error.config
 
-
-    if (error.response.status === 401 && error.config && !error.config._isRetry) {
+    if (error.response?.status === 401 && originalRequest && !originalRequest._isRetry) {
         originalRequest._isRetry = true
         try {
-            const response = await axios.post(API_URL + "/auth/refresh", {}, {withCredentials: true})
-            localStorage.setItem('token', response.data.accessToken)
+            if (!refreshPromise) {
+                refreshPromise = axios
+                    .post(`${API_URL}/auth/refresh`, {}, {withCredentials: true})
+                    .then(response => response.data.accessToken)
+                    .finally(() => {
+                        refreshPromise = null
+                    })
+            }
+
+            const accessToken = await refreshPromise
+            localStorage.setItem('token', accessToken)
 
             return $api.request(originalRequest)
         } catch {
-            try {
-                await axios.post(`${API_URL}/auth/logout`, {}, {withCredentials: true})
-            } finally {
-                localStorage.removeItem("token")
-                store.dispatch({type: LoginActionTypes.LOGOUT})
-            }
+            localStorage.removeItem("token")
+            store.dispatch({type: LoginActionTypes.LOGOUT})
         }
 
     }
-    throw error
+    return Promise.reject(error)
 })
 
 export default $api

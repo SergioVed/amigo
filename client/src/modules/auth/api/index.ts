@@ -21,6 +21,6 @@ export class AuthApi {
     }
 
     static logout () {
-        return $api.post("auth/logout", {}, {withCredentials: true})
+        return axios.post(`${API_URL}/auth/logout`, {}, {withCredentials: true})
     }
 }

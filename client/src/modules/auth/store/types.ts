@@ -11,8 +11,7 @@ export interface LoginState {
 }
 
 interface VerifySuccessPayload {
-    accessToken: string,
-    refreshToken: string
+    accessToken: string
 }
 
 export type LoginAction = LoginActionType
