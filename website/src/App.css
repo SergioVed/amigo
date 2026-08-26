@@ -1,3 +1,18 @@
+html,
+body,
+#root {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+@supports (overflow-x: clip) {
+    html,
+    body,
+    #root {
+        overflow-x: clip;
+    }
+}
+
 :root {
     /* Global layout */
     --page-padding-inline: 1rem;
