@@ -1,4 +1,4 @@
-import { Navigate, replace, Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 import { authRoutes } from "../routes";
 import { publicRoutes } from "../routes";
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -9,12 +9,19 @@ import { checkAuthAction } from "../modules/auth/store/actions";
 
 export const AppRouter = () => {
 
-    const {isAuth} = useTypedSelector(state => state.login);
+    const {isAuth, authChecked} = useTypedSelector(state => state.login);
     const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(checkAuthAction())
-    }, [])
+    }, [dispatch])
+
+    // Avoid redirecting while the persisted session is still being restored.
+    // Otherwise a refresh on an admin route briefly looks unauthenticated and
+    // the wildcard route sends the user through /login to /admin/teachers.
+    if (!authChecked) {
+        return null
+    }
 
     return (
         <Routes>

@@ -9,7 +9,8 @@ const initialState: LoginState = {
     accessToken: null,
     refreshToken: null,
     email: null,
-    isAuth: false
+    isAuth: false,
+    authChecked: false
 }
 
 export const loginReducer = (state = initialState, action: LoginAction): LoginState => {
@@ -33,7 +34,8 @@ export const loginReducer = (state = initialState, action: LoginAction): LoginSt
                 error: null,
                 accessToken: action.payload.accessToken,
                 refreshToken: action.payload.refreshToken,
-                isAuth: true
+                isAuth: true,
+                authChecked: true
             }
 
         case LoginActionTypes.CODE_VERIFY_ERROR:
@@ -50,7 +52,8 @@ export const loginReducer = (state = initialState, action: LoginAction): LoginSt
                 accessToken: null,
                 refreshToken: null,
                 email: null,
-                isAuth: false
+                isAuth: false,
+                authChecked: true
             }
 
         case LoginActionTypes.AUTH_SUCCESS:
@@ -58,7 +61,8 @@ export const loginReducer = (state = initialState, action: LoginAction): LoginSt
                 ...state,
                 accessToken: action.payload,
                 error: null,
-                isAuth: true
+                isAuth: true,
+                authChecked: true
             }
 
         default:

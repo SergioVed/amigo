@@ -7,6 +7,7 @@ export interface LoginState {
     refreshToken: string | null
     email: string | null
     isAuth: boolean
+    authChecked: boolean
 }
 
 interface VerifySuccessPayload {
