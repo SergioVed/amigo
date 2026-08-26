@@ -14,7 +14,7 @@ export const SearchInput = ({
     return (
         <label className={styles.container}>
             <img 
-                src={require("../../public/icons/toolBar/search.png")}
+                src={require("../../public/icons/toolbar/search.png")}
                 className={styles.icon}
             />
 
