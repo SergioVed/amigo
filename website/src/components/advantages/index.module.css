@@ -5,7 +5,7 @@
     gap: 3rem;
     background-color: var(--color-yellow);
     background-image: url("../../assets/advantages/advantages-bg.png");
-    background-size: 100% 90%;
+    background-size: 100% auto;
     background-position: top center;
     background-repeat: no-repeat;
 }
@@ -78,7 +78,7 @@
 @media (min-width: 1440px) {
     .outer {
         background-image: url("../../assets/advantages/advatages-bg-desctop.png");
-        background-size: 100% auto;
+        background-size: 100% 90%;
         background-position: center bottom;
         background-repeat: no-repeat;
     }
