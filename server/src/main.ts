@@ -6,15 +6,19 @@ import cookieParser from "cookie-parser";
 async function start() {
   const PORT = process.env.PORT ?? 3000
 
-  const allowedOrigins = process.env.CORS_ORIGINS
-  ? process.env.CORS_ORIGINS
-      .split(",")
-      .map((origin) => origin.trim())
-      .filter(Boolean)
-  : [
-      "http://localhost:3001",
-      "http://localhost:5173",
-    ];
+  const configuredOrigins = process.env.CORS_ORIGINS
+    ?.split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean) ?? []
+
+  const allowedOrigins = Array.from(new Set([
+    "http://localhost:3001",
+    "http://localhost:5173",
+    "https://amigo-admin-x0xh.onrender.com",
+    "https://academia-amigo.com",
+    "https://www.academia-amigo.com",
+    ...configuredOrigins,
+  ]))
 
 
   const app = await NestFactory.create(AppModule);
