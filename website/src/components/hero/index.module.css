@@ -1,6 +1,6 @@
 .container {
     background-color: #000;
-    padding-top: 0;
+    padding-top: 4rem;
 }
 
 .inner {
@@ -8,7 +8,6 @@
     isolation: isolate;
     overflow: hidden;
     min-height: 70svh;
-    padding-top: 4rem
 }
 
 .inner::before {
@@ -16,8 +15,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 150vmax;
-    height: 100vmax;
+    width: 150svmax;
+    height: 100svmax;
     background: url("../../assets/hero/image-bg.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -112,7 +111,7 @@
     width: 90%;
     max-width: 28rem;
     height: auto;
-    margin-top: clamp(2rem, 10vh, 7rem);
+    margin-top: clamp(2rem, 10svh, 7rem);
     margin-inline: auto;
     object-fit: contain;
 }
@@ -133,7 +132,6 @@
 
     .inner {
         min-height: clamp(32rem, 52vw, 42rem);
-        padding-top: 0;
     }
 
     .inner::before {
