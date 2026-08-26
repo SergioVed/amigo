@@ -37,7 +37,7 @@ export const checkAuthAction = () => {
     return async (dispatch: Dispatch<LoginAction>) => {
         try {
             const response = await AuthApi.refresh()
-            dispatch({type: LoginActionTypes.AUTH_SUCCESS, payload: response.data})
+            dispatch({type: LoginActionTypes.AUTH_SUCCESS, payload: response.data.accessToken})
 
             localStorage.setItem("token", response.data.accessToken)
         } catch (e) {

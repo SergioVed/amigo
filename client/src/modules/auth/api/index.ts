@@ -1,5 +1,5 @@
 import axios from "axios";
-import $api from "../../../http";
+import $api, { API_URL } from "../../../http";
 
 
 export class AuthApi {
@@ -17,7 +17,7 @@ export class AuthApi {
     }
 
     static refresh() {
-        return axios.post("/auth/refresh", {}, {withCredentials: true})
+        return axios.post(`${API_URL}/auth/refresh`, {}, {withCredentials: true})
     }
 
     static logout () {
