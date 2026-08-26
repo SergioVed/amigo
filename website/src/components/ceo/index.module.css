@@ -7,12 +7,12 @@
     background-color: #EEE;
     border-radius: 60px;
     position: relative;
-    top: -4.5rem;
+    top: -2rem;
 }
 
 .photoFrame {
     display: block;
-    width: 100%;
+    width: 80%;
     max-width: 30rem;
     height: auto;
     margin-inline: auto;
@@ -30,7 +30,7 @@
     margin: 0;
     font-family: var(--font-primary);
     font-size: var(--heading-h3-size);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-semibold);
     line-height: var(--heading-h3-line-height);
     letter-spacing: var(--heading-h3-letter-spacing);
 }

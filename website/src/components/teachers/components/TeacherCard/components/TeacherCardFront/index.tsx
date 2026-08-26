@@ -19,7 +19,7 @@ export const TeacherCardFront = ({
     description,
     experience,
     hasPriority,
-
+    language,
     onMore
 }: Teacher & { onMore: () => void }) => {
 
@@ -31,18 +31,23 @@ export const TeacherCardFront = ({
             <div className={styles.profile}>
                 <div className={styles.info}>
                     <p className={styles.certificate}>
-                        Certificado de profesora en Amigo
+                        
+                        {language === "ENGLISH" ? "TEACHER CERTIFICATE AMIGO" : "Certificado de profesora en Amigo"}
                     </p>
 
                     <div className={styles.details}>
                         <div className={styles.field}>
                             <h4 className={styles.name}>{name}</h4>
-                            <span className={styles.label}>nombre</span>
+                            <span className={styles.label}>
+                                {language === "ENGLISH" ? "name" : "nombre"}
+                            </span>
                         </div>
 
                         <div className={styles.field}>
                             <p className={styles.experience}>{experienceLabel(experience)}</p>
-                            <span className={styles.label}>experiencia</span>
+                            <span className={styles.label}>
+                                {language === "ENGLISH" ? "experience" : "experiencia"}
+                            </span>
                         </div>
                     </div>
                 </div>

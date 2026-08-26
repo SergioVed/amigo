@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import styles from "./index.module.css"
 import type { PriceProps, PriceType } from "./types"
 import { getPrices } from "../../api"
-import { OptionBtn } from "../OptionBtn"
+import { OptionBtn } from "../../ui/OptionBtn"
 import { motion } from "motion/react"
 
 const priceCardAnimation = {

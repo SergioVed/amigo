@@ -2,7 +2,6 @@
 .outer{
     display: flex;
     flex-direction: column;
-    padding-block: 4rem;
     gap: 3rem;
     background-color: var(--color-yellow);
     background-image: url("../../assets/advantages/advantages-bg.png");
@@ -17,7 +16,7 @@
     font-family: var(--font-primary);
     font-size: var(--heading-h3-size);
     font-weight: var(--font-weight-bold);
-    line-height: var(--heading-h3-line-height);
+    line-height: 3rem;
     letter-spacing: var(--heading-h3-letter-spacing);
     text-align: center;
 }
@@ -30,7 +29,13 @@
 
     display: flex;
     flex-direction: column;
+    margin-bottom: 4rem;
+}
 
+.container > :not(:first-child) {
+    position: relative;
+    z-index: 1;
+    margin-top: -2rem;
 }
 
 @media (min-width: 1024px) {
@@ -42,6 +47,7 @@
     }
 
     .outer h2 {
+        max-width: 15ch;
         position: relative;
         z-index: 1;
         margin-bottom: clamp(-1rem, -1vw, 0rem);
@@ -57,6 +63,10 @@
         gap: clamp(0.5rem, 1vw, 1rem);
         background-size: 100% 100%;
         background-position: center;
+    }
+
+    .container > :not(:first-child) {
+        margin-top: 0;
     }
 
     .container > :nth-child(n + 4) {

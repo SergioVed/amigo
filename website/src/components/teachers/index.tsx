@@ -4,7 +4,7 @@ import type { Teacher, TeacherLanguage } from "./types"
 import { getTeachers } from "../../api"
 import { TeacherCard } from "./components/TeacherCard"
 import { motion } from "motion/react"
-import { OptionBtn } from "../OptionBtn"
+import { OptionBtn } from "../../ui/OptionBtn"
 
 const languageOptions: { label: string; value: TeacherLanguage }[] = [
     { label: "Іспанська", value: "SPANISH" },

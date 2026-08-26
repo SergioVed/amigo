@@ -32,7 +32,7 @@ export const TrialLesson = () => {
                             Тицьни, щоб познайомитися
                         </motion.p>
                         <motion.a
-                            href="https://t.me/mariya_amarilla"
+                            href="https://t.me/academia_amigo"
                             target="_blank"
                             rel="noopener noreferrer"
                             initial={{ opacity: 0 }}

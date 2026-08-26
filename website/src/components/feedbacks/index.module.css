@@ -1,7 +1,6 @@
 .container {
     box-sizing: border-box;
     overflow: hidden;
-    padding-block: 4rem;
     background-color: var(--color-yellow);
 }
 

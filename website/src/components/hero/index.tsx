@@ -51,7 +51,7 @@ export const Hero = () => {
 
                 <motion.a
                     className={styles.btn}
-                    href="https://t.me/mariya_amarilla"
+                    href="https://t.me/academia_amigo"
                     target="_blank"
                     rel="noopener noreferrer"
                     initial={{ opacity: 0 }}

@@ -29,7 +29,7 @@
     overflow: visible;
     fill: var(--color-white);
     stroke: #000;
-    stroke-width: 2px;
+    stroke-width: 1px;
 }
 
 .content > :not(.shape) {
@@ -85,5 +85,9 @@
         font-size: clamp(var(--button-s-size), 1.5vw, var(--caption-s-size));
         line-height: var(--body-m-line-height);
         letter-spacing: var(--body-m-letter-spacing);
+    }
+
+    .shape{
+        stroke-width: 4px;
     }
 }
