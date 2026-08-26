@@ -22,7 +22,7 @@
     background-repeat: no-repeat;
     background-size: 70% auto;
     transform: translate(-50%, -50%) rotate(90deg);
-    z-index: -1;
+    z-index: 0;
 }
 
 .title {
@@ -114,6 +114,14 @@
     margin-top: clamp(2rem, 10vh, 7rem);
     margin-inline: auto;
     object-fit: contain;
+}
+
+.title,
+.subtitle,
+.btn,
+.stickers {
+    position: relative;
+    z-index: 1;
 }
 
 
