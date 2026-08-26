@@ -2,7 +2,8 @@ import axios from "axios"
 import { LoginActionTypes } from "../modules/auth/store/types"
 import { store } from "../store"
 
-export const API_URL = 'http://localhost:3000'
+export const API_URL =
+    process.env.REACT_APP_API_URL ?? 'http://localhost:3000'
 
 const $api = axios.create({
     withCredentials: true,
