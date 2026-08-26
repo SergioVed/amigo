@@ -1,6 +1,6 @@
 .container {
     background-color: #000;
-    padding-top: 4rem;
+    padding-top: 0;
 }
 
 .inner {
@@ -8,6 +8,7 @@
     isolation: isolate;
     overflow: hidden;
     min-height: 70svh;
+    padding-top: 4rem
 }
 
 .inner::before {
@@ -132,6 +133,7 @@
 
     .inner {
         min-height: clamp(32rem, 52vw, 42rem);
+        padding-top: 0;
     }
 
     .inner::before {
