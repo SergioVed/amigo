@@ -132,10 +132,14 @@ DB_NAME=your_database_name
 ACCESS_SECRET=your_access_token_secret
 REFRESH_SECRET=your_refresh_token_secret
 
-SMTP_HOST=your_smtp_host
-SMTP_PORT=your_smtp_port
-SMTP_USER=your_smtp_user
-SMTP_PASSWORD=your_smtp_password
+BREVO_API_KEY=your_brevo_api_key
+BREVO_SENDER_EMAIL=your_verified_sender_email
+BREVO_SENDER_NAME=AMIGO
+
+# Optional temporary login override. Configure both values together.
+ADMIN_EMAIL=your_admin_email
+ADMIN_PASSWORD=your_admin_password
+ADMIN_SKIP_VERIFICATION=true
 
 API_URL=http://localhost:3000
 

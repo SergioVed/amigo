@@ -10,6 +10,12 @@ export const login = (email: string, password: string) => {
             dispatch({ type: LoginActionTypes.LOGIN })
             const response = await AuthApi.login(email, password);
 
+            if (response.data.accessToken) {
+                localStorage.setItem("token", response.data.accessToken)
+                dispatch({type: LoginActionTypes.AUTH_SUCCESS, payload: response.data.accessToken})
+                return
+            }
+
             dispatch({ type: LoginActionTypes.LOGIN_SUCCESS, payload: response.data })
         } catch (e) {
             errorHandler(e, LoginActionTypes.LOGIN_ERROR, dispatch)

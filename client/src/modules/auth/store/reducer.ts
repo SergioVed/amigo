@@ -56,6 +56,7 @@ export const loginReducer = (state = initialState, action: LoginAction): LoginSt
         case LoginActionTypes.AUTH_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 accessToken: action.payload,
                 error: null,
                 isAuth: true,

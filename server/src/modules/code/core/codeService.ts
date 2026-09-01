@@ -1,30 +1,15 @@
 import { BadRequestException, Inject, Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import bcrypt from "bcrypt";
-import nodemailer, { Transporter } from "nodemailer"
 import type { ICodeRepository } from "./codeReposiotry";
 import { CodeEntity } from "./codeEntity";
-import { CodeMapper } from "../infrastructure/codeMapper";
 import { VerifyInput } from "./types";
 
 
 @Injectable()
 export class CodeService {
-
-    private transporter: Transporter
-
     constructor(
         @Inject("ICodeRepository") private codeRepo: ICodeRepository
-    ) {
-        this.transporter = nodemailer.createTransport({
-            host: process.env.SMTP_HOST,
-            port: Number(process.env.SMTP_PORT ?? 587),
-            secure: Number(process.env.SMTP_PORT) === 465,
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASSWORD
-            }
-        })
-    }
+    ) {}
 
     async validateCode(data: VerifyInput): Promise<CodeEntity> {
         const code = await this.codeRepo.getByEmail(data.email)
@@ -68,19 +53,44 @@ export class CodeService {
             await this.codeRepo.save(newCode)
         }
 
-        console.log(code)
+        const apiKey = process.env.BREVO_API_KEY
+        const senderEmail = process.env.BREVO_SENDER_EMAIL
+        const senderName = process.env.BREVO_SENDER_NAME ?? "AMIGO"
 
+        if (!apiKey || !senderEmail) {
+            throw new InternalServerErrorException("Email delivery is not configured")
+        }
 
-        const info = await this.transporter.sendMail({
-            from: process.env.SMTP_USER,
-            to,
-            subject: "Your login verification code",
-            text: `Your code is ${code}`,
-            html: `<p>Your login verification code is <strong>${code}</strong>.</p>`
-        })
+        const controller = new AbortController()
+        const timeout = setTimeout(() => controller.abort(), 10_000)
 
-        if (!info.messageId) {
+        try {
+            const response = await fetch("https://api.brevo.com/v3/smtp/email", {
+                method: "POST",
+                headers: {
+                    accept: "application/json",
+                    "api-key": apiKey,
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    sender: {name: senderName, email: senderEmail},
+                    to: [{email: to}],
+                    subject: "Your AMIGO login verification code",
+                    textContent: `Your verification code is ${code}. It expires in 10 minutes.`,
+                    htmlContent: `<p>Your AMIGO login verification code is <strong>${code}</strong>.</p><p>It expires in 10 minutes.</p>`,
+                }),
+                signal: controller.signal,
+            })
+
+            const result = await response.json() as {messageId?: string, message?: string}
+            if (!response.ok || !result.messageId) {
+                throw new Error(result.message ?? `Brevo returned HTTP ${response.status}`)
+            }
+        } catch (error) {
+            console.error("Could not send verification email through Brevo", error)
             throw new InternalServerErrorException("Failed to send verification code")
+        } finally {
+            clearTimeout(timeout)
         }
     }
 }
