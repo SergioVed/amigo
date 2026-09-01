@@ -11,6 +11,8 @@
     box-sizing: border-box;
     transition: transform 0.22s ease, box-shadow 0.22s ease;
     transform-origin: center;
+
+    width: 100%;
 }
 
 .card:hover,
