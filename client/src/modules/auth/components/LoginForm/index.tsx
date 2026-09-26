@@ -9,7 +9,7 @@ import { CustomButton } from "../../ui/CustomButton"
 export const LoginForm = () => {
 
     const dispatch = useAppDispatch()
-    const {error} = useTypedSelector(state => state.login)
+    const {error, loading} = useTypedSelector(state => state.login)
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -45,7 +45,7 @@ export const LoginForm = () => {
 
             {error ? <p style={{margin: 0, color: "#ff0000", whiteSpace: "pre-line"}}>{error}</p> : <></>}
 
-            <CustomButton text="Sign in" onClick={() => submit(email, password)}/>
+            <CustomButton disabled={loading || !email.trim() || !password} text={loading ? "Signing in…" : "Sign in"} onClick={() => submit(email, password)}/>
         </div>
     )
 }

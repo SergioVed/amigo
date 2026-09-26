@@ -13,7 +13,7 @@ export interface ProfessorModelCreationAttrs {
     description: string,
     experience: number,
     video_url: string,
-    super_power: string[],
+    super_power: string,
     favourite_word: string,
     for_student: string,
     language: Language
@@ -43,8 +43,8 @@ export class ProfessorModel extends Model<ProfessorModel, ProfessorModelCreation
     @Column({ type: DataType.STRING, allowNull: false })
     declare video_url: string;
 
-    @Column({ type: DataType.ARRAY(DataType.STRING), allowNull: false })
-    declare super_power: string[];
+    @Column({ type: DataType.TEXT, allowNull: false })
+    declare super_power: string;
 
     @Column({ type: DataType.STRING, allowNull: false })
     declare favourite_word: string;

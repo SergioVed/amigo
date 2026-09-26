@@ -47,9 +47,7 @@ export class TeachersApi {
         }
 
         if (data.superPower !== undefined) {
-            data.superPower.forEach((item) => {
-                formData.append("superPower", item)
-            })
+            formData.append("superPower", data.superPower)
         }
 
         if (data.language !== undefined) {
@@ -79,9 +77,7 @@ export class TeachersApi {
         formData.append("hasPriority", String(data.hasPriority))
         formData.append("language", data.language)
         
-        data.superPower.forEach((item) => {
-            formData.append("superPower", item)
-        })
+        formData.append("superPower", data.superPower)
 
         formData.append("file", selectedFile)
 

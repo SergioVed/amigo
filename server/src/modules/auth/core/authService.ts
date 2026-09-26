@@ -81,10 +81,7 @@ export class AuthService {
             throw new NotFoundException("No ceo was found with email " + data.email)
         }
 
-        const code = await this.codeService.validateCode(data)
-
-        code.update({ usedAt: new Date() })
-        await this.codeRepo.save(code)
+        await this.codeService.validateCode(data)
 
         const tokens = await this.generateAndSaveTokens(ceo)
         return {

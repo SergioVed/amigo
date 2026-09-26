@@ -26,14 +26,12 @@ export const TeacherCardBack = ({
             <div className={styles.content}>
                 <section className={styles.section}>
                     <div className={styles.heading}>
-                        <h5 className={styles.label}>Супер сили</h5>
+                        <h5 className={styles.label}>Суперсила</h5>
                         <img className={styles.icon} src={lightningIcon} alt="" />
                     </div>
 
                     <ul className={styles.list}>
-                        {superPower.map((power) => (
-                            <li key={power}>{power}</li>
-                        ))}
+                        <li>{superPower}</li>
                     </ul>
                 </section>
 

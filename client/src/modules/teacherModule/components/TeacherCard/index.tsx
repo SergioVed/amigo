@@ -36,8 +36,11 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
 
     function handleUpdateTeacher() {
         const formToUpdate: UpdateTeacherPayload = {}
-        const isSuperPowerChanged = form.superPower.length !== teacher.superPower.length
-            || form.superPower.some((power, index) => power !== teacher.superPower[index])
+        const superPower = form.superPower.trim()
+        if (!superPower) {
+            alert("Enter a super power")
+            return
+        }
 
         if (form.avatarUrl !== teacher.avatarUrl) {
             formToUpdate.avatarUrl = form.avatarUrl
@@ -63,8 +66,8 @@ export const TeacherCard = ({ teacher }: TeacherCardProps) => {
             formToUpdate.videoUrl = form.videoUrl
         }
 
-        if (isSuperPowerChanged) {
-            formToUpdate.superPower = form.superPower
+        if (superPower !== teacher.superPower) {
+            formToUpdate.superPower = superPower
         }
 
         if (form.favouriteWord !== teacher.favouriteWord) {

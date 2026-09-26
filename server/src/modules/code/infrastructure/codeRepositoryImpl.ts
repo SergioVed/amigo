@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import { Injectable } from "@nestjs/common";
 import { ICodeRepository } from "../core/codeReposiotry";
 import { CodeEntity } from "../core/codeEntity";
@@ -13,6 +14,20 @@ export class CodeRepositoryImpl implements ICodeRepository {
         @InjectModel(CodeModel) private codeModel: typeof CodeModel
     ) { }
 
+
+    async consume(code: CodeEntity): Promise<boolean> {
+        const id = code.getId()
+        if (id === null) return false
+        const [count] = await this.codeModel.update({ usedAt: new Date() }, {
+            where: {
+                id,
+                codeHash: code.getCodeHash(),
+                usedAt: null,
+                expiresAt: { [Op.gt]: new Date() },
+            },
+        })
+        return count === 1
+    }
 
     async getByEmail(email: string): Promise<CodeEntity | null> {
         const code = await this.codeModel.findOne({

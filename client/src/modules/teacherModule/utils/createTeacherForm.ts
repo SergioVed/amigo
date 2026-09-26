@@ -6,8 +6,7 @@ export const createTeacherForm: TeacherCreateForm = {
     experience: 0,
     hasPriority: false,
     videoUrl: "",
-    superPower1: "",
-    superPower2: "",
+    superPower: "",
     favouriteWord: "",
     forStudent: "",
     language: "SPANISH"

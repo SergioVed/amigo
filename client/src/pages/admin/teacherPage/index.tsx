@@ -32,15 +32,14 @@ export const TeacherPage = () => {
             return
         }
 
-        const {superPower1, superPower2, ...teacherData} = form
-        const superPower = [superPower1.trim(), superPower2.trim()]
+        const superPower = form.superPower.trim()
 
-        if (superPower.some(power => !power)) {
+        if (!superPower) {
             return
         }
 
         dispatch(addTeacherAction({
-            ...teacherData,
+            ...form,
             superPower
         }, selectedFile))
 

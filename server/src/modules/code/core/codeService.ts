@@ -18,41 +18,24 @@ export class CodeService {
             throw new NotFoundException("Code was not found")
         }
         if (code.getUsedAt() != null) {
-            throw new UnauthorizedException("Code was used before used at")
+            throw new UnauthorizedException("Code has already been used. Sign in again to request a new code.")
         }
-        if (code.getExpiresAt() < new Date()) {
-            throw new UnauthorizedException("Code was used before")
+        if (code.getExpiresAt() <= new Date()) {
+            throw new UnauthorizedException("Code has expired. Sign in again to request a new code.")
         }
 
-        const equlals = await bcrypt.compare(data.code, code.getCodeHash())
-        if (!equlals) {
+        const matches = await bcrypt.compare(data.code, code.getCodeHash())
+        if (!matches) {
             throw new BadRequestException("Code is incorrect")
         }
 
+        if (!(await this.codeRepo.consume(code))) {
+            throw new UnauthorizedException("Code has already been used or replaced. Sign in again.")
+        }
         return code
     }
 
     async sendCode(to: string, code: string) {
-        const codeHash = await bcrypt.hash(code, 10)
-        const expiresAt = new Date(Date.now() + 10 * 60 * 1000)
-
-        const existing = await this.codeRepo.getByEmail(to)
-        if (existing) {
-            existing.update({
-                codeHash,
-                expiresAt,
-                usedAt: null
-            })
-            await this.codeRepo.save(existing)
-        } else {
-            const newCode = CodeEntity.create({
-                codeHash,
-                email: to,
-                expiresAt
-            })
-            await this.codeRepo.save(newCode)
-        }
-
         const apiKey = process.env.BREVO_API_KEY
         const senderEmail = process.env.BREVO_SENDER_EMAIL
         const senderName = process.env.BREVO_SENDER_NAME ?? "AMIGO"
@@ -87,10 +70,30 @@ export class CodeService {
                 throw new Error(result.message ?? `Brevo returned HTTP ${response.status}`)
             }
         } catch (error) {
-            console.error("Could not send verification email through Brevo", error)
+            console.error("Could not send verification email through Brevo")
             throw new InternalServerErrorException("Failed to send verification code")
         } finally {
             clearTimeout(timeout)
+        }
+
+        const codeHash = await bcrypt.hash(code, 10)
+        const expiresAt = new Date(Date.now() + 10 * 60 * 1000)
+
+        const existing = await this.codeRepo.getByEmail(to)
+        if (existing) {
+            existing.update({
+                codeHash,
+                expiresAt,
+                usedAt: null
+            })
+            await this.codeRepo.save(existing)
+        } else {
+            const newCode = CodeEntity.create({
+                codeHash,
+                email: to,
+                expiresAt
+            })
+            await this.codeRepo.save(newCode)
         }
     }
 }

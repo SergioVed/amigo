@@ -7,7 +7,7 @@ export interface CreateProfessorAttrs {
     description: string,
     experience: number,
     videoUrl: string,
-    superPower: string[],
+    superPower: string,
     favouriteWord: string,
     forStudent: string,
     language: Language
@@ -23,7 +23,7 @@ export class Professor {
         private _description: string,
         private _experience: number,
         private _videoUrl: string,
-        private _superPower: string[],
+        private _superPower: string,
         private _favouriteWord: string,
         private _forStudent: string,
         private _language: Language
@@ -57,7 +57,7 @@ export class Professor {
         return this._videoUrl;
     }
 
-    public getSuperPower(): string[] {
+    public getSuperPower(): string {
         return this._superPower;
     }
 

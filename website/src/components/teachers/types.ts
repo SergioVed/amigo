@@ -7,7 +7,7 @@ export interface Teacher {
     description: string,
     experience: number,
     videoUrl: string,
-    superPower: string[],
+    superPower: string,
     favouriteWord: string,
     forStudent: string
     language: TeacherLanguage

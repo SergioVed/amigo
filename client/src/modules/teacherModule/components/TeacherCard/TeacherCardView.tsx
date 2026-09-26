@@ -31,14 +31,10 @@ export const TeacherCardView = ({ teacher }: TeacherCardViewProps) => {
             </a>
 
             <div className={styles.section}>
-                <p className={styles.sectionTitle}>Super Powers</p>
+                <p className={styles.sectionTitle}>Super Power</p>
 
                 <div className={styles.powerList}>
-                    {teacher.superPower.map((power) => (
-                        <span key={power} className={styles.powerItem}>
-                            {power}
-                        </span>
-                    ))}
+                    <span className={styles.powerItem}>{teacher.superPower}</span>
                 </div>
             </div>
 

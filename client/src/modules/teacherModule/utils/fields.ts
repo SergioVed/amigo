@@ -23,14 +23,9 @@ export const fields: FieldConfig<TeacherCreateForm>[] = [
             placeholder: "Enter video url",
         },
         {
-            name: "superPower1",
-            label: "First Super Power",
-            placeholder: "Enter first super power",
-        },
-        {
-            name: "superPower2",
-            label: "Second Super Power",
-            placeholder: "Enter second super power",
+            name: "superPower",
+            label: "Super Power",
+            placeholder: "Enter super power",
         },
         {
             name: "favouriteWord",

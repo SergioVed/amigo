@@ -35,15 +35,6 @@ export const TeacherCardForm = ({ form, setForm, setSelectedFile }: TeacherCardF
         }
     }
 
-    function updateSuperPower(index: number, value: string) {
-        setForm(prev => {
-            const superPower = [...prev.superPower]
-            superPower[index] = value
-
-            return { ...prev, superPower }
-        })
-    }
-
     return (
         <div className={styles.form}>
             <AddImageInput
@@ -89,17 +80,10 @@ export const TeacherCardForm = ({ form, setForm, setSelectedFile }: TeacherCardF
             />
 
             <CustomInput
-                label="First Super Power"
-                value={form.superPower[0] ?? ""}
-                onChange={(e) => updateSuperPower(0, e.target.value)}
-                placeholder="Enter first super power"
-            />
-
-            <CustomInput
-                label="Second Super Power"
-                value={form.superPower[1] ?? ""}
-                onChange={(e) => updateSuperPower(1, e.target.value)}
-                placeholder="Enter second super power"
+                label="Super Power"
+                value={form.superPower}
+                onChange={(e) => setForm((prev) => ({ ...prev, superPower: e.target.value }))}
+                placeholder="Enter super power"
             />
 
             <div className={styles.videoLink}>
