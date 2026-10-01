@@ -17,6 +17,8 @@ async function start() {
     "https://amigo-admin-x0xh.onrender.com",
     "https://academia-amigo.com",
     "https://www.academia-amigo.com",
+    "https://amigo-academia.com",
+    "https://www.amigo-academia.com",
     ...configuredOrigins,
   ]))
 
@@ -25,6 +27,7 @@ async function start() {
   app.enableCors({
     origin: allowedOrigins,
     credentials: true,
+    exposedHeaders: ["X-Public-Content-Status"],
   });
   app.use(cookieParser())
   app.useGlobalPipes(new ValidationPipe({
